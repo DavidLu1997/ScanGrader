@@ -17,9 +17,10 @@ class ScanImage
 
 	//JPEG object
 	struct jpeg_decompress_struct cinfo;
+	struct jpeg_error_mgr jerr;
 	
 	//Error manager
-	struct my_error_mgr jerr;
+	
 	
 	FILE *infile;
 	JSAMPARRAY buffer;
@@ -34,6 +35,10 @@ class ScanImage
 			fprintf(stderr, "Unable to open %s\n", filename);
 			return;
 		}
+
+		cinfo.err = jpeg_std_error(&jerr);
+
+		jpeg_create_decompress(&info);
 
 
 	}
