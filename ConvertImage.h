@@ -2,7 +2,7 @@
 #define CONVERTIMAGE_H
 
 #include <vector>
-#include "jpeglib.h"
+//#include "jpeglib.h"
 #include "Pixel.h"
 
 class ConvertImage
