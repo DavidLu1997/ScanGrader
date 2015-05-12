@@ -57,6 +57,9 @@
     <ClInclude Include="transupp.h">
       <Filter>Header Files\libjpeg</Filter>
     </ClInclude>
+    <ClInclude Include="ReadDot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cdjpeg.c">

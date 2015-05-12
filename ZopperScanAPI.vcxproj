@@ -88,6 +88,7 @@
     <ClInclude Include="jpegint.h" />
     <ClInclude Include="jpeglib.h" />
     <ClInclude Include="jversion.h" />
+    <ClInclude Include="ReadDot.h" />
     <ClInclude Include="ScanImage.h" />
     <ClInclude Include="transupp.h" />
   </ItemGroup>
