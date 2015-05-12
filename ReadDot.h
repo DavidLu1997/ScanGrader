@@ -19,10 +19,10 @@ class ReadDot
 	ReadDot(std::vector< std::vector<int> > img, int thres, double percent);
 
 	//Return percentage black
-	double black();
+public: double black();
 
 	//Return if registered
-	bool check();
+public: bool check();
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "jpeglib.h"
 #include "jerror.h"
+#include "Pixels.h"
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
@@ -27,20 +28,10 @@ class ScanImage
 	int row_stride;
 
 	//Creates a ScanImage from a filename
-	ScanImage(char *name)
-	{
-		filename = name;
+	ScanImage(char *name);
 
-		if ((infile = fopen(filename, "rb")) == NULL) {
-			fprintf(stderr, "Unable to open %s\n", filename);
-			return;
-		}
+	//Obtain raw image data into pixels
+	std::vector< std::vector<Pixels> > rawData();
 
-		cinfo.err = jpeg_std_error(&jerr);
-
-		jpeg_create_decompress(&info);
-
-
-	}
 };
 #endif
