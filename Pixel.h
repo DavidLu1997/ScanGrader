@@ -3,6 +3,7 @@
 
 class Pixel
 {
+public:
 	//Red, green and blue
 	int r, g, b;
 
@@ -15,7 +16,7 @@ class Pixel
 	}
 
 	//Magnitude of pixel (grayscale)
-public: int grayscale()
+	int grayscale()
 	{
 		return (r + g + b) / 3;
 	}

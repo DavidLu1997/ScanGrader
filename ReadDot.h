@@ -6,6 +6,7 @@
 
 class ReadDot
 {
+public:
 	//Image area to analyze, square
 	std::vector< std::vector<int> > image;
 
@@ -19,10 +20,10 @@ class ReadDot
 	ReadDot(std::vector< std::vector<int> > img, int thres, double percent);
 
 	//Return percentage black
-public: double black();
+	double black();
 
 	//Return if registered
-public: bool check();
+	bool check();
 };
 
 #endif

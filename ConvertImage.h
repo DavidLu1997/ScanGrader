@@ -2,11 +2,11 @@
 #define CONVERTIMAGE_H
 
 #include <vector>
-//#include "jpeglib.h"
 #include "Pixel.h"
 
 class ConvertImage
 {
+public:
 	std::vector< std::vector<Pixel> > rawImage;
 	
 	//Standard constructor
@@ -16,7 +16,7 @@ class ConvertImage
 	}
 
 	//Convert image to grayscale
-public: std::vector< std::vector<int> > grayscale()
+std::vector< std::vector<int> > grayscale()
 	{
 		std::vector< std::vector<int> > newImage(rawImage.size());
 		for (int i = 0; i < rawImage.size(); i++)
