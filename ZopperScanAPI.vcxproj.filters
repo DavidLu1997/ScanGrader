@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\libjpeg">
-      <UniqueIdentifier>{955f7740-b3cc-4dd9-84a3-30ddfd494595}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\libjpeg">
-      <UniqueIdentifier>{8045013d-7a7a-4009-a335-e8d7ccbed340}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ScanImage.h">
@@ -39,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
