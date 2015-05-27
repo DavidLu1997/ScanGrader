@@ -16,6 +16,9 @@ public:
 	//Obtain raw image data into pixels
 	std::vector< std::vector<Pixel> > rawData();
 
+	//Obtain grayscale image
+	std::vector< std::vector<int> > grayScale();
+
 private:
 	//Pixels
 	std::vector< std::vector<Pixel> > pixels;

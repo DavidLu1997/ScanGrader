@@ -57,3 +57,15 @@ std::vector< std::vector<Pixel> > ScanImage::rawData()
 {
 	return pixels;
 }
+
+std::vector< std::vector<int> > ScanImage::grayScale()
+{
+	std::vector< std::vector<int> > newImage(pixels.size());
+	for (int i = 0; i < pixels.size(); i++)
+	{
+		for (int j = 0; j < pixels[i].size(); j++)
+		{
+			newImage[i].push_back(pixels[i][j].grayscale());
+		}
+	}
+}
