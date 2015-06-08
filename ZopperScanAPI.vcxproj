@@ -78,7 +78,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ConvertImage.h" />
     <ClInclude Include="Pixel.h" />
     <ClInclude Include="ReadDot.h" />
     <ClInclude Include="ScanImage.h" />

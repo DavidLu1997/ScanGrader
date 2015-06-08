@@ -21,9 +21,6 @@
     <ClInclude Include="ReadDot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConvertImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pixel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
