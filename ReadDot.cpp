@@ -36,8 +36,11 @@ double ReadDot::black()
 		}
 	}
 
+	//Average circle size
+	double averageCircle = pow((double)(x + y) / 4, 2) * 3.14;
+
 	//Calculate percentage
-	return (double)sum / (x * y * 255);
+	return (double)sum / (averageCircle * 255);
 }
 
 //Checks if blackness is over threshold
