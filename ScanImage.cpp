@@ -2,8 +2,10 @@
 #include "ScanImage.h"
 #include <cstdio>
 
+//Scans an image to the ScanImage object
 ScanImage::ScanImage(char *name)
 {
+	//Opens file
 	FILE *file;
 	file = fopen(name, "r");
 	if (file == NULL)
@@ -11,30 +13,44 @@ ScanImage::ScanImage(char *name)
 		printf("Invalid filename, %s not found.", name);
 	}
 
+	//Reads information from file
+	//JPEG only
 	unsigned char info[54];
 	fread(info, sizeof(unsigned char), 54, file);
 
-	int width = *(int*)&info[18];
-	int height = *(int*)&info[22];
+	//Get width and height in pixels from appropriate locations
+	//18 for width
+	int widthP = *(int*)&info[18];
+	//22 for height
+	int heightP = *(int*)&info[22];
 
-	int size = 3 * width * height;
+	//Calculate DPI by averaging width and height
+	int dpi = (int)(((double)widthP / widthI + (double)heightP / heightI) / 2);
+
+	//Create data array
+	int size = 3 * widthP * heightP;
 	unsigned char* data = new unsigned char[size];
 
+	//Read image pixel data
 	fread(data, sizeof(unsigned char), size, file);
+	
+	//Close file
 	fclose(file);
 
 	std::vector<Pixel> temp;
 	Pixel tem(0, 0, 0);
 
-	for (int i = 0; i < width; i++)
+	//Create pixel vector
+	for (int i = 0; i < widthP; i++)
 	{
 		pixels.push_back(temp);
-		for (int j = 0; j < height; j++)
+		for (int j = 0; j < heightP; j++)
 		{
 			pixels[i].push_back(tem);
 		}
 	}
 
+	//Swap blue and red to ensure order of red, green, blue
 	for (int i = 0; i < size; i += 3)
 	{
 		unsigned char tmp = data[i];
@@ -42,9 +58,10 @@ ScanImage::ScanImage(char *name)
 		data[i + 2] = tmp;
 	}
 
-	for (int i = 0; i < width; i++)
+	//Place data into pixel array
+	for (int i = 0; i < widthP; i++)
 	{
-		for (int j = 0; j < height; j++)
+		for (int j = 0; j < heightP; j++)
 		{
 			pixels[i][j].r = data[j * width + i];
 			pixels[i][j].g = data[j * width + i + 1];
@@ -53,11 +70,14 @@ ScanImage::ScanImage(char *name)
 	}
 }
 
+//Getter for raw pixels
 std::vector< std::vector<Pixel> > ScanImage::rawData()
 {
 	return pixels;
 }
 
+//Turns pixel data into grayscale
+//Averages RGB values
 std::vector< std::vector<int> > ScanImage::grayScale()
 {
 	std::vector< std::vector<int> > newImage(pixels.size());
