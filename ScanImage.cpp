@@ -63,9 +63,9 @@ ScanImage::ScanImage(char *name)
 	{
 		for (int j = 0; j < heightP; j++)
 		{
-			pixels[i][j].r = data[j * width + i];
-			pixels[i][j].g = data[j * width + i + 1];
-			pixels[i][j].b = data[j * width + i + 2];
+			pixels[i][j].r = data[j * widthP + i];
+			pixels[i][j].g = data[j * widthP + i + 1];
+			pixels[i][j].b = data[j * widthP + i + 2];
 		}
 	}
 }
