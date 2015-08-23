@@ -88,4 +88,6 @@ std::vector< std::vector<int> > ScanImage::grayScale()
 			newImage[i].push_back(pixels[i][j].grayscale());
 		}
 	}
+
+	return newImage;
 }

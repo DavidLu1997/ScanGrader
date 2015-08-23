@@ -24,6 +24,9 @@
     <ClInclude Include="Pixel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AnalyzeImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReadDot.cpp">

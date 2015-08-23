@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AnalyzeImage.h" />
     <ClInclude Include="Pixel.h" />
     <ClInclude Include="ReadDot.h" />
     <ClInclude Include="ScanImage.h" />
