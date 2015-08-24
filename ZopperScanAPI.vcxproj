@@ -84,6 +84,7 @@
     <ClInclude Include="ScanImage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnalyzeImage.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ReadDot.cpp" />
     <ClCompile Include="ScanImage.cpp" />
