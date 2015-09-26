@@ -10,5 +10,7 @@ AnalyzeImage::AnalyzeImage(ScanImage s, std::string filename) {
 }
 
 std::vector<int> results() {
+	std::vector<int> res;
 
+	return res;
 }
