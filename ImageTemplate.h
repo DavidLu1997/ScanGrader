@@ -12,9 +12,13 @@
 class ImageTemplate {
 public:
 	//Creates a blank template
-	ImageTemplate();
+	ImageTemplate() {
+		upper.push_back(new Point());
+		lower.push_back(new Point());
+		rects.push_back(new Rectangle(upper[0], lower[0]));
+	}
 
-	//Creates a template from a file
+	//Creates a template from a config file
 	ImageTemplate(std::string name);
 	    
 	//Loads template from file
