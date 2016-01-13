@@ -79,8 +79,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnalyzeImage.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="ImageTemplate.h" />
     <ClInclude Include="Pixel.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="ReadDot.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="ScanImage.h" />
   </ItemGroup>
   <ItemGroup>
