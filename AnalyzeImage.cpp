@@ -27,6 +27,8 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 		return false;
 	}
 
+	calibrate(threshold, percent);
+
 	//Clear marks
 	marks.clear();
 
@@ -38,6 +40,28 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 		marks.push_back(read.check(plate.getRects().at(i)));
 	}
 
+	return true;
+}
+
+//Calibration squares are all black
+bool AnalyzeImage::calibrate(int threshold = 200, double percent = 0.9) {
+	std::vector<Rectangle> cali = plate.getCali();
+
+	//Create ReadDot
+	ReadDot read(img, threshold, percent);
+
+	//Check each rectangle
+	for (unsigned int i = 0; i < cali.size(); i++) {
+		//If calibration square isn't black enough
+		if (read.black(cali[i]) <= percent) {
+			//TODO: Try x % pixels around it
+			//For now, just fails
+			std::cerr << "Invalid calibration rectangle: " << i << std::endl;
+			return false;
+		}
+	}
+
+	plate.setCalibrate(cali);
 	return true;
 }
 

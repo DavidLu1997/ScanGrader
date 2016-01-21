@@ -53,7 +53,7 @@ bool ImageTemplate::loadTemplate(std::string name) {
 		rects.push_back(Rectangle(Point(x1, y1), Point(x2, y2)));
 	}
 
-	calibrate();
+	calculateRectangles();
 	
 	in.close();
 	return true;
@@ -85,7 +85,11 @@ bool ImageTemplate::savesTemplate(std::string name) {
 	return true;
 }
 
-bool ImageTemplate::calibrate() {
+void ImageTemplate::setCalibrate(std::vector<Rectangle> newCali) {
+	cali = newCali;
+}
+
+bool ImageTemplate::calculateRectangles() {
 	//Calibrate each rectangle
 	for (unsigned int i = 0; i < rects.size(); i++) {
 		//Bounds check
@@ -147,4 +151,8 @@ bool ImageTemplate::scale(double xScale, double yScale) {
 
 std::vector<Rectangle> ImageTemplate::getRects() {
 	return rects;
+}
+
+std::vector<Rectangle> ImageTemplate::getCali() {
+	return cali;
 }

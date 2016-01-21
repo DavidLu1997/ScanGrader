@@ -20,6 +20,9 @@ public:
 	//Calculate results given blackness threshold and percentage black needed to registered
 	bool calculate(int threshold, double percent);
 
+	//Find calibration rectangles
+	bool calibrate(int threshold, double percent);
+
 	//Return results
 	std::vector<bool> getResults();
 

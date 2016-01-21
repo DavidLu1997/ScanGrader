@@ -23,8 +23,11 @@ public:
 	//Saves current template to file
 	bool savesTemplate(std::string name);
 
-	//Calibrates rectangle locations based on calibration rectangles
-	bool calibrate();
+	//Sets calibration locations based on image analysis
+	void setCalibrate(std::vector<Rectangle> newCali);
+
+	//Calculates rectangle locations based on calibration rectangles
+	bool calculateRectangles();
 
 	//Scales all locations by a scale factor (2.0 - double)
 	bool scale(double xScale, double yScale);
@@ -34,6 +37,9 @@ public:
 
 	//Getter for rects
 	std::vector<Rectangle> getRects();
+
+	//Getter for cali
+	std::vector<Rectangle> getCali();
 	
 private:
 	//Rectangles
