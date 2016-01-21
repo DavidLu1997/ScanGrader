@@ -25,6 +25,15 @@ public:
 
 	//Calibrates rectangle locations based on calibration rectangles
 	bool calibrate();
+
+	//Scales all locations by a scale factor (2.0 - double)
+	bool scale(double xScale, double yScale);
+
+	//Resolution of image
+	Point resolution;
+
+	//Getter for rects
+	std::vector<Rectangle> getRects();
 	
 private:
 	//Rectangles
@@ -32,9 +41,6 @@ private:
 
 	//Calibration rectangles
 	std::vector<Rectangle> cali;
-
-	//Resolution of image
-	Point resolution;
 };
 
 #endif

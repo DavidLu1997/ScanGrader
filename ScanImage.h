@@ -2,25 +2,28 @@
 #define SCANIMAGE_H
 
 #include "Pixel.h"
+#include "Point.h"
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
+
 #include <vector>
 
 class ScanImage
 {
 public:
+	//Creates a blank ScanImage
+	ScanImage();
+
 	//Creates a ScanImage from a filename, default 8.5x11 paper
-	ScanImage(char *name);
+	ScanImage(std::string name);
 
 	//Creates a ScanImage from a filename, custom sizes
-	ScanImage(char *name, double width, double length);
+	ScanImage(std::string name, double width, double height);
 
 	//Obtain raw image data into pixels
-	std::vector< std::vector<Pixel> > rawData();
+	bool readRawData(std::string name);
 
 	//Obtain grayscale image
-	std::vector< std::vector<int> > grayScale();
+	bool readGrayScale();
 
 	//Width of sheet in inches, default = 8.5 inches
 	double widthI = 8.5;
@@ -31,8 +34,20 @@ public:
 	//DPI, dots (pixels per inch)
 	int dpi;
 
+	//Getter for pixels
+	std::vector< std::vector<Pixel> > getPixels();
+
+	//Getter for grayScale
+	std::vector< std::vector<int> > getGrayScale();
+
+	//Resolution
+	Point resolution;
+
 private:
 	//Pixels
 	std::vector< std::vector<Pixel> > pixels;
+
+	//Grayscale
+	std::vector< std::vector<int> > grayScale;
 };
 #endif

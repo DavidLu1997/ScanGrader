@@ -115,3 +115,36 @@ bool ImageTemplate::calibrate() {
 	return true;
 
 }
+
+bool ImageTemplate::scale(double xScale, double yScale) {
+	//Bounds check
+	if (xScale <= 0 || yScale <= 0) {
+		std::cerr << "Non-positive scale." << std::endl;
+		return false;
+	}
+
+	//Consistency check
+	if (xScale >= 2.0 || yScale >= 2.0) {
+		std::cout << "Large scale, may not be intentional." << std::endl;
+	}
+
+	//Scale everything by scale, truncating rounding
+	for (int i = 0; i < cali.size(); i++) {
+		cali[i].upper.x *= xScale;
+		cali[i].upper.y *= yScale;
+		cali[i].lower.x *= xScale;
+		cali[i].upper.y *= yScale;
+	}
+	for (int i = 0; i < rects.size(); i++) {
+		rects[i].upper.x *= xScale;
+		rects[i].upper.y *= yScale;
+		rects[i].lower.x *= xScale;
+		rects[i].lower.y *= yScale;
+	}
+
+	return true;
+}
+
+std::vector<Rectangle> ImageTemplate::getRects() {
+	return rects;
+}

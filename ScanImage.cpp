@@ -2,18 +2,37 @@
 #include "ScanImage.h"
 #include <cstdio>
 
-//Scans an image to the ScanImage object
-ScanImage::ScanImage(char *name)
-{
-	//Opens file
-	FILE *file;
-	file = fopen(name, "r");
-	if (file == NULL)
-	{
-		printf("Invalid filename, %s not found.", name);
-	}
+ScanImage::ScanImage() {
+	pixels = std::vector< std::vector<Pixel> >();
+	grayScale = std::vector< std::vector<int> >();
+	dpi = 0;
+}
 
-	//Reads information from file
+ScanImage::ScanImage(std::string name)
+{
+	//Read data
+	readRawData(name);
+
+	//Convert to grayScale
+	readGrayScale();
+}
+
+ScanImage::ScanImage(std::string name, double width, double height) {
+	widthI = width;
+	heightI = height;
+
+	//Read data
+	readRawData(name);
+
+	//Convert to grayScale
+	readGrayScale();
+}
+
+//Obtain raw image data into pixels
+bool ScanImage::readRawData(std::string name) {
+
+	//TODO: FIX FILE
+
 	//JPEG only
 	unsigned char info[54];
 	fread(info, sizeof(unsigned char), 54, file);
@@ -33,7 +52,7 @@ ScanImage::ScanImage(char *name)
 
 	//Read image pixel data
 	fread(data, sizeof(unsigned char), size, file);
-	
+
 	//Close file
 	fclose(file);
 
@@ -68,26 +87,42 @@ ScanImage::ScanImage(char *name)
 			pixels[i][j].b = data[j * widthP + i + 2];
 		}
 	}
+
+	resolution = Point(dpi * widthI, dpi * heightI);
 }
 
-//Getter for raw pixels
-std::vector< std::vector<Pixel> > ScanImage::rawData()
+bool ScanImage::readGrayScale() {
+	//Clear grayScale
+	grayScale.clear();
+
+	//Calculate for every pixel
+	for (int i = 0; i < pixels.size(); i++) {
+
+		grayScale.push_back(std::vector<int>());
+
+		for (int j = 0; j < pixels[i].size(); j++) {
+
+			grayScale[i].push_back(pixels[i][j].grayscale());
+
+			//Validity check
+			if (grayScale[i][j] <= 0) {
+				std::cerr << "Non-positive pixel magnitude." << std::endl;
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+//Getter for pixels
+std::vector< std::vector<Pixel> > ScanImage::getPixels ()
 {
 	return pixels;
 }
 
-//Turns pixel data into grayscale
-//Averages RGB values
-std::vector< std::vector<int> > ScanImage::grayScale()
+//Getter for grayScale
+std::vector< std::vector<int> > ScanImage::getGrayScale()
 {
-	std::vector< std::vector<int> > newImage(pixels.size());
-	for (int i = 0; i < pixels.size(); i++)
-	{
-		for (int j = 0; j < pixels[i].size(); j++)
-		{
-			newImage[i].push_back(pixels[i][j].grayscale());
-		}
-	}
-
-	return newImage;
+	return grayScale;
 }
