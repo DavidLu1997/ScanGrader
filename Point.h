@@ -89,14 +89,14 @@ public:
 	}
 
 	//<<
-	std::ostream& operator<< (std::ostream& os, const Point& p) {
-        os << "(" << p.x << ", " << p.y << ")";
+	std::ostream& operator<< (std::ostream& os) {
+        os << "(" << x << ", " << y << ")";
         return os;
 	}
 	//>>
-	std::istream& operator>> (std::istream& is, const Point& p) {
+	std::istream& operator>> (std::istream& is) {
 	    //TODO: Add error checking
-	    is >> p.x >> p.y;
+	    is >> x >> y;
 	    return is;
 	}
 };

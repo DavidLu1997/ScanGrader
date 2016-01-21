@@ -1,16 +1,25 @@
-﻿Build started 21/01/2016 12:32:55 PM.
+﻿Build started 21/01/2016 12:46:26 PM.
      1>Project "E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\ZopperScanAPI\ZopperScanAPI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ImageTemplate.cpp ReadDot.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ImageTemplate.cpp Main.cpp ReadDot.cpp
+         Main.cpp
          ImageTemplate.cpp
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(70): warning C4018: '<' : signed/unsigned mismatch
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(78): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(72): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(90): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(92): warning C4018: '>' : signed/unsigned mismatch
          Generating Code...
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(88): error C4716: 'calibrate' : must return a value
          Skipping... (no relevant changes detected)
          ReadDot.cpp
-     1>Done Building Project "E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\ZopperScanAPI\ZopperScanAPI.vcxproj" (Build target(s)) -- FAILED.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\Debug\ZopperScanAPI.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\Debug\ZopperScanAPI.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\Debug\ZopperScanAPI.lib" /MACHINE:X86 Debug\AnalyzeImage.obj
+         Debug\ImageTemplate.obj
+         Debug\Main.obj
+         Debug\ReadDot.obj
+         Debug\ScanImage.obj
+         ZopperScanAPI.vcxproj -> E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\Debug\ZopperScanAPI.exe
+     1>Done Building Project "E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\ZopperScanAPI\ZopperScanAPI.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.29
+Time Elapsed 00:00:00.69
