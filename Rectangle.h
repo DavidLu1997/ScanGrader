@@ -11,6 +11,9 @@ class Rectangle {
 public:
 	//Storage
 	Point upper, lower;
+	
+	//Reference ID, which calibration rectangle
+	int id;
 
 	//Creates a rectangle of size 0
 	Rectangle() {

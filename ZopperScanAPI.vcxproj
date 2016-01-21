@@ -79,7 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnalyzeImage.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="Headers.h" />
     <ClInclude Include="ImageTemplate.h" />
     <ClInclude Include="Pixel.h" />
     <ClInclude Include="Point.h" />
@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnalyzeImage.cpp" />
+    <ClCompile Include="ImageTemplate.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ReadDot.cpp" />
     <ClCompile Include="ScanImage.cpp" />

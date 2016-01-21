@@ -1,0 +1,9 @@
+#include "AnalyzeImage.h"
+#include "ImageTemplate.h"
+#include "Pixel.h"
+#include "Point.h"
+#include "ReadDot.h"
+#include "Rectangle.h"
+#include "ScanImage.h"
+#include <iostream>
+#include <cstdlib>

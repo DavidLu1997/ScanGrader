@@ -12,11 +12,7 @@
 class ImageTemplate {
 public:
 	//Creates a blank template
-	ImageTemplate() {
-		upper.push_back(new Point());
-		lower.push_back(new Point());
-		rects.push_back(new Rectangle(upper[0], lower[0]));
-	}
+	ImageTemplate();
 
 	//Creates a template from a config file
 	ImageTemplate(std::string name);
@@ -26,16 +22,19 @@ public:
 
 	//Saves current template to file
 	bool savesTemplate(std::string name);
+
+	//Calibrates rectangle locations based on calibration rectangles
+	bool calibrate();
 	
 private:
-	//Upper rectangle locations
-	std::vector<Point> upper;
-
-	//Lower rectangle locations
-	std::vector<Point> lower;
-
 	//Rectangles
 	std::vector<Rectangle> rects;
+
+	//Calibration rectangles
+	std::vector<Rectangle> cali;
+
+	//Resolution of image
+	Point resolution;
 };
 
 #endif

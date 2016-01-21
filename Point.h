@@ -41,22 +41,22 @@ public:
 
 	//Less than
 	bool operator<(const Point& p) {
-		return x < p.y && y < p.y;
+		return x < p.x && y < p.y;
 	}
 
 	//Less than or equal to
 	bool operator<=(const Point& p) {
-		return x <= p.y && y <= p.y;
+		return x <= p.x && y <= p.y;
 	}
 
 	//Greater than
 	bool operator>(const Point& p) {
-		return x > p.y && y > p.y;
+		return x > p.x && y > p.y;
 	}
 
 	//Greater than or equal to
 	bool operator>=(const Point& p) {
-		return x >= p.y && y >= p.y;
+		return x >= p.x && y >= p.y;
 	}
 
 	//Addition to itself
