@@ -57,5 +57,6 @@ bool AnalyzeImage::writeResults(std::string name) {
 		out << marks[i] << std::endl;
 	}
 
+	out.close();
 	return true;
 }

@@ -1,57 +1,27 @@
 #include "ReadDot.h"
 
-//Standard constructor
-ReadDot::ReadDot(std::vector< std::vector<int> > img, int thres, double percent)
-{
+ReadDot::ReadDot(ScanImage img, int thres, double percent) {
 	image = img;
 	threshold = thres;
 	percentage = percent;
+	grayPixels = img.getGrayScale();
 }
 
-//Returns percentage of blackness
-double ReadDot::black()
-{
-	//Sum of grayscale pixel values
+double ReadDot::black(Rectangle rect) {
+	//Sum of all pixels
 	int sum = 0;
-
-	//Number of rows
-	int x = 0;
-
-	//Number of columns
-	int y = 0;
-
-	//Loop through array
-	for (int i = 0; i < image.size(); i++)
-	{
-		//Increment rows count
-		x++;
-
-		for (int j = 0; j < image[i].size(); j++)
-		{
-			//Increment sum
-			sum += image[i][j];
-
-			//Increment columns count
-			y++;
+	for (int i = rect.upper.x; i < rect.lower.x; i++) {
+		for (int j = rect.upper.y; j < rect.lower.y; j++) {
+			if (grayPixels[i][j] >= threshold) {
+				sum++;
+			}
 		}
 	}
 
-	//Average circle size
-	double averageCircle = pow((double)(x + y) / 4, 2) * 3.14;
-
-	//Calculate percentage
-	return (double)sum / (averageCircle * 255);
+	//Calculate percent black
+	return (double)sum / rect.size();
 }
 
-//Checks if blackness is over threshold
-bool ReadDot::check()
-{
-	if (black() > threshold)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+bool ReadDot::check(Rectangle rect) {
+	return black(rect) >= percentage;
 }

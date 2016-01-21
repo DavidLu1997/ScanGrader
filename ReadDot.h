@@ -21,6 +21,9 @@ private:
 	//ScanImage
 	ScanImage image;
 
+	//grayScale pixels
+	std::vector< std::vector<int> > grayPixels;
+
 	//Threshold to determine black-ness (0-255)
 	int threshold;
 
