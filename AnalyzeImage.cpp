@@ -1,4 +1,6 @@
+#define _USE_MATH_DEFINES // for C++
 #include "AnalyzeImage.h"
+#include <cmath>
 
 AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	//Get image
@@ -43,6 +45,54 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 	return true;
 }
 
+Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, double percent) {
+	if (read.black(cali) > percent) {
+		return cali;
+	}
+	
+	//Check around rectangle by increment
+	//TODO: increment in GUI
+	//10% of size of rectangle
+	int incre = (int)(cali.size() * 0.1);
+
+	//Courtesy of Marzbarz
+
+	//Get center of original
+	Point center = Point(abs(cali.lower.x + cali.upper.x) / 2, abs(cali.lower.y + cali.upper.y) / 2);
+	
+	//Get initial radius
+	int radius = abs(cali.lower.x - cali.upper.x) / 10;
+
+	//Get x side length
+	int xLen = abs(cali.lower.x - cali.upper.x);
+
+	//Get y side length
+	int yLen = abs(cali.lower.y - cali.upper.y);
+
+	//Angle to rotate in radians
+	double angle = 0;
+
+	//Current rectangle
+	Rectangle cur;
+
+	//Run through radii and angle
+	for (; radius <= xLen; radius += incre) {
+		for (; angle <= M_PI; angle += M_PI / 6) {
+			cur.upper.x = (int)(center.x + radius * cos(angle));
+			cur.upper.y = (int)(center.y + radius * sin(angle));
+			cur.lower.x = cur.upper.x + xLen;
+			cur.lower.y = cur.upper.y + yLen;
+
+			if (read.black(cur) > percent) {
+				return cur;
+			}
+		}
+	}
+
+	//No better alternative found
+	return cali;
+}
+
 //Calibration squares are all black
 bool AnalyzeImage::calibrate(int threshold = 200, double percent = 0.9) {
 	std::vector<Rectangle> cali = plate.getCali();
@@ -54,10 +104,7 @@ bool AnalyzeImage::calibrate(int threshold = 200, double percent = 0.9) {
 	for (unsigned int i = 0; i < cali.size(); i++) {
 		//If calibration square isn't black enough
 		if (read.black(cali[i]) <= percent) {
-			//TODO: Try x % pixels around it
-			//For now, just fails
-			std::cerr << "Invalid calibration rectangle: " << i << std::endl;
-			return false;
+			cali[i] = individual(read, cali[i], threshold, percent);
 		}
 	}
 

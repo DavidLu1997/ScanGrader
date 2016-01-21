@@ -23,6 +23,9 @@ public:
 	//Find calibration rectangles
 	bool calibrate(int threshold, double percent);
 
+	//Calibrate individual
+	Rectangle individual(ReadDot read, Rectangle cali, int threshold, double percent);
+
 	//Return results
 	std::vector<bool> getResults();
 
