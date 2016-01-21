@@ -15,7 +15,7 @@ bool ImageTemplate::loadTemplate(std::string name) {
 	std::ifstream in(name.c_str(), std::ios::in);
 
 	if (!in.is_open()) {
-		std::cerr << "File not found." << std::endl;
+		std::cerr << name << " not found." << std::endl;
 		return false;
 	}
 
@@ -69,7 +69,7 @@ bool ImageTemplate::savesTemplate(std::string name) {
 	out << cali.size() << std::endl;
 
 	//Each calibration rectangle
-	for (int i = 0; i < cali.size(); i++) {
+	for (unsigned int i = 0; i < cali.size(); i++) {
 		out << cali[i].upper.x << cali[i].upper.y << cali[i].lower.x << cali[i].lower.y << std::endl;
 	}
 
@@ -77,7 +77,7 @@ bool ImageTemplate::savesTemplate(std::string name) {
 	out << rects.size() << std::endl;
 
 	//Each rectangle
-	for (int i = 0; i < rects.size(); i++) {
+	for (unsigned int i = 0; i < rects.size(); i++) {
 		out << rects[i].upper.x << rects[i].upper.y << rects[i].lower.x << rects[i].lower.y << rects[i].id << std::endl;
 	}
 
@@ -87,10 +87,10 @@ bool ImageTemplate::savesTemplate(std::string name) {
 
 bool ImageTemplate::calibrate() {
 	//Calibrate each rectangle
-	for (int i = 0; i < rects.size(); i++) {
+	for (unsigned int i = 0; i < rects.size(); i++) {
 		//Bounds check
-		if (rects[i].id < 0 || rects[i].id > cali.size()) {
-			std::cerr << "Invalid id." << std::endl;
+		if (rects[i].id < 0 || (unsigned int)rects[i].id > cali.size()) {
+			std::cerr << "Invalid id " << rects[i].id << " at " << i << std::endl;
 			return false;
 		}
 
@@ -100,15 +100,15 @@ bool ImageTemplate::calibrate() {
 
 		//Testing for bounds
 		if (rects[i].upper >= resolution || rects[i].lower >= resolution) {
-			std::cerr << "Out of resolution bounds." << std::endl;
+			std::cerr << "Out of resolution bounds at " << i << std::endl;
 			return false;
 		}
 		if (rects[i].upper.x < 0 || rects[i].upper.y < 0 || rects[i].lower.x < 0 || rects[i].lower.y < 0) {
-			std::cerr << "Negative locations." << std::endl;
+			std::cerr << "Negative locations at " << i << std::endl;
 			return false;
 		}
 		if (rects[i].size() <= 0) {
-			std::cerr << "Non-positive rectangle size." << std::endl;
+			std::cerr << "Non-positive rectangle size at " << i << std::endl;
 			return false;
 		}
 	}
@@ -119,27 +119,27 @@ bool ImageTemplate::calibrate() {
 bool ImageTemplate::scale(double xScale, double yScale) {
 	//Bounds check
 	if (xScale <= 0 || yScale <= 0) {
-		std::cerr << "Non-positive scale." << std::endl;
+		std::cerr << "Non-positive scale: " << xScale << ", " << yScale << std::endl;
 		return false;
 	}
 
 	//Consistency check
 	if (xScale >= 2.0 || yScale >= 2.0) {
-		std::cout << "Large scale, may not be intentional." << std::endl;
+		std::cout << "Large scale, may not be intentional: " << xScale << ", " << yScale << std::endl;
 	}
 
 	//Scale everything by scale, truncating rounding
-	for (int i = 0; i < cali.size(); i++) {
-		cali[i].upper.x *= xScale;
-		cali[i].upper.y *= yScale;
-		cali[i].lower.x *= xScale;
-		cali[i].upper.y *= yScale;
+	for (unsigned int i = 0; i < cali.size(); i++) {
+		cali[i].upper.x = (int)((double)cali[i].upper.x * xScale);
+		cali[i].upper.y *= (int)((double)cali[i].upper.y * yScale);
+		cali[i].lower.x *= (int)((double)cali[i].lower.x * xScale);
+		cali[i].upper.y *= (int)((double)cali[i].lower.y * yScale);
 	}
-	for (int i = 0; i < rects.size(); i++) {
-		rects[i].upper.x *= xScale;
-		rects[i].upper.y *= yScale;
-		rects[i].lower.x *= xScale;
-		rects[i].lower.y *= yScale;
+	for (unsigned int i = 0; i < rects.size(); i++) {
+		rects[i].upper.x = (int)((double)rects[i].upper.x * xScale);
+		rects[i].upper.y *= (int)((double)rects[i].upper.y * yScale);
+		rects[i].lower.x *= (int)((double)rects[i].lower.x * xScale);
+		rects[i].upper.y *= (int)((double)rects[i].lower.y * yScale);
 	}
 
 	return true;

@@ -22,7 +22,7 @@ bool ScanImage::readRawData(std::string name) {
 	//TODO: Other file formats
 
 	//Get extension
-	std::string ext = name.substr(name.find("."), name.length());
+	std::string ext = name.substr(name.find(".") + 1, name.length());
 
 	//BMP
 	if (ext == "bmp") {
@@ -30,7 +30,7 @@ bool ScanImage::readRawData(std::string name) {
 
 		//Error check
 		if (!image) {
-			std::cerr << "Failed to open image." << std::endl;
+			std::cerr << "Failed to open " << name << std::endl;
 			return false;
 		}
 
@@ -79,7 +79,7 @@ bool ScanImage::readGrayScale() {
 
 			//Validity check
 			if (grayScale[i][j] <= 0) {
-				std::cerr << "Non-positive pixel magnitude." << std::endl;
+				std::cerr << "Non-positive pixel magnitude at " << i << ", " << j << std::endl;
 				return false;
 			}
 		}

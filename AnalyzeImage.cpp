@@ -23,7 +23,7 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 bool AnalyzeImage::calculate(int threshold, double percent) {
 	//Validity check
 	if (threshold <= 0 || percent <= 0) {
-		std::cerr << "Invalid analyze parameters." << std::endl;
+		std::cerr << "Invalid analysis parameters " << threshold << ", " << percent << std::endl;
 		return false;
 	}
 
