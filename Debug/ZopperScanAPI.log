@@ -1,24 +1,112 @@
-﻿Build started 21/01/2016 1:11:26 PM.
+﻿Build started 21/01/2016 1:37:13 PM.
      1>Project "E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\ZopperScanAPI\ZopperScanAPI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AnalyzeImage.cpp Main.cpp ReadDot.cpp ScanImage.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AnalyzeImage.cpp ImageTemplate.cpp Main.cpp ReadDot.cpp ScanImage.cpp
          ScanImage.cpp
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(18): error C2664: 'FILE *fopen(const char *,const char *)' : cannot convert argument 1 from 'std::string' to 'const char *'
-                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(82): error C2039: 'rawData' : is not a member of 'ScanImage'
-                 e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.h(10) : see declaration of 'ScanImage'
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(84): error C2065: 'pixels' : undeclared identifier
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(90): error C2063: 'ScanImage::grayScale' : not a function
-     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(90): fatal error C1903: unable to recover from previous error(s); stopping compilation
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2039: 'ostream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2061: syntax error : identifier 'ostream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2805: binary 'operator <<' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2333: 'Point::operator <<' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2039: 'istream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2061: syntax error : identifier 'istream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2805: binary 'operator >>' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2333: 'Point::operator >>' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(38): error C2065: 'file' : undeclared identifier
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(54): error C2065: 'file' : undeclared identifier
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(57): error C2065: 'file' : undeclared identifier
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(91): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(99): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\scanimage.cpp(103): warning C4018: '<' : signed/unsigned mismatch
+         ImageTemplate.cpp
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(72): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(90): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(92): warning C4018: '>' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(132): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(133): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(134): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(135): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(136): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(138): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(139): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(140): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(141): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\imagetemplate.cpp(142): warning C4244: '*=' : conversion from 'double' to 'int', possible loss of data
          AnalyzeImage.cpp
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2039: 'ostream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2061: syntax error : identifier 'ostream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2805: binary 'operator <<' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2333: 'Point::operator <<' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2039: 'istream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2061: syntax error : identifier 'istream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2805: binary 'operator >>' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2333: 'Point::operator >>' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\analyzeimage.cpp(23): error C2556: 'std::vector<bool,std::allocator<_Ty>> AnalyzeImage::calculate(int,double)' : overloaded function differs only by return type from 'bool AnalyzeImage::calculate(int,double)'
+                 with
+                 [
+                     _Ty=bool
+                 ]
+                 e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\analyzeimage.h(21) : see declaration of 'AnalyzeImage::calculate'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\analyzeimage.cpp(23): error C2371: 'AnalyzeImage::calculate' : redefinition; different basic types
+                 e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\analyzeimage.h(21) : see declaration of 'AnalyzeImage::calculate'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\analyzeimage.cpp(25): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\analyzeimage.cpp(42): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
          Compiling...
          Main.cpp
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2039: 'ostream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2061: syntax error : identifier 'ostream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2805: binary 'operator <<' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2333: 'Point::operator <<' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2039: 'istream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2061: syntax error : identifier 'istream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2805: binary 'operator >>' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2333: 'Point::operator >>' : error in function declaration; skipping function body
          Generating Code...
-         Skipping... (no relevant changes detected)
+         Compiling...
          ReadDot.cpp
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2039: 'ostream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2061: syntax error : identifier 'ostream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2805: binary 'operator <<' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(92): error C2333: 'Point::operator <<' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2039: 'istream' : is not a member of 'std'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2143: syntax error : missing ';' before '&'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2061: syntax error : identifier 'istream'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2805: binary 'operator >>' has too few parameters
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\point.h(97): error C2333: 'Point::operator >>' : error in function declaration; skipping function body
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(5): error C2511: 'ReadDot::ReadDot(std::vector<std::vector<int,std::allocator<_Ty>>,std::allocator<std::vector<_Ty,std::allocator<_Ty>>>>,int,double)' : overloaded member function not found in 'ReadDot'
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.h(9) : see declaration of 'ReadDot'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(6): error C2065: 'image' : undeclared identifier
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(7): error C2597: illegal reference to non-static member 'ReadDot::threshold'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(8): error C2597: illegal reference to non-static member 'ReadDot::percentage'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(24): error C2065: 'image' : undeclared identifier
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(24): error C2228: left of '.size' must have class/struct/union
+                 type is 'unknown-type'
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(29): error C2065: 'image' : undeclared identifier
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(29): error C2228: left of '.size' must have class/struct/union
+     1>e:\my documents\visual studio 2013\projects\zopperscanapi\zopperscanapi\readdot.cpp(32): error C2065: 'image' : undeclared identifier
+         Generating Code...
      1>Done Building Project "E:\My Documents\Visual Studio 2013\Projects\ZopperScanAPI\ZopperScanAPI\ZopperScanAPI.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:00.67
+Time Elapsed 00:00:01.17
