@@ -87,18 +87,6 @@ public:
 	friend int operator*(const Point& l, const Point& r) {
 		return l.x * r.x + l.y * r.y;
 	}
-
-	//<<
-	std::ostream& operator<< (std::ostream& os) {
-        os << "(" << x << ", " << y << ")";
-        return os;
-	}
-	//>>
-	std::istream& operator>> (std::istream& is) {
-	    //TODO: Add error checking
-	    is >> x >> y;
-	    return is;
-	}
 };
 
 #endif

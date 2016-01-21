@@ -34,7 +34,7 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 	ReadDot read(img, threshold, percent);
 	
 	//Go through rectangles
-	for (int i = 0; i < plate.getRects().size(); i++) {
+	for (unsigned int i = 0; i < plate.getRects().size(); i++) {
 		marks.push_back(read.check(plate.getRects().at(i)));
 	}
 
@@ -53,7 +53,7 @@ bool AnalyzeImage::writeResults(std::string name) {
 
 	std::ofstream out(name.c_str(), std::ios::out);
 
-	for (int i = 0; i < marks.size(); i++) {
+	for (unsigned int i = 0; i < marks.size(); i++) {
 		out << marks[i] << std::endl;
 	}
 

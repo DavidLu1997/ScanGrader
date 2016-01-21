@@ -1,11 +1,10 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "ScanImage.h"
+#include "bitmap\bitmap_image.hpp"
 #include <cstdio>
 
 ScanImage::ScanImage() {
 	pixels = std::vector< std::vector<Pixel> >();
 	grayScale = std::vector< std::vector<int> >();
-	dpi = 0;
 }
 
 ScanImage::ScanImage(std::string name)
@@ -17,78 +16,52 @@ ScanImage::ScanImage(std::string name)
 	readGrayScale();
 }
 
-ScanImage::ScanImage(std::string name, double width, double height) {
-	widthI = width;
-	heightI = height;
-
-	//Read data
-	readRawData(name);
-
-	//Convert to grayScale
-	readGrayScale();
-}
-
 //Obtain raw image data into pixels
 bool ScanImage::readRawData(std::string name) {
 
-	//TODO: FIX FILE
+	//TODO: Other file formats
 
-	//JPEG only
-	unsigned char info[54];
-	fread(info, sizeof(unsigned char), 54, file);
+	//Get extension
+	std::string ext = name.substr(name.find("."), name.length());
 
-	//Get width and height in pixels from appropriate locations
-	//18 for width
-	int widthP = *(int*)&info[18];
-	//22 for height
-	int heightP = *(int*)&info[22];
+	//BMP
+	if (ext == "bmp") {
+		bitmap_image image(name.c_str());
 
-	//Calculate DPI by averaging width and height
-	int dpi = (int)(((double)widthP / widthI + (double)heightP / heightI) / 2);
+		//Error check
+		if (!image) {
+			std::cerr << "Failed to open image." << std::endl;
+			return false;
+		}
 
-	//Create data array
-	int size = 3 * widthP * heightP;
-	unsigned char* data = new unsigned char[size];
+		//RGB
+		unsigned char r, g, b;
+		unsigned int pixelCount = 0;
 
-	//Read image pixel data
-	fread(data, sizeof(unsigned char), size, file);
+		int width = image.width();
+		int height = image.height();
 
-	//Close file
-	fclose(file);
+		//Get resolution
+		resolution = Point(width, height);
 
-	std::vector<Pixel> temp;
-	Pixel tem(0, 0, 0);
-
-	//Create pixel vector
-	for (int i = 0; i < widthP; i++)
-	{
-		pixels.push_back(temp);
-		for (int j = 0; j < heightP; j++)
-		{
-			pixels[i].push_back(tem);
+		//Scan in each pixel
+		for (int i = 0; i < width; i++) {
+			pixels.push_back(std::vector<Pixel>());
+			for (int j = 0; j < height; j++) {
+				image.get_pixel(i, j, r, g, b);
+				pixels[i].push_back(Pixel(r, g, b));
+			}
 		}
 	}
-
-	//Swap blue and red to ensure order of red, green, blue
-	for (int i = 0; i < size; i += 3)
-	{
-		unsigned char tmp = data[i];
-		data[i] = data[i + 2];
-		data[i + 2] = tmp;
+	else {
+		std::cerr << ext << " not supported." << std::endl;
+		return false;
 	}
 
-	//Place data into pixel array
-	for (int i = 0; i < widthP; i++)
-	{
-		for (int j = 0; j < heightP; j++)
-		{
-			pixels[i][j].r = data[j * widthP + i];
-			pixels[i][j].g = data[j * widthP + i + 1];
-			pixels[i][j].b = data[j * widthP + i + 2];
-		}
-	}
+	//Get grayScale
+	readGrayScale();
 
-	resolution = Point(dpi * widthI, dpi * heightI);
+	return true;
 }
 
 bool ScanImage::readGrayScale() {
@@ -96,11 +69,11 @@ bool ScanImage::readGrayScale() {
 	grayScale.clear();
 
 	//Calculate for every pixel
-	for (int i = 0; i < pixels.size(); i++) {
+	for (unsigned int i = 0; i < pixels.size(); i++) {
 
 		grayScale.push_back(std::vector<int>());
 
-		for (int j = 0; j < pixels[i].size(); j++) {
+		for (unsigned int j = 0; j < pixels[i].size(); j++) {
 
 			grayScale[i].push_back(pixels[i][j].grayscale());
 

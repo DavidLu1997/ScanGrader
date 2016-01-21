@@ -39,6 +39,9 @@
     <ClInclude Include="Headers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bitmap\bitmap_image.hpp">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReadDot.cpp">
