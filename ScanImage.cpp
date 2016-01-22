@@ -38,8 +38,8 @@ bool ScanImage::readRawData(std::string name) {
 		unsigned char r, g, b;
 		unsigned int pixelCount = 0;
 
-		int width = image.width();
-		int height = image.height();
+		int width = image.height();
+		int height = image.width();
 
 		//Get resolution
 		resolution = Point(width, height);

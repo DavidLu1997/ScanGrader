@@ -88,6 +88,7 @@ bool ImageTemplate::savesTemplate(std::string name) {
 
 void ImageTemplate::setCalibrate(std::vector<Rectangle> newCali) {
 	cali = newCali;
+	calculateRectangles();
 }
 
 bool ImageTemplate::calculateRectangles() {

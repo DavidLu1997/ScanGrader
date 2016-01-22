@@ -13,16 +13,16 @@ double ReadDot::black(Rectangle rect) {
 	int sum = 0;
 	for (int i = rect.upper.x; i < std::min(rect.lower.x, (int)grayPixels.size()); i++) {
 		for (int j = rect.upper.y; j < std::min(rect.lower.y, (int)grayPixels[i].size()); j++) {
-			if (grayPixels[i][j] <= threshold) {
-				sum++;
-			}
+			sum += grayPixels[i][j];
 		}
 	}
 
+	std::cout << 1 - ((double)sum / rect.size()) / 255.0 << ", (" << rect.upper.x << ", " << rect.upper.y << ") " << rect.size() << std::endl;
+
 	//Calculate percent black
-	return (double)sum / rect.size();
+	return 1 - ((double)sum / rect.size()) / 255.0;
 }
 
 bool ReadDot::check(Rectangle rect) {
-	return black(rect) >= percentage;
+	return black(rect) <= percentage;
 }
