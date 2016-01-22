@@ -39,6 +39,7 @@ bool ImageTemplate::loadTemplate(std::string name) {
 		//Two pairs of integers
 		in >> x1 >> y1 >> x2 >> y2;
 		cali.push_back(Rectangle(Point(x1, y1), Point(x2, y2)));
+		//std::cout << cali[i].upper.x << " " << cali[i].upper.y << " " << cali[i].lower.x << " " << cali[i].lower.y << " " << std::endl;
 	}
 
 	//Next integer, number of rectangles
@@ -47,10 +48,10 @@ bool ImageTemplate::loadTemplate(std::string name) {
 
 	//Gets each rectangle
 	int id;
-	for (int i = 0; i < c; i++) {
+	for (int i = 0; i < n; i++) {
 		//Two pairs of integers and an id
 		in >> x1 >> y1 >> x2 >> y2 >> id;
-		rects.push_back(Rectangle(Point(x1, y1), Point(x2, y2)));
+		rects.push_back(Rectangle(Point(x1, y1), Point(x2, y2), id));
 	}
 
 	calculateRectangles();
@@ -93,7 +94,7 @@ bool ImageTemplate::calculateRectangles() {
 	//Calibrate each rectangle
 	for (unsigned int i = 0; i < rects.size(); i++) {
 		//Bounds check
-		if (rects[i].id < 0 || (unsigned int)rects[i].id > cali.size()) {
+		if (rects[i].id < 0 || (unsigned int)rects[i].id >= cali.size()) {
 			std::cerr << "Invalid id " << rects[i].id << " at " << i << std::endl;
 			return false;
 		}
@@ -135,15 +136,15 @@ bool ImageTemplate::scale(double xScale, double yScale) {
 	//Scale everything by scale, truncating rounding
 	for (unsigned int i = 0; i < cali.size(); i++) {
 		cali[i].upper.x = (int)((double)cali[i].upper.x * xScale);
-		cali[i].upper.y *= (int)((double)cali[i].upper.y * yScale);
-		cali[i].lower.x *= (int)((double)cali[i].lower.x * xScale);
-		cali[i].upper.y *= (int)((double)cali[i].lower.y * yScale);
+		cali[i].upper.y = (int)((double)cali[i].upper.y * yScale);
+		cali[i].lower.x = (int)((double)cali[i].lower.x * xScale);
+		cali[i].lower.y = (int)((double)cali[i].lower.y * yScale);
 	}
 	for (unsigned int i = 0; i < rects.size(); i++) {
 		rects[i].upper.x = (int)((double)rects[i].upper.x * xScale);
-		rects[i].upper.y *= (int)((double)rects[i].upper.y * yScale);
-		rects[i].lower.x *= (int)((double)rects[i].lower.x * xScale);
-		rects[i].upper.y *= (int)((double)rects[i].lower.y * yScale);
+		rects[i].upper.y = (int)((double)rects[i].upper.y * yScale);
+		rects[i].lower.x = (int)((double)rects[i].lower.x * xScale);
+		rects[i].lower.y = (int)((double)rects[i].lower.y * yScale);
 	}
 
 	return true;

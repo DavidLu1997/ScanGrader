@@ -24,9 +24,10 @@ public:
 	}
 
 	//Creates a rectangle from 2 points
-	Rectangle(Point a, Point b) {
+	Rectangle(Point a, Point b, int ID = -1) {
 		upper = a;
 		lower = b;
+		id = ID;
 	}
 
 	//Get size of rectangle

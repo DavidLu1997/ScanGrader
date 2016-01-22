@@ -78,8 +78,8 @@ bool ScanImage::readGrayScale() {
 			grayScale[i].push_back(pixels[i][j].grayscale());
 
 			//Validity check
-			if (grayScale[i][j] <= 0) {
-				std::cerr << "Non-positive pixel magnitude at " << i << ", " << j << std::endl;
+			if (grayScale[i][j] < 0) {
+				std::cerr << "Negative pixel magnitude at " << i << ", " << j << std::endl;
 				return false;
 			}
 		}
