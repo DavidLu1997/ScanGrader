@@ -24,5 +24,5 @@ double ReadDot::black(Rectangle rect) {
 }
 
 bool ReadDot::check(Rectangle rect) {
-	return black(rect) <= percentage;
+	return black(rect) >= percentage;
 }

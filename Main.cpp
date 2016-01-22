@@ -45,12 +45,12 @@ int main()
 				cout << "Enter line size: ";
 				cin >> n;
 				cout << "Results: " << endl;
-				for (unsigned int i = 0, j = 0; i < blacks.size(); i++, j++) {
+				for (unsigned int i = 0, j = 0; i < results.size(); i++, j++) {
 					if (j == n) {
 						cout << endl;
 						j = 0;
 					}
-					cout << blacks[i] << " ";
+					cout << results[i] << " ";
 				}
 				cout << endl;
 
