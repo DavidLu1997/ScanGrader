@@ -15,8 +15,10 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	//Calculate scale needed;
 	double xScale = 1.0, yScale = 1.0;
 
-	//xScale = (double)img.resolution.x / plate.resolution.x;
-	//yScale = (double)img.resolution.y / plate.resolution.y;
+	xScale = (double)img.resolution.x / plate.resolution.x;
+	yScale = (double)img.resolution.y / plate.resolution.y;
+
+	std::cout << xScale << " " << yScale << std::endl;
 
 	//Scale config file to image
 	plate.scale(xScale, yScale);
