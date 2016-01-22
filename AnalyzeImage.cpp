@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "AnalyzeImage.h"
 #include <cmath>
+#include <algorithm>
 
 AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	//Get image

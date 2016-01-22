@@ -44,12 +44,13 @@ bool ScanImage::readRawData(std::string name) {
 		//Get resolution
 		resolution = Point(width, height);
 
+		pixels = std::vector< std::vector<Pixel> >(width, std::vector<Pixel>(height, Pixel(0, 0, 0)));
+
 		//Scan in each pixel
 		for (int i = 0; i < width; i++) {
-			pixels.push_back(std::vector<Pixel>());
 			for (int j = 0; j < height; j++) {
 				image.get_pixel(i, j, r, g, b);
-				pixels[i].push_back(Pixel(r, g, b));
+				pixels[width - i - 1][j] = Pixel(r, g, b);
 			}
 		}
 	}

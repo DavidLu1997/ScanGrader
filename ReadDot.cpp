@@ -11,8 +11,8 @@ ReadDot::ReadDot(ScanImage img, int thres, double percent) {
 double ReadDot::black(Rectangle rect) {
 	//Sum of all pixels
 	int sum = 0;
-	for (int i = rect.upper.x; i < std::min(rect.lower.x, (int)grayPixels.size()); i++) {
-		for (int j = rect.upper.y; j < std::min(rect.lower.y, (int)grayPixels[i].size()); j++) {
+	for (int i = std::max(rect.upper.x, 0); i < std::min(rect.lower.x, (int)grayPixels.size()); i++) {
+		for (int j = std::max(rect.upper.y, 0); j < std::min(rect.lower.y, (int)grayPixels[i].size()); j++) {
 			sum += grayPixels[i][j];
 		}
 	}

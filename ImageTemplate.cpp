@@ -101,8 +101,10 @@ bool ImageTemplate::calculateRectangles() {
 		}
 
 		//All rectangles calibrated from upper point
-		rects[i].upper += cali[rects[i].id].upper;
-		rects[i].lower += cali[rects[i].id].upper;
+		rects[i].upper.x += cali[rects[i].id].upper.x;
+		rects[i].upper.y += cali[rects[i].id].upper.y;
+		rects[i].lower.x += cali[rects[i].id].upper.x;
+		rects[i].lower.y += cali[rects[i].id].upper.y;
 
 		//Testing for bounds
 		if (rects[i].upper >= resolution || rects[i].lower >= resolution) {
