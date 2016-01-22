@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES // for C++
+#define _USE_MATH_DEFINES
 #include "AnalyzeImage.h"
 #include <cmath>
 
@@ -34,12 +34,16 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 	//Clear marks
 	marks.clear();
 
+	//Clear blacks
+	blacks.clear();
+
 	//Initialize ReadDot
 	ReadDot read(img, threshold, percent);
 	
 	//Go through rectangles
 	for (unsigned int i = 0; i < plate.getRects().size(); i++) {
 		marks.push_back(read.check(plate.getRects().at(i)));
+		blacks.push_back(read.black(plate.getRects().at(i)));
 	}
 
 	return true;
@@ -54,8 +58,6 @@ Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, 
 	//TODO: increment in GUI
 	//10% of size of rectangle
 	int incre = (int)(cali.size() * 0.1);
-
-	//Courtesy of Marzbarz
 
 	//Get center of original
 	Point center = Point(abs(cali.lower.x + cali.upper.x) / 2, abs(cali.lower.y + cali.upper.y) / 2);
@@ -116,17 +118,34 @@ std::vector<bool> AnalyzeImage::getResults() {
 	return marks;
 }
 
+std::vector<double> AnalyzeImage::getBlacks() {
+	return blacks;
+}
+
 bool AnalyzeImage::writeResults() {
 	return writeResults(imgName);
 }
 
 bool AnalyzeImage::writeResults(std::string name) {
 
+	return writeResults(name, marks.size());
+}
+
+bool AnalyzeImage::writeResults(int n) {
+	return writeResults(imgName, n);
+}
+
+bool AnalyzeImage::writeResults(std::string name, int n) {
 	std::ofstream out(name.c_str(), std::ios::out);
 
-	for (unsigned int i = 0; i < marks.size(); i++) {
-		out << marks[i] << std::endl;
+	for (unsigned int i = 0, j = 0; i < marks.size(); i++, j++) {
+		if (j == n) {
+			out << std::endl;
+			j = 0;
+		}
+		out << marks[i] << " ";
 	}
+	out << std::endl;
 
 	out.close();
 	return true;

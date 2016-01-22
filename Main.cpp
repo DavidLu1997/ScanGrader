@@ -40,7 +40,7 @@ int main()
 
 				analyze.calculate(thres, percent);
 				vector<bool> results = analyze.getResults();
-
+				vector<double> blacks = analyze.getBlacks();
 				cout << "Results: " << endl;
 				for (unsigned int i = 0; i < results.size(); i++) {
 					cout << results[i] << " ";
@@ -53,7 +53,10 @@ int main()
 				if (input == "Y" || input == "y") {
 					cout << "Enter filename: ";
 					cin >> input;
-					analyze.writeResults(input);
+					int n;
+					cout << "Enter line size: ";
+					cin >> n;
+					analyze.writeResults(input, n);
 				}
 
 				cout << "Press any key to continue" << endl;

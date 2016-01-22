@@ -13,7 +13,7 @@ double ReadDot::black(Rectangle rect) {
 	int sum = 0;
 	for (int i = rect.upper.x; i < std::min(rect.lower.x, (int)grayPixels.size()); i++) {
 		for (int j = rect.upper.y; j < std::min(rect.lower.y, (int)grayPixels[i].size()); j++) {
-			if (grayPixels[i][j] >= threshold) {
+			if (grayPixels[i][j] <= threshold) {
 				sum++;
 			}
 		}

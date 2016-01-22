@@ -29,11 +29,20 @@ public:
 	//Return results
 	std::vector<bool> getResults();
 
-	//Write results to file, image name
+	//Return black percent
+	std::vector<double> getBlacks();
+
+	//Write results to file, image name, all on one line
 	bool writeResults();
 
-	//Write results to file, custom name
+	//Write results to file, custom name, all on one line
 	bool writeResults(std::string name);
+
+	//Write results to file, image name, custom line size
+	bool writeResults(int n);
+
+	//Write results to file, custom name and line size
+	bool writeResults(std::string name, int n);
 
 private:
 	//ScanImage
@@ -44,6 +53,9 @@ private:
 
 	//Values
 	std::vector<bool> marks;
+
+	//Blackness
+	std::vector<double> blacks;
 
 	//Image Name
 	std::string imgName;
