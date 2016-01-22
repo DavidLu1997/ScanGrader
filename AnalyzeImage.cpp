@@ -111,7 +111,7 @@ bool AnalyzeImage::calibrate(int threshold, double percent) {
 	for (unsigned int i = 0; i < cali.size(); i++) {
 		//If calibration square isn't black enough
 		if (read.black(cali[i]) <= percent) {
-			cali[i] = individual(read, cali[i], threshold, percent);
+			//cali[i] = individual(read, cali[i], threshold, percent);
 		}
 	}
 

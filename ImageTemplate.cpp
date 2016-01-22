@@ -54,7 +54,7 @@ bool ImageTemplate::loadTemplate(std::string name) {
 		rects.push_back(Rectangle(Point(x1, y1), Point(x2, y2), id));
 	}
 
-	calculateRectangles();
+	//calculateRectangles();
 	
 	in.close();
 	return true;

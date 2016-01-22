@@ -16,10 +16,10 @@ int main() {
     for(int i = 0; i < l; i++) {
         for(int j = 0; j < w; j++) {
             out << x << " " << y << " " << x + side << " " << y + side << " " << id << endl;
-            x += side;
+            y += side;
         }
-        y += side;
-        x = ox;
+        x += side;
+        y = oy;
     }
 
     out.close();

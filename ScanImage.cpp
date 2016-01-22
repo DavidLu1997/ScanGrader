@@ -38,19 +38,19 @@ bool ScanImage::readRawData(std::string name) {
 		unsigned char r, g, b;
 		unsigned int pixelCount = 0;
 
-		int width = image.height();
-		int height = image.width();
+		int width = image.width();
+		int height = image.height();
 
 		//Get resolution
-		resolution = Point(width, height);
+		resolution = Point(height, width);
 
-		pixels = std::vector< std::vector<Pixel> >(width, std::vector<Pixel>(height, Pixel(0, 0, 0)));
+		pixels = std::vector< std::vector<Pixel> >(height, std::vector<Pixel>(width, Pixel(0, 0, 0)));
 
 		//Scan in each pixel
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++) {
-				image.get_pixel(i, j, r, g, b);
-				pixels[width - i - 1][j] = Pixel(r, g, b);
+		for (int i = 0; i < height; i++) {
+			for (int j = 0; j < width; j++) {
+				image.get_pixel(j, i, r, g, b);
+				pixels[i][j] = Pixel(r, g, b);
 			}
 		}
 	}
