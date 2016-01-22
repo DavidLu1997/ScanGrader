@@ -57,9 +57,6 @@ Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, 
 	}
 	
 	//Check around rectangle by increment
-	//TODO: increment in GUI
-	//10% of size of rectangle
-	int incre = (int)(cali.size() * 0.1);
 
 	//Get center of original
 	Point center = Point(abs(cali.lower.x + cali.upper.x) / 2, abs(cali.lower.y + cali.upper.y) / 2);
@@ -73,15 +70,19 @@ Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, 
 	//Get y side length
 	int yLen = abs(cali.lower.y - cali.upper.y);
 
+	//TODO: increment in GUI
+	//10% of x length of rectangle
+	int incre = (int)(xLen * 0.1);
+
 	//Angle to rotate in radians
 	double angle = 0;
 
 	//Current rectangle
-	Rectangle cur;
+	Rectangle cur = cali;
 
 	//Run through radii and angle
-	for (; radius <= xLen; radius += incre) {
-		for (; angle <= M_PI; angle += M_PI / 6) {
+	for (; read.black(cur) <= percent; radius += incre) {
+		for (; angle <= 2*M_PI; angle += M_PI / 6) {
 			cur.upper.x = (int)(center.x + radius * cos(angle));
 			cur.upper.y = (int)(center.y + radius * sin(angle));
 			cur.lower.x = cur.upper.x + xLen;
@@ -91,6 +92,7 @@ Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, 
 				return cur;
 			}
 		}
+		angle = 0;
 	}
 
 	//No better alternative found
@@ -98,7 +100,7 @@ Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, 
 }
 
 //Calibration squares are all black
-bool AnalyzeImage::calibrate(int threshold = 200, double percent = 0.9) {
+bool AnalyzeImage::calibrate(int threshold, double percent) {
 	std::vector<Rectangle> cali = plate.getCali();
 
 	//Create ReadDot
