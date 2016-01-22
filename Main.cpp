@@ -45,9 +45,10 @@ int main()
 				cout << "Enter line size: ";
 				cin >> n;
 				cout << "Results: " << endl;
+				cout << (0 / n) + 1 << ": ";
 				for (unsigned int i = 0, j = 0; i < results.size(); i++, j++) {
 					if (j == n) {
-						cout << endl;
+						cout << endl << (i / n) + 1 << ": ";
 						j = 0;
 					}
 					cout << results[i] << " ";

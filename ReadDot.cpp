@@ -17,7 +17,7 @@ double ReadDot::black(Rectangle rect) {
 		}
 	}
 
-	std::cout << 1 - ((double)sum / rect.size()) / 255.0 << ", (" << rect.upper.x << ", " << rect.upper.y << ") " << rect.size() << std::endl;
+	//std::cout << 1 - ((double)sum / rect.size()) / 255.0 << ", (" << rect.upper.x << ", " << rect.upper.y << ") " << rect.size() << std::endl;
 
 	//Calculate percent black
 	return 1 - ((double)sum / rect.size()) / 255.0;

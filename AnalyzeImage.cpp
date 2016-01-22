@@ -19,7 +19,7 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	xScale = (double)img.resolution.x / plate.resolution.x;
 	yScale = (double)img.resolution.y / plate.resolution.y;
 
-	std::cout << xScale << " " << yScale << std::endl;
+	std::cout << "Scaling needed (x, y): ("<< xScale << ", " << yScale << ")" << std::endl;
 
 	//Scale config file to image
 	plate.scale(xScale, yScale);
@@ -111,7 +111,7 @@ bool AnalyzeImage::calibrate(int threshold, double percent) {
 	for (unsigned int i = 0; i < cali.size(); i++) {
 		//If calibration square isn't black enough
 		if (read.black(cali[i]) <= percent) {
-			//cali[i] = individual(read, cali[i], threshold, percent);
+			cali[i] = individual(read, cali[i], threshold, percent);
 		}
 	}
 
