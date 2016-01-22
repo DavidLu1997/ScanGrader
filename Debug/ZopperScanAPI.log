@@ -1,2 +1,7 @@
-﻿  AnalyzeImage.cpp
+﻿  ScanImage.cpp
+  ReadDot.cpp
+  Main.cpp
+  ImageTemplate.cpp
+  AnalyzeImage.cpp
+  Generating Code...
   ZopperScanAPI.vcxproj -> C:\Users\davidlu\Documents\Visual Studio 2015\Projects\ZopperScanAPI\Debug\ZopperScanAPI.exe
