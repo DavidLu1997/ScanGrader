@@ -22,7 +22,6 @@ int main()
 		if (input != "q" && input != "quit") {
 
 			string image, config;
-			int thres;
 			double percent;
 			if (input == "1") {
 				cout << "Enter image file name: ";
@@ -30,15 +29,11 @@ int main()
 				cout << "Enter config file name: ";
 				cin >> config;
 
-				//New scan
-				AnalyzeImage analyze(image, config);
-
-				cout << "Enter blackness threshold (0-255): ";
-				cin >> thres;
 				cout << "Enter percent blackness needed (0.0 - 1.0): ";
 				cin >> percent;
 
-				analyze.calculate(thres, percent);
+				//New scan
+				AnalyzeImage analyze(image, config, percent);
 				vector<int> results = analyze.getAnswers();
 				cout << "Results: " << endl;
 				for (unsigned int i = 0; i < results.size(); i++) {

@@ -15,19 +15,10 @@ class AnalyzeImage
 {
 public:
 	//Takes in an image name and a data file storing parameters for the scan
-	AnalyzeImage(std::string imageName, std::string configName);
-
-	//Calculate results given blackness threshold and percentage black needed to registered
-	bool calculate(int threshold, double percent);
-
-	//Find calibration rectangles
-	bool calibrate(int threshold, double percent);
-
-	//Calibrate individual
-	Rectangle individual(ReadDot read, Rectangle cali, int threshold, double percent);
+	AnalyzeImage(std::string imageName, std::string configName, double percentage);
 
 	//Return raw results
-	std::vector<bool> getRawResults();
+	std::vector<double> getRawResults();
 
 	//Return ID
 	int getID();
@@ -35,27 +26,21 @@ public:
 	//Return question answers
 	std::vector<int> getAnswers();
 
-	//Return black percentages
-	std::vector<double> getBlacks();
-
-	//Write results to file, image name, all on one line
-	bool writeAnswers();
-
-	//Write results to file, custom name, all on one line
+	//Write results to file, custom name
 	bool writeAnswers(std::string name);
 
 private:
+	//Percentage
+	double percent;
+
 	//ScanImage
 	ScanImage img;
 
 	//Image template
 	ImageTemplate plate;
 
-	//Values
-	std::vector<bool> marks;
-
-	//Blackness
-	std::vector<double> blacks;
+	//Marks in terms of percentage black
+	std::vector<double> marks;
 
 	//ID
 	int id;
@@ -71,6 +56,18 @@ private:
 
 	//Returns index of maximum value of a double vector within bounds
 	unsigned int maxVal(std::vector <double> v, unsigned int lower, unsigned int upper);
+
+	//Calculate results given percentage black needed to registered
+	bool calculate();
+
+	//Find calibration rectangles
+	bool calibrate();
+
+	//Calibrate individual
+	Rectangle individual(ReadDot read, Rectangle cali);
+
+	//Clears all vectors
+	void clearAll();
 };
 
 #endif

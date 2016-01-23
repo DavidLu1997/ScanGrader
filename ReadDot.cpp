@@ -1,9 +1,8 @@
 #include "ReadDot.h"
 #include <algorithm>
 
-ReadDot::ReadDot(ScanImage img, int thres, double percent) {
+ReadDot::ReadDot(ScanImage img, double percent) {
 	image = img;
-	threshold = thres;
 	percentage = percent;
 	grayPixels = img.getGrayScale();
 }
@@ -16,8 +15,6 @@ double ReadDot::black(Rectangle rect) {
 			sum += grayPixels[i][j];
 		}
 	}
-
-	//std::cout << 1 - ((double)sum / rect.size()) / 255.0 << ", (" << rect.upper.x << ", " << rect.upper.y << ") " << rect.size() << std::endl;
 
 	//Calculate percent black
 	return 1 - ((double)sum / rect.size()) / 255.0;

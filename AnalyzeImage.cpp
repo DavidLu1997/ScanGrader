@@ -3,12 +3,21 @@
 #include <cmath>
 #include <algorithm>
 
-AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
+//Standard constructor for AnalyzeImage
+//Beginning of program, call this with required variables
+//After initialization, call getAnswers and/or getID for data
+AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName, double percentage) {
 	//Get image
 	img = ScanImage(imageName);
 
 	//Store image name
 	imgName = imageName;
+
+	//Store percentage
+	percent = percentage;
+
+	//Default ID
+	id = -1;
 
 	//Load config file
 	plate = ImageTemplate(configName);
@@ -24,30 +33,26 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	//Scale config file to image
 	plate.scale(xScale, yScale);
 	calculated = false;
+
+	calculate();
 }
 
-bool AnalyzeImage::calculate(int threshold, double percent) {
+//Calculates percentage blackness with user-specified parameters
+bool AnalyzeImage::calculate() {
 	//Validity check
-	if (threshold <= 0 || percent <= 0) {
-		std::cerr << "Invalid analysis parameters " << threshold << ", " << percent << std::endl;
+	if (percent <= 0) {
+		std::cerr << "Invalid black percentage " << percent << std::endl;
 		return false;
 	}
 
-	calibrate(threshold, percent);
-
-	//Clear marks
-	marks.clear();
-
-	//Clear blacks
-	blacks.clear();
+	calibrate();
 
 	//Initialize ReadDot
-	ReadDot read(img, threshold, percent);
+	ReadDot read(img, percent);
 	
 	//Go through rectangles
 	for (unsigned int i = 0; i < plate.getRects().size(); i++) {
-		marks.push_back(read.check(plate.getRects().at(i)));
-		blacks.push_back(read.black(plate.getRects().at(i)));
+		marks.push_back(read.black(plate.getRects().at(i)));
 	}
 
 	//Get answers
@@ -60,7 +65,9 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 	return true;
 }
 
-Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, double percent) {
+//Scans for individual calibration squares
+Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali) {
+	//If black enough
 	if (read.black(cali) > percent) {
 		return cali;
 	}
@@ -109,17 +116,17 @@ Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali, int threshold, 
 }
 
 //Calibration squares are all black
-bool AnalyzeImage::calibrate(int threshold, double percent) {
+bool AnalyzeImage::calibrate() {
 	std::vector<Rectangle> cali = plate.getCali();
 
 	//Create ReadDot
-	ReadDot read(img, threshold, percent);
+	ReadDot read(img, percent);
 
 	//Check each rectangle
 	for (unsigned int i = 0; i < cali.size(); i++) {
 		//If calibration square isn't black enough
 		if (read.black(cali[i]) <= percent) {
-			cali[i] = individual(read, cali[i], threshold, percent);
+			cali[i] = individual(read, cali[i]);
 		}
 	}
 
@@ -127,35 +134,36 @@ bool AnalyzeImage::calibrate(int threshold, double percent) {
 	return true;
 }
 
+//Gets answers by finding maximum blackness
 std::vector<int> AnalyzeImage::getAnswers() {
-
+	double temp;
 	if (!calculated) {
 		answers.clear();
 		//Check answers every option
-		if (plate.questions.x < 0 || plate.questions.x >= blacks.size() || plate.questions.y < 0 || plate.questions.y >= blacks.size()) {
-			std::cerr << "Invalid bounds for answers." << std::endl;
+		if (plate.questions.x < 0 || plate.questions.x >= marks.size() || plate.questions.y < 0 || plate.questions.y >= marks.size()) {
+			std::cerr << "Invalid bounds for answers or answers section does not exist." << std::endl;
 		}
 		else {
 			for (int i = plate.questions.x; i < plate.questions.y; i += plate.options) {
-				answers.push_back((maxVal(blacks, i, i + plate.options) % plate.options) + 1);
+				temp = (maxVal(marks, i, i + plate.options) % plate.options) + 1;
+				if (temp < percent) {
+					answers.push_back(-1);
+				}
+				else {
+					answers.push_back(temp);
+				}
 			}
 		}
 	}
 	return answers;
 }
 
-std::vector<bool> AnalyzeImage::getRawResults() {
+//Returns raw result vector
+std::vector<double> AnalyzeImage::getRawResults() {
 	return marks;
 }
 
-std::vector<double> AnalyzeImage::getBlacks() {
-	return blacks;
-}
-
-bool AnalyzeImage::writeAnswers() {
-	return writeAnswers(imgName);
-}
-
+//Writes answers to a file, custom name
 bool AnalyzeImage::writeAnswers(std::string name) {
 	std::ofstream out(name.c_str(), std::ios::out);
 	for (unsigned int i = 0; i < answers.size(); i++) {
@@ -165,19 +173,20 @@ bool AnalyzeImage::writeAnswers(std::string name) {
 	return true;
 }
 
+//Calculates ID entered based on maximum blackness
 int AnalyzeImage::getID() {
 	if (!calculated) {
 		id = -1;
 		//Check answers every option
-		if (plate.ids.x < 0 || plate.ids.x >= blacks.size() || plate.ids.y < 0 || plate.ids.y >= blacks.size()) {
-			std::cerr << "Invalid bounds for ids." << std::endl;
+		if (plate.ids.x < 0 || plate.ids.x >= marks.size() || plate.ids.y < 0 || plate.ids.y >= marks.size()) {
+			std::cerr << "Invalid bounds for ids or ID section does not exist." << std::endl;
 		}
 		else {
 			int index = plate.ids.x;
 			for (int i = 0; i < plate.digits; i++) {
 				index = plate.ids.x + i;
 				for (int j = plate.ids.x; j < plate.ids.y; j += plate.digits) {
-					if (blacks[j + i] > index) {
+					if (marks[j + i] > index) {
 						index = j + i;
 					}
 				}
@@ -188,6 +197,8 @@ int AnalyzeImage::getID() {
 	return id;
 }
 
+//Finds maximum value of vector between upper and lower bounds
+//TODO: Write for template T
 unsigned int AnalyzeImage::maxVal(std::vector <double> v, unsigned int lower, unsigned int upper) {
 	unsigned int index = lower;
 	for (unsigned int i = lower; i < upper; i++) {
@@ -196,4 +207,12 @@ unsigned int AnalyzeImage::maxVal(std::vector <double> v, unsigned int lower, un
 		}
 	}
 	return index;
+}
+
+//Clears all vectors
+void AnalyzeImage::clearAll() {
+	marks.clear();
+	answers.clear();
+	calculated = false;
+	id = -1;
 }
