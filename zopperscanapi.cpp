@@ -8,9 +8,5 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 ZopperScanAPI::~ZopperScanAPI()
 {
-	//Delete answer key
-	free(key);
-
-	//Clear images
-	images.clear();
+	
 }
