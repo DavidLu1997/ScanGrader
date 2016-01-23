@@ -30,6 +30,11 @@ ehthumbs.db
 *.sdf
 ipch/
 obj/
+*.qrc
+*.opensdf
+*.sln
+*.ui
+
 
 # Project specific files
 *.jpg
