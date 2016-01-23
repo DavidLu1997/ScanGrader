@@ -1,5 +1,5 @@
-#include "ScanImage.h"
-#include "bitmap\bitmap_image.hpp"
+#include "ScanImage.hpp"
+#include "bitmap_image.hpp"
 #include <cstdio>
 
 ScanImage::ScanImage() {

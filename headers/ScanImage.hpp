@@ -8,8 +8,8 @@
 #pragma warning(disable:4996) 
 #endif 
 
-#include "Pixel.h"
-#include "Point.h"
+#include "Pixel.hpp"
+#include "Point.hpp"
 #include <iostream>
 
 #include <vector>

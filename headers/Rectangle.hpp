@@ -5,7 +5,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include "Point.h"
+#include "Point.hpp"
 
 class Rectangle {
 public:

@@ -1,5 +1,5 @@
 #define _USE_MATH_DEFINES
-#include "AnalyzeImage.h"
+#include "AnalyzeImage.hpp"
 #include <cmath>
 #include <algorithm>
 

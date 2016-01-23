@@ -6,8 +6,8 @@
 
 #include <string>
 #include <vector>
-#include "Point.h"
-#include "Rectangle.h"
+#include "Point.hpp"
+#include "Rectangle.hpp"
 
 class ImageTemplate {
 public:

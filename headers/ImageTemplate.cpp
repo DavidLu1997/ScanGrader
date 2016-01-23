@@ -1,4 +1,4 @@
-#include "ImageTemplate.h"
+#include "ImageTemplate.hpp"
 #include <fstream>
 #include <iostream>
 

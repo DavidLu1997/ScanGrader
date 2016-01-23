@@ -1,8 +1,8 @@
 #ifndef READDOT_H
 #define READDOT_H
 
-#include "ScanImage.h"
-#include "Rectangle.h"
+#include "ScanImage.hpp"
+#include "Rectangle.hpp"
 #include <vector>
 
 class ReadDot

@@ -4,9 +4,9 @@
 #ifndef ANALYZEIMAGE_H
 #define ANALYZEIMAGE_H
 
-#include "ScanImage.h"
-#include "ImageTemplate.h"
-#include "ReadDot.h"
+#include "ScanImage.hpp"
+#include "ImageTemplate.hpp"
+#include "ReadDot.hpp"
 #include <string>
 #include <vector>
 #include <fstream>

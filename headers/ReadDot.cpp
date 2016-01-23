@@ -1,4 +1,4 @@
-#include "ReadDot.h"
+#include "ReadDot.hpp"
 #include <algorithm>
 
 ReadDot::ReadDot(ScanImage img, double percent) {
