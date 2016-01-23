@@ -21,7 +21,8 @@ public:
 	bool loadTemplate(std::string name);
 
 	//Saves current template to file
-	bool savesTemplate(std::string name);
+	//Currently unused
+	//bool savesTemplate(std::string name);
 
 	//Sets calibration locations based on image analysis
 	void setCalibrate(std::vector<Rectangle> newCali);
@@ -40,6 +41,18 @@ public:
 
 	//Getter for cali
 	std::vector<Rectangle> getCali();
+
+	//ID Section, rectangle indexes
+	Point ids;
+
+	//Number of digits in ID
+	int digits;
+
+	//Questions, question indexes
+	Point questions;
+
+	//Options per question
+	int options;
 	
 private:
 	//Rectangles

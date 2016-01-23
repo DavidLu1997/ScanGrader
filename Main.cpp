@@ -39,30 +39,12 @@ int main()
 				cin >> percent;
 
 				analyze.calculate(thres, percent);
-				vector<bool> results = analyze.getResults();
-				vector<double> blacks = analyze.getBlacks();
-				int n;
-				cout << "Enter line size: ";
-				cin >> n;
+				vector<int> results = analyze.getAnswers();
 				cout << "Results: " << endl;
-				cout << (0 / n) + 1 << ": ";
-				for (unsigned int i = 0, j = 0; i < results.size(); i++, j++) {
-					if (j == n) {
-						cout << endl << (i / n) + 1 << ": ";
-						j = 0;
-					}
-					cout << results[i] << " ";
+				for (unsigned int i = 0; i < results.size(); i++) {
+					cout << results[i] << endl;
 				}
 				cout << endl;
-
-				cout << "Print results to file? (Y/N) ";
-				cin >> input;
-
-				if (input == "Y" || input == "y") {
-					cout << "Enter filename: ";
-					cin >> input;
-					analyze.writeResults(input, n);
-				}
 
 				cout << "Press any key to continue" << endl;
 				getline(cin, input);

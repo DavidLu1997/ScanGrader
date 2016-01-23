@@ -32,6 +32,9 @@ public:
 	//Getter for pixels
 	std::vector< std::vector<Pixel> > getPixels();
 
+	//Get ID
+	int getID();
+
 	//Getter for grayScale
 	std::vector< std::vector<int> > getGrayScale();
 

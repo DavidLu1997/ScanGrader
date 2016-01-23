@@ -54,12 +54,27 @@ bool ImageTemplate::loadTemplate(std::string name) {
 		rects.push_back(Rectangle(Point(x1, y1), Point(x2, y2), id));
 	}
 
+	//Next integer, locations of ID,indexes of rectangles
+	//-1 means no ID section
+	in >> ids.x >> ids.y;
+
+	//Digits of ID
+	in >> digits;
+
+	//Next integer, locations of questions, indexes of rectangles
+	//-1 means no questions
+	in >> questions.x >> questions.y;
+
+	//Next integer, options per question
+	in >> options;
+
 	//calculateRectangles();
 	
 	in.close();
 	return true;
 }
 
+/* ***********DO NOT USE************
 bool ImageTemplate::savesTemplate(std::string name) {
 	std::ofstream out(name.c_str(), std::ios::out);
 
@@ -85,6 +100,7 @@ bool ImageTemplate::savesTemplate(std::string name) {
 	out.close();
 	return true;
 }
+*/
 
 void ImageTemplate::setCalibrate(std::vector<Rectangle> newCali) {
 	cali = newCali;

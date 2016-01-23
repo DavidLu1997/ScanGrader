@@ -23,6 +23,7 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 
 	//Scale config file to image
 	plate.scale(xScale, yScale);
+	calculated = false;
 }
 
 bool AnalyzeImage::calculate(int threshold, double percent) {
@@ -49,6 +50,13 @@ bool AnalyzeImage::calculate(int threshold, double percent) {
 		blacks.push_back(read.black(plate.getRects().at(i)));
 	}
 
+	//Get answers
+	getAnswers();
+
+	//Get ID
+	getID();
+
+	calculated = true;
 	return true;
 }
 
@@ -119,7 +127,24 @@ bool AnalyzeImage::calibrate(int threshold, double percent) {
 	return true;
 }
 
-std::vector<bool> AnalyzeImage::getResults() {
+std::vector<int> AnalyzeImage::getAnswers() {
+
+	if (!calculated) {
+		answers.clear();
+		//Check answers every option
+		if (plate.questions.x < 0 || plate.questions.x >= blacks.size() || plate.questions.y < 0 || plate.questions.y >= blacks.size()) {
+			std::cerr << "Invalid bounds for answers." << std::endl;
+		}
+		else {
+			for (int i = plate.questions.x; i < plate.questions.y; i += plate.options) {
+				answers.push_back((maxVal(blacks, i, i + plate.options) % plate.options) + 1);
+			}
+		}
+	}
+	return answers;
+}
+
+std::vector<bool> AnalyzeImage::getRawResults() {
 	return marks;
 }
 
@@ -127,31 +152,48 @@ std::vector<double> AnalyzeImage::getBlacks() {
 	return blacks;
 }
 
-bool AnalyzeImage::writeResults() {
-	return writeResults(imgName);
+bool AnalyzeImage::writeAnswers() {
+	return writeAnswers(imgName);
 }
 
-bool AnalyzeImage::writeResults(std::string name) {
-
-	return writeResults(name, marks.size());
-}
-
-bool AnalyzeImage::writeResults(int n) {
-	return writeResults(imgName, n);
-}
-
-bool AnalyzeImage::writeResults(std::string name, int n) {
+bool AnalyzeImage::writeAnswers(std::string name) {
 	std::ofstream out(name.c_str(), std::ios::out);
-
-	for (unsigned int i = 0, j = 0; i < marks.size(); i++, j++) {
-		if (j == n) {
-			out << std::endl;
-			j = 0;
-		}
-		out << marks[i] << " ";
+	for (unsigned int i = 0; i < answers.size(); i++) {
+		out << answers[i] << std::endl;
 	}
-	out << std::endl;
-
 	out.close();
 	return true;
+}
+
+int AnalyzeImage::getID() {
+	if (!calculated) {
+		id = -1;
+		//Check answers every option
+		if (plate.ids.x < 0 || plate.ids.x >= blacks.size() || plate.ids.y < 0 || plate.ids.y >= blacks.size()) {
+			std::cerr << "Invalid bounds for ids." << std::endl;
+		}
+		else {
+			int index = plate.ids.x;
+			for (int i = 0; i < plate.digits; i++) {
+				index = plate.ids.x + i;
+				for (int j = plate.ids.x; j < plate.ids.y; j += plate.digits) {
+					if (blacks[j + i] > index) {
+						index = j + i;
+					}
+				}
+				id += (int)(index / plate.digits) * pow(10, i);
+			}
+		}
+	}
+	return id;
+}
+
+unsigned int AnalyzeImage::maxVal(std::vector <double> v, unsigned int lower, unsigned int upper) {
+	unsigned int index = lower;
+	for (unsigned int i = lower; i < upper; i++) {
+		if (v[i] > v[index]) {
+			index = i;
+		}
+	}
+	return index;
 }

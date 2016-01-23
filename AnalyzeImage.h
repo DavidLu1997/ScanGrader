@@ -26,23 +26,23 @@ public:
 	//Calibrate individual
 	Rectangle individual(ReadDot read, Rectangle cali, int threshold, double percent);
 
-	//Return results
-	std::vector<bool> getResults();
+	//Return raw results
+	std::vector<bool> getRawResults();
 
-	//Return black percent
+	//Return ID
+	int getID();
+
+	//Return question answers
+	std::vector<int> getAnswers();
+
+	//Return black percentages
 	std::vector<double> getBlacks();
 
 	//Write results to file, image name, all on one line
-	bool writeResults();
+	bool writeAnswers();
 
 	//Write results to file, custom name, all on one line
-	bool writeResults(std::string name);
-
-	//Write results to file, image name, custom line size
-	bool writeResults(int n);
-
-	//Write results to file, custom name and line size
-	bool writeResults(std::string name, int n);
+	bool writeAnswers(std::string name);
 
 private:
 	//ScanImage
@@ -57,8 +57,20 @@ private:
 	//Blackness
 	std::vector<double> blacks;
 
+	//ID
+	int id;
+
+	//Answers, 0 to NUM_OPTIONS - 1
+	std::vector<int> answers;
+
 	//Image Name
 	std::string imgName;
+
+	//Calculated flag
+	bool calculated;
+
+	//Returns index of maximum value of a double vector within bounds
+	unsigned int maxVal(std::vector <double> v, unsigned int lower, unsigned int upper);
 };
 
 #endif
