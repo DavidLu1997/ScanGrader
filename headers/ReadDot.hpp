@@ -1,3 +1,7 @@
+//ReadDot class
+//Checks darkness of a rectangle given an image
+//Reduces memory allocation
+
 #ifndef READDOT_H
 #define READDOT_H
 

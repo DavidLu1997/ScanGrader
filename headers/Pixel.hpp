@@ -1,3 +1,7 @@
+//Pixel Class
+//Defines RGB pixel
+//Grayscale function averages RGB values
+
 #ifndef PIXEL_H
 #define PIXEL_H
 

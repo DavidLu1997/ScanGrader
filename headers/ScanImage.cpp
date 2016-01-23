@@ -2,11 +2,13 @@
 #include "bitmap_image.hpp"
 #include <cstdio>
 
+//Standard constructor
 ScanImage::ScanImage() {
 	pixels = std::vector< std::vector<Pixel> >();
 	grayScale = std::vector< std::vector<int> >();
 }
 
+//Constructor loading image
 ScanImage::ScanImage(std::string name)
 {
 	//Read data
@@ -65,6 +67,7 @@ bool ScanImage::readRawData(std::string name) {
 	return true;
 }
 
+//Converts image to grayScale by averaging
 bool ScanImage::readGrayScale() {
 	//Clear grayScale
 	grayScale.clear();

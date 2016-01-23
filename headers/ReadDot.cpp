@@ -1,12 +1,16 @@
 #include "ReadDot.hpp"
 #include <algorithm>
 
+//ReadDot constructor, given ScanImage and percent
 ReadDot::ReadDot(ScanImage img, double percent) {
 	image = img;
 	percentage = percent;
 	grayPixels = img.getGrayScale();
 }
 
+//Adds up all pixels within given rectangle
+//TODO: Make more efficient
+//Memory is less valuable than time
 double ReadDot::black(Rectangle rect) {
 	//Sum of all pixels
 	int sum = 0;
@@ -20,6 +24,7 @@ double ReadDot::black(Rectangle rect) {
 	return 1 - ((double)sum / rect.size()) / 255.0;
 }
 
+//Checks if a rectangle is greater than a percentage black
 bool ReadDot::check(Rectangle rect) {
 	return black(rect) >= percentage;
 }

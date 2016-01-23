@@ -2,15 +2,18 @@
 #include <fstream>
 #include <iostream>
 
+//Default constructor for image template
 ImageTemplate::ImageTemplate() {
 	rects.push_back(Rectangle(Point(), Point()));
 	cali.push_back(Rectangle(Point(), Point()));
 }
 
+//Standard constructor with name of template
 ImageTemplate::ImageTemplate(std::string name) {
 	loadTemplate(name);
 }
 
+//Loads template from file
 bool ImageTemplate::loadTemplate(std::string name) {
 	std::ifstream in(name.c_str(), std::ios::in);
 
@@ -74,39 +77,13 @@ bool ImageTemplate::loadTemplate(std::string name) {
 	return true;
 }
 
-/* ***********DO NOT USE************
-bool ImageTemplate::savesTemplate(std::string name) {
-	std::ofstream out(name.c_str(), std::ios::out);
-
-	//Resolution
-	out << resolution.x << resolution.y << std::endl;
-
-	//Number of calibration rectangles
-	out << cali.size() << std::endl;
-
-	//Each calibration rectangle
-	for (unsigned int i = 0; i < cali.size(); i++) {
-		out << cali[i].upper.x << cali[i].upper.y << cali[i].lower.x << cali[i].lower.y << std::endl;
-	}
-
-	//Number of rectangles
-	out << rects.size() << std::endl;
-
-	//Each rectangle
-	for (unsigned int i = 0; i < rects.size(); i++) {
-		out << rects[i].upper.x << rects[i].upper.y << rects[i].lower.x << rects[i].lower.y << rects[i].id << std::endl;
-	}
-
-	out.close();
-	return true;
-}
-*/
-
+//Set calibration rectangles, and recalculates everything else from it
 void ImageTemplate::setCalibrate(std::vector<Rectangle> newCali) {
 	cali = newCali;
 	calculateRectangles();
 }
 
+//Calculates rectangles
 bool ImageTemplate::calculateRectangles() {
 	//Calibrate each rectangle
 	for (unsigned int i = 0; i < rects.size(); i++) {
@@ -140,6 +117,7 @@ bool ImageTemplate::calculateRectangles() {
 
 }
 
+//Scales rectangles
 bool ImageTemplate::scale(double xScale, double yScale) {
 	//Bounds check
 	if (xScale <= 0 || yScale <= 0) {
@@ -169,10 +147,12 @@ bool ImageTemplate::scale(double xScale, double yScale) {
 	return true;
 }
 
+//Get standard rectangles
 std::vector<Rectangle> ImageTemplate::getRects() {
 	return rects;
 }
 
+//Get calibration rectangles
 std::vector<Rectangle> ImageTemplate::getCali() {
 	return cali;
 }

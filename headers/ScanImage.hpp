@@ -1,8 +1,11 @@
+//ScanImage Class
+//Loads an image and stores it in pixel form
+//Converts image to grayscale if needed
+
 #ifndef SCANIMAGE_H
 #define SCANIMAGE_H
 
-//SCREW OFF VISUAL STUDIO
-//std::copy doesn't work??
+//Visual Studio warning suppression
 #if defined(_MSC_VER) && _MSC_VER >= 1400 
 #pragma warning(push) 
 #pragma warning(disable:4996) 
@@ -20,7 +23,7 @@ public:
 	//Creates a blank ScanImage
 	ScanImage();
 
-	//Creates a ScanImage from a filename, default 8.5x11 paper
+	//Creates a ScanImage from a filename
 	ScanImage(std::string name);
 
 	//Obtain raw image data into pixels
@@ -49,8 +52,7 @@ private:
 	std::vector< std::vector<int> > grayScale;
 };
 
-//SCREW OFF VISUAL STUDIO
-//std::copy doesn't work??
+//Visual Studio warning suppression
 #if defined(_MSC_VER) && _MSC_VER >= 1400 
 #pragma warning(pop) 
 #endif 

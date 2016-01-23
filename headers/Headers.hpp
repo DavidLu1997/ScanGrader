@@ -1,3 +1,5 @@
+//Simplified include file
+
 #include "AnalyzeImage.hpp"
 #include "ImageTemplate.hpp"
 #include "Pixel.hpp"

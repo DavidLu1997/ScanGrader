@@ -1,6 +1,6 @@
 //Point class
 //Denotes a x, y pixel location
-//Top right pixel is 0, 0
+//Top left pixel is 0, 0
 
 #ifndef POINT_H
 #define POINT_H
