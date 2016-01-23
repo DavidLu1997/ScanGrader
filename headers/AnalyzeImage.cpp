@@ -34,6 +34,7 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName, double
 	plate.scale(xScale, yScale);
 	calculated = false;
 
+	//Calculate results
 	calculate();
 }
 
