@@ -34,7 +34,12 @@ obj/
 *.opensdf
 *.sln
 *.ui
-
+GeneratedFiles*/
+*.pri
+*.pro
+Win32*/
+x64*/
+Resources*/
 
 # Project specific files
 *.jpg
