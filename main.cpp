@@ -1,4 +1,4 @@
-#include "zopperscanapi.h"
+#include "zopperscanapi.hpp"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])

@@ -1,4 +1,4 @@
-#include "zopperscanapi.h"
+#include "zopperscanapi.hpp"
 
 ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	: QMainWindow(parent)
@@ -8,5 +8,9 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 ZopperScanAPI::~ZopperScanAPI()
 {
+	//Delete answer key
+	free(key);
 
+	//Clear images
+	images.clear();
 }
