@@ -2,27 +2,29 @@
 #define ZOPPERSCANAPI_H
 
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QLayOut>
 #include "ui_zopperscanapi.h"
 #include "headers\Headers.hpp"
+#include "NavBar.hpp"
 
 class ZopperScanAPI : public QMainWindow
 {
 	Q_OBJECT
 
 public:
+	const double version = 0.01;
+
 	ZopperScanAPI(QWidget *parent = 0);
 	~ZopperScanAPI();
 
 private:
 	Ui::ZopperScanAPIClass ui;
-	
-	//Answer Keys
-	std::vector<AnalyzeImage> keys;
+
+	//Main NavBar
+	NavBar *navbar;
 
 	//Images to analyze
 	std::vector<AnalyzeImage> images;
-
-	//TODO: Refactor below into AnalyzeImage
 
 	//Configuration file to use, indexes
 	//Same size as images
@@ -32,16 +34,11 @@ private:
 	//Same size as images
 	std::vector<unsigned int> useKey;
 
-	//END TODO
-
 	//Configuration files
 	std::vector<std::string> configFiles;
 
-	//Results of analyzed images
-	std::vector< std::vector<int> > results;
-
-	//Raw results of analyzed images
-	std::vector< std::vector<double> > rawResults;
+	//Answer Keys
+	std::vector<AnalyzeImage> keys;
 
 	//Score out of total of analyzed images
 	std::vector<unsigned int> score;
