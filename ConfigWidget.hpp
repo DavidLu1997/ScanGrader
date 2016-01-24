@@ -13,12 +13,16 @@ class ConfigWidget : public QWidget
 
 public:
 	//Constructor
-	ConfigWidget();
+	ConfigWidget(QWidget *parent = 0);
 
 	//Destructor
 	~ConfigWidget();
-private:
+public slots:
 	
+private slots:
+	
+private:
+
 };
 
 #endif

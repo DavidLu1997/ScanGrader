@@ -13,12 +13,16 @@ class KeyWidget : public QWidget
 
 public:
 	//Constructor
-	KeyWidget();
+	KeyWidget(QWidget *parent = 0);
 
 	//Destructor
 	~KeyWidget();
-private:
+public slots:
 	
+private slots:
+	
+private:
+
 };
 
 #endif

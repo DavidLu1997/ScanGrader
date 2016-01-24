@@ -15,10 +15,14 @@ class ExportWidget : public QWidget
 
 public:
 	//Constructor
-	ExportWidget();
+	ExportWidget(QWidget *parent = 0);
 
 	//Destructor
 	~ExportWidget();
+public slots:
+	
+private slots:
+	
 private:
 
 };

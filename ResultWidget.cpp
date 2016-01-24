@@ -1,7 +1,7 @@
 #include "ResultWidget.hpp"
 
-ResultWidget::ResultWidget() {
-	QWidget();
+ResultWidget::ResultWidget(QWidget *parent) {
+
 }
 
 ResultWidget::~ResultWidget() {

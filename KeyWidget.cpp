@@ -1,7 +1,7 @@
 #include "KeyWidget.hpp"
 
-KeyWidget::KeyWidget() {
-	QWidget();
+KeyWidget::KeyWidget(QWidget *parent) {
+
 }
 
 KeyWidget::~KeyWidget() {

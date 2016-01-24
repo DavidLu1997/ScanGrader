@@ -12,10 +12,14 @@ class OptionWidget : public QWidget
 
 public:
 	//Constructor
-	OptionWidget();
+	OptionWidget(QWidget *parent = 0);
 
 	//Destructor
 	~OptionWidget();
+public slots:
+	
+private slots:
+	
 private:
 
 };

@@ -22,6 +22,10 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Set Title
 	setWindowTitle(tr("ScanGrader v%1").arg(version));
+
+	//Set Size
+	setMinimumWidth(850); //Minimum width to fit all current elements
+	setMinimumHeight(400); //Minimum height
 }
 
 ZopperScanAPI::~ZopperScanAPI()
@@ -242,6 +246,40 @@ void ZopperScanAPI::initVariables() {
 	keyPaths = new std::vector<std::string>;
 	useFile = new std::vector<unsigned int>;
 }
+
+//Connect Image
+void ZopperScanAPI::connectImage() {
+	connect(navbar->image->add, SIGNAL(released()), this, SLOT(addImage("")));
+	connect(navbar->image->remove, SIGNAL(released()), this, SLOT(removeImage(selected)));
+	connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected - 1)));
+	connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected + 1)));
+}
+
+//Connect Keys
+void ZopperScanAPI::connectKeys() {
+
+}
+
+//Connect Config
+void ZopperScanAPI::connectConfig() {
+
+}
+
+//Connect Results
+void ZopperScanAPI::connectResults() {
+
+}
+
+//Connect Export
+void ZopperScanAPI::connectExport() {
+
+}
+
+//Connect Options
+void ZopperScanAPI::connectOptions() {
+
+}
+
 
 //Compare two int vectors, returns number of equalities
 //TODO Rewrite as template

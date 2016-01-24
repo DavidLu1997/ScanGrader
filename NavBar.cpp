@@ -1,7 +1,7 @@
 #include "NavBar.hpp"
 
 //Constructor for NavBar
-NavBar::NavBar() {
+NavBar::NavBar(QWidget *parent) {
 	//Initialize all widgets and add to sidebar
 
 	//Images widget

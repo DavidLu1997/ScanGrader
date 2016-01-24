@@ -12,10 +12,14 @@ class ResultWidget : public QWidget
 
 public:
 	//Constructor
-	ResultWidget();
+	ResultWidget(QWidget *parent = 0);
 
 	//Destructor
 	~ResultWidget();
+public slots:
+	
+private slots:
+	
 private:
 
 };

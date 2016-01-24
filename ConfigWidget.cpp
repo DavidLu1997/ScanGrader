@@ -1,6 +1,6 @@
 #include "ConfigWidget.hpp"
 
-ConfigWidget::ConfigWidget() {
+ConfigWidget::ConfigWidget(QWidget *parent) {
 	QWidget();
 }
 

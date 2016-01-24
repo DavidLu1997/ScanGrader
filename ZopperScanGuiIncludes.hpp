@@ -5,3 +5,4 @@
 #include "KeyWidget.hpp"
 #include "OptionWidget.hpp"
 #include "ResultWidget.hpp"
+#include "ScanFileWidget.hpp"

@@ -84,6 +84,14 @@ private:
 	//Initialize variables
 	void initVariables();
 
+	//Functions to connect signals and slots
+	void connectImage();
+	void connectKeys();
+	void connectConfig();
+	void connectResults();
+	void connectExport();
+	void connectOptions();
+
 	//Compare two int vectors, returns number of equalities
 	//TODO Rewrite as template
 	int compare(std::vector<int> a, std::vector<int> b);

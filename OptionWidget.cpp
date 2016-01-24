@@ -1,7 +1,7 @@
 #include "OptionWidget.hpp"
 
-OptionWidget::OptionWidget() {
-	QWidget();
+OptionWidget::OptionWidget(QWidget *parent) {
+
 }
 
 OptionWidget::~OptionWidget() {

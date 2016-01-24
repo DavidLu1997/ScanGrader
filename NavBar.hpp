@@ -14,11 +14,10 @@ class NavBar : public QTabWidget
 
 public:
 	//Constructor
-	NavBar();
+	NavBar(QWidget *parent = 0);
 
 	//Destructor
 	~NavBar();
-private:
 
 	//Image widget
 	ImageWidget *image;
@@ -37,6 +36,8 @@ private:
 
 	//Export widget
 	ExportWidget *exportW; //Not named export due to keyword
+
+private:
 	
 };
 
