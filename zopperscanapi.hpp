@@ -82,7 +82,7 @@ private:
 	std::vector<AnalyzeImage> *images;
 
 	//Image names to analyze (file paths)
-	std::vector<std::string> *paths;
+	std::vector<std::string> *imagePaths;
 
 	//Configuration file to use, indexes
 	//Same size as images
@@ -95,8 +95,14 @@ private:
 	//Configuration files
 	std::vector<std::string> *configFiles;
 
+	//Configuration files to use (file paths)
+	std::vector<std::string> *configPaths;
+
 	//Answer Keys
 	std::vector<AnalyzeImage> *keys;
+
+	//Answer key files to use(file paths)
+	std::vector<std::string> *keyPaths;
 
 	//Score out of total of analyzed images
 	std::vector<unsigned int> *score;
