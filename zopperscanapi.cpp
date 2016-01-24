@@ -4,7 +4,11 @@
 ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	: QMainWindow(parent)
 {
+	//Set up UI
 	ui.setupUi(this);
+
+	//Initialize variables
+	initVariables();
 
 	//Add navbar to window
 	navbar = new NavBar();
@@ -48,7 +52,7 @@ int ZopperScanAPI::getImage(std::string name) {
 //Image get string from index
 std::string ZopperScanAPI::getImage(unsigned int index) {
 	if (index >= 0 && index < imagePaths->size()) {
-		return imagePaths->at(i);
+		return imagePaths->at(index);
 	}
 	else {
 		return "";
@@ -69,7 +73,7 @@ int ZopperScanAPI::getKey(std::string name) {
 //Key get string from index
 std::string ZopperScanAPI::getKey(unsigned int index) {
 	if (index >= 0 && index < keyPaths->size()) {
-		return keyPaths->at(i);
+		return keyPaths->at(index);
 	}
 	else {
 		return "";
@@ -90,7 +94,7 @@ int ZopperScanAPI::getConfig(std::string name) {
 //Config get string from index
 std::string ZopperScanAPI::getConfig(unsigned int index) {
 	if (index >= 0 && index < keyPaths->size()) {
-		return configPaths->at(i);
+		return configPaths->at(index);
 	}
 	else {
 		return "";
@@ -101,7 +105,37 @@ std::string ZopperScanAPI::getConfig(unsigned int index) {
 
 //Calculate results based on current settings
 void ZopperScanAPI::calculate() {
+	//Configure answer keys
+	keys->clear();
+	for (unsigned int i = 0; i < keyPaths->size(); i++) {
+		keys->push_back(AnalyzeImage(keyPaths->at(i), configPaths->at(useFile->at(i))));
+	}
 
+	//Get solutions
+	solutions.clear();
+	for (unsigned int i = 0; i < keyPaths->size(); i++) {
+		solutions.push_back(keys->at(i).getAnswers());
+	}
+
+	//Configure images
+	images->clear();
+	for (unsigned int i = 0; i < imagePaths->size(); i++) {
+		images->push_back(AnalyzeImage(imagePaths->at(i), configPaths->at(useFile->at(useKey->at(i)))));
+	}
+
+	//Get answers
+	answers.clear();
+	for (unsigned int i = 0; i < imagePaths->size(); i++) {
+		answers.push_back(images->at(i).getAnswers());
+	}
+
+	//Get score and percentage score
+	score.clear();
+	percentScore.clear();
+	for (unsigned int i = 0; i < answers.size(); i++) {
+		score.push_back(compare(answers[i], solutions[useKey->at(i)]));
+		percentScore.push_back((double)score[i] / answers[i].size());
+	}
 }
 
 //Add image
@@ -132,8 +166,6 @@ void ZopperScanAPI::swapImage(unsigned int a, unsigned int b) {
 	if ((a >= 0 && a < imagePaths->size()) && (b >= 0 && b < imagePaths->size()) && a != b) {
 		//Swap images
 		iter_swap(imagePaths->begin() + a, imagePaths->begin() + b);
-		//Swap useFile
-		iter_swap(useFile->begin() + a, useFile->begin() + b);
 		//Swap useKey
 		iter_swap(useKey->begin() + a, useKey->begin() + b);
 	}
@@ -181,4 +213,48 @@ void ZopperScanAPI::removeConfig(std::string name) {
 //Remove configuration file by index
 void ZopperScanAPI::removeConfig(unsigned int index) {
 	configPaths->erase(keyPaths->begin() + index);
+}
+
+//Clear variables
+void ZopperScanAPI::clearVariables() {
+	images->clear();
+	imagePaths->clear();
+	useKey->clear();
+	configPaths->clear();
+	keys->clear();
+	keyPaths->clear();
+	useFile->clear();
+	score.clear();
+	percentScore.clear();
+	answers.clear();
+	solutions.clear();
+}
+
+//**********Private Functions**********
+
+//Initialize variables
+void ZopperScanAPI::initVariables() {
+	images = new std::vector<AnalyzeImage>;
+	imagePaths = new std::vector<std::string>;
+	useKey = new std::vector<unsigned int>;
+	configPaths = new std::vector<std::string>;
+	keys = new std::vector<AnalyzeImage>;
+	keyPaths = new std::vector<std::string>;
+	useFile = new std::vector<unsigned int>;
+}
+
+//Compare two int vectors, returns number of equalities
+//TODO Rewrite as template
+int ZopperScanAPI::compare(std::vector<int> a, std::vector<int> b) {
+	//Size equality check
+	if (a.size() != b.size()) {
+		return -1;
+	}
+	int result = 0;
+	for (unsigned int i = 0; i < a.size(); i++) {
+		if (a[i] == b[i]) {
+			result++;
+		}
+	}
+	return result;
 }
