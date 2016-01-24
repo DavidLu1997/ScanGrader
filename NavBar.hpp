@@ -34,6 +34,9 @@ private:
 
 	//Options widget
 	OptionWidget *option;
+
+	//Export widget
+	ExportWidget *exportW; //Not named export due to keyword
 	
 };
 

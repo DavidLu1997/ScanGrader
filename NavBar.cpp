@@ -2,18 +2,30 @@
 
 //Constructor for NavBar
 NavBar::NavBar() {
-	//Initialize all widgets
-	image = new ImageWidget();
-	key = new KeyWidget();
-	config = new ConfigWidget();
-	result = new ResultWidget();
-	option = new OptionWidget();
+	//Initialize all widgets and add to sidebar
 
-	//Add all widgets to navbar
+	//Images widget
+	image = new ImageWidget();
 	addTab(image, "Images");
+
+	//Answer keys widget
+	key = new KeyWidget();
 	addTab(key, "Answer Keys");
+
+	//Config file widget
+	config = new ConfigWidget();
 	addTab(config, "Configuration Files");
+
+	//Results widget
+	result = new ResultWidget();
 	addTab(result, "Results");
+
+	//Export widget
+	exportW = new ExportWidget();
+	addTab(exportW, "Export");
+
+	//Options Widget
+	option = new OptionWidget();
 	addTab(option, "Options");
 }
 
@@ -23,5 +35,6 @@ NavBar::~NavBar() {
 	delete key;
 	delete config;
 	delete result;
+	delete exportW;
 	delete option;
 }
