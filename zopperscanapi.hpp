@@ -5,7 +5,7 @@
 #include <QtWidgets/QLayOut>
 #include "ui_zopperscanapi.h"
 #include "headers\Headers.hpp"
-#include "NavBar.hpp"
+#include "guiElements\NavBar.hpp"
 
 class ZopperScanAPI : public QMainWindow
 {
