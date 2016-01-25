@@ -41,20 +41,38 @@ public:
 	int selected;
 
 private slots:
+
+	//Add ScanFileWidget
+	void addScanFileWidget();
+
+	//Remove ScanFileWidget by index
+	void removeScanFileWidget();
+
 	//Move selected up
 	void selectedUp();
 
 	//Move selected down
 	void selectedDown();
+
 private:
-	//Create context menu
-	void createMenu();
+
+	//Main layout
+	QBoxLayout *layout;
+
+	//Create image list
+	void createImageList();
+
+	//Image list
+	QWidget *imageList;
+
+	//Image list layout
+	QBoxLayout *imageListLayout;
 
 	//ScanFiles
 	std::vector<ScanFileWidget *> scanFiles;
 
-	//Main layout
-	QBoxLayout *layout;
+	//Create context menu
+	void createMenu();
 
 	//Context menubar
 	//Add, remove, up, down, etc.
@@ -63,8 +81,8 @@ private:
 	//Menu labout
 	QBoxLayout *menuLayout;
 
-	//Main button group
-	QButtonGroup *buttonGroup;
+	//Connect button signals to slots
+	void connectButtons();
 };
 
 #endif

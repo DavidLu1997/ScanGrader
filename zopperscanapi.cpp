@@ -1,6 +1,8 @@
 #include "zopperscanapi.hpp"
 #include <Algorithm>
 
+//TODO: Redo for ScanFileWidget
+
 ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -25,7 +27,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Set Size
 	setMinimumWidth(850); //Minimum width to fit all current elements
-	setMinimumHeight(400); //Minimum height
+	setMinimumHeight(600); //Minimum height
 }
 
 ZopperScanAPI::~ZopperScanAPI()
@@ -249,10 +251,10 @@ void ZopperScanAPI::initVariables() {
 
 //Connect Image
 void ZopperScanAPI::connectImage() {
-	connect(navbar->image->add, SIGNAL(released()), this, SLOT(addImage("")));
-	connect(navbar->image->remove, SIGNAL(released()), this, SLOT(removeImage(selected)));
-	connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected - 1)));
-	connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected + 1)));
+	//connect(navbar->image->add, SIGNAL(released()), this, SLOT(addImage("")));
+	//connect(navbar->image->remove, SIGNAL(released()), this, SLOT(removeImage(selected)));
+	//connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected - 1)));
+	//connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected + 1)));
 }
 
 //Connect Keys
