@@ -1,7 +1,7 @@
 #include "ScanFileWidget.hpp"
 
 //Constructor
-ScanFileWidget::ScanFileWidget(unsigned int r, QWidget *parent) {
+ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *parent) {
 	//Initialize label
 	path = new QLabel("");
 
@@ -10,6 +10,9 @@ ScanFileWidget::ScanFileWidget(unsigned int r, QWidget *parent) {
 
 	//Initialize config file
 	configFile = new QComboBox();
+
+	//Initialize buttons
+	initButtons();
 
 	//Initialize row
 	row = r;
@@ -20,28 +23,14 @@ ScanFileWidget::ScanFileWidget(unsigned int r, QWidget *parent) {
 	configFile->addItem("Config1");
 	configFile->addItem("Config2");
 
-	//Initialize layout
-	layout = new QGridLayout();
-
-	//Always initialize
-	//TODO Refactor
-	fileLabel = new QLabel("Image Path");
-	configLabel = new QLabel("Configuration File");
-	answerLabel = new QLabel("Answer Key");
-
 	//Add headers if row is 0
-	if (row == 0) {
-		layout->addWidget(fileLabel, 0, 0);
-		layout->addWidget(configLabel, 0, 1);
-		layout->addWidget(answerLabel, 0, 2);
-		row++;
-	}
+	
+	layout->setRowMinimumHeight(row, 5);
 
 	layout->addWidget(path, row, 0);
 	layout->addWidget(answerKey, row, 1);
 	layout->addWidget(configFile, row, 2);
-
-	setLayout(layout);
+	layout->addWidget(buttons, row, 3);
 }
 
 //Destructor
@@ -89,44 +78,30 @@ std::string ScanFileWidget::getAnswerKey() {
 	return answerKey->currentText().toStdString();
 }
 
-//Hide config file
-void ScanFileWidget::hideConfigFile(bool b) {
-	if (b) {
-		configFile->hide();
-		if (row == 1) {
-			configLabel->hide();
-		}
-	}
-	else {
-		configFile->show();
-		if (row == 1) {
-			configLabel->show();
-		}
-	}
-}
+//**********Private Functions**********
 
-//Hide answer key
-void ScanFileWidget::hideAnswerKey(bool b) {
-	if (b) {
-		answerKey->hide();
-		if (row == 1) {
-			answerLabel->show();
-		}
-	}
-	else {
-		answerKey->show();
-		if (row == 1) {
-			answerLabel->hide();
-		}
-	}
-}
+//Initialize Buttons
+void ScanFileWidget::initButtons() {
+	//Initialize button widget
+	buttons = new QWidget();
 
-//Select this
-void ScanFileWidget::selectThis(bool b) {
-	if (b) {
-		//TODO: Highlight
-	}
-	else {
-		//TODO: Return to normal
-	}
+	//Initialize button layout
+	buttonLayout = new QBoxLayout(QBoxLayout::LeftToRight);
+
+	//Initialize remove button
+	removeButton = new QPushButton("Remove");
+
+	//Initialize up button
+	upButton = new QPushButton("Up");
+
+	//Initialize down button
+	downButton = new QPushButton("Down");
+
+	//Add buttons to layout
+	buttonLayout->addWidget(upButton);
+	buttonLayout->addWidget(downButton);
+	buttonLayout->addWidget(removeButton);
+
+	//Set Layout
+	buttons->setLayout(buttonLayout);
 }

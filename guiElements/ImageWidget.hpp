@@ -28,15 +28,6 @@ public:
 	//Add button
 	QPushButton *add;
 
-	//Remove button
-	QPushButton *remove;
-
-	//Up Arrow
-	QPushButton *up;
-
-	//Down arrow
-	QPushButton *down;
-
 	//Selected image
 	int selected;
 
@@ -45,28 +36,10 @@ private slots:
 	//Add ScanFileWidget
 	void addScanFileWidget();
 
-	//Remove ScanFileWidget by index
-	void removeScanFileWidget();
-
-	//Move selected up
-	void selectedUp();
-
-	//Move selected down
-	void selectedDown();
-
 private:
 
 	//Main layout
-	QBoxLayout *layout;
-
-	//Create image list
-	void createImageList();
-
-	//Image list
-	QWidget *imageList;
-
-	//Image list layout
-	QBoxLayout *imageListLayout;
+	QGridLayout *layout;
 
 	//ScanFiles
 	std::vector<ScanFileWidget *> scanFiles;
@@ -83,6 +56,11 @@ private:
 
 	//Connect button signals to slots
 	void connectButtons();
+
+	//Header labels
+	QLabel *fileLabel;
+	QLabel *configLabel;
+	QLabel *answerLabel;
 };
 
 #endif

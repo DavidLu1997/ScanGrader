@@ -8,6 +8,7 @@
 #include <QtWidgets\QComboBox>
 #include <QtWidgets\QLabel>
 #include <QtWidgets\QGridLayout>
+#include <QtWidgets\QPushButton>
 #include <vector>
 #include <string>
 
@@ -16,7 +17,7 @@ class ScanFileWidget : public QWidget  {
 
 public:
 	//Constructor
-	ScanFileWidget(unsigned int r = 0, QWidget *parent = 0);
+	ScanFileWidget(QGridLayout *layout, unsigned int r = 0, QWidget *parent = 0);
 
 	//Destructor
 	~ScanFileWidget();
@@ -45,24 +46,13 @@ public:
 	//Hide answer key
 	void hideAnswerKey(bool b);
 
-	//Select (highlights)
-	void selectThis(bool b);
-
 public slots:
 	
 private slots:
 	
 private:
-	//Layout
-	QGridLayout *layout;
-
 	//Row
 	unsigned int row;
-
-	//Header labels
-	QLabel *fileLabel;
-	QLabel *configLabel;
-	QLabel *answerLabel;
 
 	//File path
 	QLabel *path;
@@ -72,6 +62,24 @@ private:
 	
 	//Answer key to use
 	QComboBox *answerKey;
+
+	//Widget for buttons
+	QWidget *buttons;
+
+	//Layout for buttons
+	QBoxLayout *buttonLayout;
+
+	//Remove button
+	QPushButton *removeButton;
+
+	//Up Button
+	QPushButton *upButton;
+
+	//Down Button
+	QPushButton *downButton;
+
+	//Initialize buttons
+	void initButtons();
 };
 
 #endif
