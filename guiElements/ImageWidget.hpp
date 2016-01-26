@@ -7,6 +7,7 @@
 #include <QtWidgets\QWidget>
 #include <QtWidgets\QButtonGroup>
 #include <QtWidgets\QPushButton>
+#include <QtWidgets\QSizePolicy>
 #include <QtWidgets\QLayout>
 #include <vector>
 #include "headers\AnalyzeImage.hpp"
