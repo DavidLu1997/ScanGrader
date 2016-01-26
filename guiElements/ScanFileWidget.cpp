@@ -1,7 +1,7 @@
 #include "ScanFileWidget.hpp"
 
 //Constructor
-ScanFileWidget::ScanFileWidget(unsigned int row, QWidget *parent) {
+ScanFileWidget::ScanFileWidget(unsigned int r, QWidget *parent) {
 	//Initialize label
 	path = new QLabel("");
 
@@ -10,6 +10,9 @@ ScanFileWidget::ScanFileWidget(unsigned int row, QWidget *parent) {
 
 	//Initialize config file
 	configFile = new QComboBox();
+
+	//Initialize row
+	row = r;
 
 	//TESTING ONLY
 	answerKey->addItem("Answer1");
@@ -20,11 +23,14 @@ ScanFileWidget::ScanFileWidget(unsigned int row, QWidget *parent) {
 	//Initialize layout
 	layout = new QGridLayout();
 
+	//Always initialize
+	//TODO Refactor
+	fileLabel = new QLabel("Image Path");
+	configLabel = new QLabel("Configuration File");
+	answerLabel = new QLabel("Answer Key");
+
 	//Add headers if row is 0
 	if (row == 0) {
-		fileLabel = new QLabel("Image Path");
-		configLabel = new QLabel("Configuration File");
-		answerLabel = new QLabel("Answer Key");
 		layout->addWidget(fileLabel, 0, 0);
 		layout->addWidget(configLabel, 0, 1);
 		layout->addWidget(answerLabel, 0, 2);
@@ -87,13 +93,13 @@ std::string ScanFileWidget::getAnswerKey() {
 void ScanFileWidget::hideConfigFile(bool b) {
 	if (b) {
 		configFile->hide();
-		if (configLabel) {
+		if (row == 1) {
 			configLabel->hide();
 		}
 	}
 	else {
 		configFile->show();
-		if (configLabel) {
+		if (row == 1) {
 			configLabel->show();
 		}
 	}
@@ -103,13 +109,13 @@ void ScanFileWidget::hideConfigFile(bool b) {
 void ScanFileWidget::hideAnswerKey(bool b) {
 	if (b) {
 		answerKey->hide();
-		if (answerLabel) {
+		if (row == 1) {
 			answerLabel->show();
 		}
 	}
 	else {
 		answerKey->show();
-		if (answerLabel) {
+		if (row == 1) {
 			answerLabel->hide();
 		}
 	}

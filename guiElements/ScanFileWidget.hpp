@@ -16,7 +16,7 @@ class ScanFileWidget : public QWidget  {
 
 public:
 	//Constructor
-	ScanFileWidget(unsigned int row = 0, QWidget *parent = 0);
+	ScanFileWidget(unsigned int r = 0, QWidget *parent = 0);
 
 	//Destructor
 	~ScanFileWidget();
@@ -55,6 +55,9 @@ private slots:
 private:
 	//Layout
 	QGridLayout *layout;
+
+	//Row
+	unsigned int row;
 
 	//Header labels
 	QLabel *fileLabel;

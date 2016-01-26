@@ -46,18 +46,20 @@ void ImageWidget::refresh() {
 		down->setEnabled(false);
 	}
 
-	if (selected == 0) {
+	if (selected <= 0) {
 		up->setEnabled(false);
 	}
 
-	else if (selected == scanFiles.size() - 1) {
+	else if (selected == scanFiles.size() - 1 || selected <= 0) {
 		down->setEnabled(false);
 	}
 	else if (selected > 0 && selected < scanFiles.size() - 1) {
 		up->setEnabled(true);
 		down->setEnabled(true);
 	}
-
+	
+	imageListLayout->update();
+	layout->update();
 	update();
 }
 
@@ -104,11 +106,14 @@ void ImageWidget::addScanFileWidget() {
 
 //Remove ScanFileWidget
 void ImageWidget::removeScanFileWidget() {
-	/*
-	imageListLayout->removeWidget(scanFiles.at(index));
-	scanFiles.erase(scanFiles.begin() + index);
+	//TODO: Debug
+	if (scanFiles.size() <= 0)
+		return;
+	imageListLayout->removeWidget(scanFiles.at(scanFiles.size() - 1));
+	delete scanFiles.at(scanFiles.size() - 1);
+	scanFiles.erase(scanFiles.end() - 1);
+	selected--;
 	refresh();
-	*/
 }
 
 //**********Private Functions**********
