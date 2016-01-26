@@ -11,9 +11,6 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	//Initialize config file
 	configFile = new QComboBox();
 
-	//Initialize buttons
-	initButtons();
-
 	//Initialize row
 	row = r;
 
@@ -23,19 +20,17 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	configFile->addItem("Config1");
 	configFile->addItem("Config2");
 
-	//Add headers if row is 0
-	
-	layout->setRowMinimumHeight(row, 5);
-
+	//Add widgets to header
 	layout->addWidget(path, row, 0);
 	layout->addWidget(answerKey, row, 1);
 	layout->addWidget(configFile, row, 2);
-	layout->addWidget(buttons, row, 3);
 }
 
 //Destructor
 ScanFileWidget::~ScanFileWidget() {
-
+	delete path;
+	delete configFile;
+	delete answerKey;
 }
 
 //**********Public Functions**********
@@ -79,29 +74,3 @@ std::string ScanFileWidget::getAnswerKey() {
 }
 
 //**********Private Functions**********
-
-//Initialize Buttons
-void ScanFileWidget::initButtons() {
-	//Initialize button widget
-	buttons = new QWidget();
-
-	//Initialize button layout
-	buttonLayout = new QBoxLayout(QBoxLayout::LeftToRight);
-
-	//Initialize remove button
-	removeButton = new QPushButton("Remove");
-
-	//Initialize up button
-	upButton = new QPushButton("Up");
-
-	//Initialize down button
-	downButton = new QPushButton("Down");
-
-	//Add buttons to layout
-	buttonLayout->addWidget(upButton);
-	buttonLayout->addWidget(downButton);
-	buttonLayout->addWidget(removeButton);
-
-	//Set Layout
-	buttons->setLayout(buttonLayout);
-}

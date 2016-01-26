@@ -6,6 +6,7 @@
 
 #include <QtWidgets\QTabWidget>
 #include <QtWidgets\QWidget>
+#include <QtWidgets\QScrollArea>
 #include "ZopperScanGuiIncludes.hpp"
 
 class NavBar : public QTabWidget
@@ -39,6 +40,13 @@ public:
 
 private:
 	
+	//ScrollAreas
+	QScrollArea *imageScroll;
+	QScrollArea *keyScroll;
+	QScrollArea *configScroll;
+	QScrollArea *resultScroll;
+	QScrollArea *optionScroll;
+	QScrollArea *exportWScroll;
 };
 
 #endif // NAVBAR_H

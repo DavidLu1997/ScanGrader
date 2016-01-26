@@ -22,14 +22,19 @@ public:
 	//Destructor
 	~ImageWidget();
 
-	//Refresh UI
-	void refresh();
-
 	//Add button
 	QPushButton *add;
 
-	//Selected image
-	int selected;
+	//Calculate button
+	QPushButton *calculate;
+
+	//Get scanfiles
+	std::vector<ScanFileWidget *> getScanFiles();
+
+public slots:
+
+	//Refresh UI
+	void refresh();
 
 private slots:
 
@@ -44,23 +49,26 @@ private:
 	//ScanFiles
 	std::vector<ScanFileWidget *> scanFiles;
 
-	//Create context menu
-	void createMenu();
-
-	//Context menubar
-	//Add, remove, up, down, etc.
-	QWidget *menuBar;
-
 	//Menu labout
 	QBoxLayout *menuLayout;
 
-	//Connect button signals to slots
-	void connectButtons();
+	//Initialize buttons
+	void initButtons();
 
 	//Header labels
 	QLabel *fileLabel;
 	QLabel *configLabel;
 	QLabel *answerLabel;
+	QLabel *status;
+
+	//Widgets for buttons
+	std::vector<QWidget*> buttons;
+
+	//Layouts for buttons
+	std::vector<QBoxLayout*> buttonLayout;
+
+	//Remove buttons
+	std::vector<QPushButton*> removeButton;
 };
 
 #endif

@@ -40,12 +40,6 @@ public:
 	//Get selected answer key
 	std::string getAnswerKey();
 
-	//Hide config file
-	void hideConfigFile(bool b);
-
-	//Hide answer key
-	void hideAnswerKey(bool b);
-
 public slots:
 	
 private slots:
@@ -62,24 +56,6 @@ private:
 	
 	//Answer key to use
 	QComboBox *answerKey;
-
-	//Widget for buttons
-	QWidget *buttons;
-
-	//Layout for buttons
-	QBoxLayout *buttonLayout;
-
-	//Remove button
-	QPushButton *removeButton;
-
-	//Up Button
-	QPushButton *upButton;
-
-	//Down Button
-	QPushButton *downButton;
-
-	//Initialize buttons
-	void initButtons();
 };
 
 #endif
