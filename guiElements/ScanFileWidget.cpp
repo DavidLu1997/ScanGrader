@@ -2,8 +2,9 @@
 
 //Constructor
 ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *parent) {
-	//Initialize label
-	path = new QLabel("");
+	//Initialize path
+	path = new QUrl();
+	file = new QLabel();
 
 	//Initialize answer key
 	answerKey = new QComboBox();
@@ -14,21 +15,15 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	//Initialize row
 	row = r;
 
-	//TESTING ONLY
-	answerKey->addItem("Answer1");
-	answerKey->addItem("Answer2");
-	configFile->addItem("Config1");
-	configFile->addItem("Config2");
-
 	//Add widgets to header
-	layout->addWidget(path, row, 0);
+	layout->addWidget(file, row, 0);
 	layout->addWidget(answerKey, row, 1);
 	layout->addWidget(configFile, row, 2);
 }
 
 //Destructor
 ScanFileWidget::~ScanFileWidget() {
-	delete path;
+	delete file;
 	delete configFile;
 	delete answerKey;
 }
@@ -36,12 +31,13 @@ ScanFileWidget::~ScanFileWidget() {
 //**********Public Functions**********
 
 //Update path
-void ScanFileWidget::updatePath(std::string str) {
-	path->setText(QString(str.c_str()));
+void ScanFileWidget::updatePath(const QUrl &url) {
+	*path = url;
+	file->setText(path->fileName());
 }
 
 //Update config file list
-void ScanFileWidget::updateConfigFile(std::vector<std::string> configFiles) {
+void ScanFileWidget::updateConfigFile(const std::vector<std::string> &configFiles) {
 	configFile->clear();
 
 	for (unsigned int i = 0; i < configFiles.size(); i++) {
@@ -50,7 +46,7 @@ void ScanFileWidget::updateConfigFile(std::vector<std::string> configFiles) {
 }
 
 //Update answer keys list
-void ScanFileWidget::updateAnswerKeys(std::vector<std::string> answerKeys) {
+void ScanFileWidget::updateAnswerKeys(const std::vector<std::string> &answerKeys) {
 	answerKey->clear();
 
 	for (unsigned int i = 0; i < answerKeys.size(); i++) {
@@ -59,8 +55,8 @@ void ScanFileWidget::updateAnswerKeys(std::vector<std::string> answerKeys) {
 }
 
 //Get path
-std::string ScanFileWidget::getPath() {
-	return path->text().toStdString();
+QUrl ScanFileWidget::getPath() {
+	return *path;
 }
 
 //Get selected config file

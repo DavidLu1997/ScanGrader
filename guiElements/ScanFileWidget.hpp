@@ -9,6 +9,7 @@
 #include <QtWidgets\QLabel>
 #include <QtWidgets\QGridLayout>
 #include <QtWidgets\QPushButton>
+#include <QUrl>
 #include <vector>
 #include <string>
 
@@ -23,16 +24,16 @@ public:
 	~ScanFileWidget();
 
 	//Update path
-	void updatePath(std::string str);
+	void updatePath(const QUrl &url);
 
 	//Update config file list
-	void updateConfigFile(std::vector<std::string> configFiles);
+	void updateConfigFile(const std::vector<std::string> &configFiles);
 
 	//Update answer keys list
-	void updateAnswerKeys(std::vector<std::string> answerKeys);
+	void updateAnswerKeys(const std::vector<std::string> &answerKeys);
 
 	//Get path
-	std::string getPath();
+	QUrl getPath();
 
 	//Get selected config file
 	std::string getConfigFile();
@@ -49,7 +50,8 @@ private:
 	unsigned int row;
 
 	//File path
-	QLabel *path;
+	QUrl *path;
+	QLabel *file;
 
 	//Configuration file to use
 	QComboBox *configFile;

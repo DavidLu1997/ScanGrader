@@ -7,7 +7,7 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	layout->setVerticalSpacing(0);
 	setLayout(layout);
 
-	fileLabel = new QLabel("<h3>Image Path</h3>");
+	fileLabel = new QLabel("<h3>Image</h3>");
 	fileLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	fileLabel->setTextFormat(Qt::RichText);
 	configLabel = new QLabel("<h3>Configuration File</h3>");
@@ -21,11 +21,11 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	layout->addWidget(answerLabel, 1, 2);
 
 	//Create add button
-	add = new QPushButton("Add Scan Image");
+	add = new QPushButton("Add Scan Image(s)");
 	add->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 	//Connect add button
-	QPushButton::connect(add, SIGNAL(released()), this, SLOT(addScanFileWidget()));
+	QPushButton::connect(add, SIGNAL(released()), this, SLOT(addFiles()));
 
 	//Add add button to layout
 	layout->addWidget(add, 0, 0);
@@ -81,14 +81,13 @@ void ImageWidget::refresh() {
 
 //**********Private Slots**********
 
-//Add ScanFileWidget
-void ImageWidget::addScanFileWidget() {
-	scanFiles.push_back(new ScanFileWidget(layout, scanFiles.size() + 2));
-	scanFiles.at(scanFiles.size() - 1)->updatePath("SAMPLE #" + std::to_string(scanFiles.size()));
-	initButtons();
-	layout->addWidget(buttons.at(buttons.size() - 1), buttons.size() + 1, 3);
+//Add File Dialog
+void ImageWidget::addFiles() {
+	directory = QFileDialog::getOpenFileUrls(this, "Open Image File", QUrl("/"), "Image Files (*.bmp)");
 
-	refresh();
+	for (unsigned int i = 0; i < directory.size(); i++) {
+		addScanFileWidget(directory.at(i));
+	}
 }
 
 //**********Private Functions**********
@@ -116,4 +115,14 @@ void ImageWidget::initButtons() {
 
 	//Connect all buttons to refresh
 	connect(removeButton.at(removeButton.size() - 1), SIGNAL(released()), this, SLOT(refresh()));
+}
+
+//Add ScanFileWidget
+void ImageWidget::addScanFileWidget(const QUrl &url) {
+	scanFiles.push_back(new ScanFileWidget(layout, scanFiles.size() + 2));
+	scanFiles.at(scanFiles.size() - 1)->updatePath(url);
+	initButtons();
+	layout->addWidget(buttons.at(buttons.size() - 1), buttons.size() + 1, 3);
+
+	refresh();
 }

@@ -9,6 +9,7 @@
 #include <QtWidgets\QPushButton>
 #include <QtWidgets\QSizePolicy>
 #include <QtWidgets\QLayout>
+#include <QtWidgets\QFileDialog>
 #include <vector>
 #include "headers\AnalyzeImage.hpp"
 #include "ScanFileWidget.hpp"
@@ -38,31 +39,22 @@ public slots:
 	void refresh();
 
 private slots:
-
-	//Add ScanFileWidget
-	void addScanFileWidget(const QString &path);
-
-	//TODO Implement file dialog
-
-	//Add File Dialog
-	void addFileDialog();
-
 	//Get single path from file dialog
-	void addScanFile(const QString &file);
-
-	//Get multiple paths
-	void addScanFiles(const QStringList &selected);
-
-	//Change current directory
-	void changeDirectory(const QUrl &url);
+	void addFiles();
 
 private:
+
+	//Add ScanFileWidget
+	void addScanFileWidget(const QUrl &url);
 
 	//Main layout
 	QGridLayout *layout;
 
 	//ScanFiles
 	std::vector<ScanFileWidget *> scanFiles;
+
+	//File Dialog
+	QList<QUrl> directory;
 
 	//Menu labout
 	QBoxLayout *menuLayout;
