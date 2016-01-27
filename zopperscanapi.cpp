@@ -52,7 +52,7 @@ ZopperScanAPI::~ZopperScanAPI()
 int ZopperScanAPI::getImage(std::string name) {
 	//Go through vector
 	for (unsigned int i = 0; i < imagePaths->size(); i++) {
-		if (imagePaths->at(i) == name) {
+		if (imagePaths->at(i).find(name) != std::string::npos) {
 			return i;
 		}
 	}
@@ -74,7 +74,7 @@ std::string ZopperScanAPI::getImage(unsigned int index) {
 int ZopperScanAPI::getKey(std::string name) {
 	//Go through vector
 	for (unsigned int i = 0; i <keyPaths->size(); i++) {
-		if (keyPaths->at(i) == name) {
+		if (keyPaths->at(i).find(name) != std::string::npos) {
 			return i;
 		}
 	}
@@ -95,7 +95,7 @@ std::string ZopperScanAPI::getKey(unsigned int index) {
 int ZopperScanAPI::getConfig(std::string name) {
 	//Go through vector
 	for (unsigned int i = 0; i < configPaths->size(); i++) {
-		if (configPaths->at(i) == name) {
+		if (configPaths->at(i).find(name) != std::string::npos) {
 			return i;
 		}
 	}
@@ -125,11 +125,8 @@ void ZopperScanAPI::calculate() {
 	//Set status
 	navbar->image->status->setText("Calculating");
 
-	//Get config files
-	
-	//Get Keys
-
-	//Get images
+	//Get data
+	getImageData();
 
 	//Configure answer keys
 	keys->clear();
@@ -201,13 +198,19 @@ void ZopperScanAPI::clearVariables() {
 void ZopperScanAPI::getImageData() {
 	//Clear variables
 	clearVariables();
+
+	//Get config files
+	QList<QUrl> urls = navbar->config->getFileUrls();
+	for (unsigned int i = 0; i < urls.size(); i++) {
+		configPaths->push_back(urls.at(i).toString().toStdString());
+	}
+
+	//Get answer keys
 	
 	//Get image details
 	for (unsigned int i = 0; i < navbar->image->getScanFiles()->size(); i++) {
 		imagePaths->push_back(navbar->image->getScanFiles()->at(i)->getPath().toString().toStdString());
-		keyPaths->push_back(navbar->image->getScanFiles()->at(i)->getAnswerKey());
-		configPaths->push_back(navbar->image->getScanFiles()->at(i)->getConfigFile());
-
+		useKey->push_back(getKey(navbar->image->getScanFiles()->at(i)->getAnswerKey()));
 	}
 }
 

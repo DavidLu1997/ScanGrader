@@ -68,6 +68,15 @@ std::vector<std::string> ConfigWidget::getFileNames() {
 	return fileNames;
 }
 
+QList<QUrl> ConfigWidget::getFileUrls() {
+	QList<QUrl> urls;
+
+	for (unsigned int i = 0; i < configFiles.size(); i++) {
+		urls.push_back(configFiles.at(i)->getUrl());
+	}
+	return urls;
+}
+
 QUrl ConfigWidget::getFileUrl(std::string name) {
 	//Simple search
 	//TODO: Optimize

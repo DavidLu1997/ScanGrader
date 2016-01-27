@@ -24,6 +24,9 @@ public:
 	//Get file names
 	std::vector<std::string> getFileNames();
 
+	//Get file URLs
+	QList<QUrl> getFileUrls();
+
 	//Get file URL from file name
 	QUrl getFileUrl(std::string name);
 
