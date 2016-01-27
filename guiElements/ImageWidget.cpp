@@ -7,12 +7,15 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	layout->setVerticalSpacing(0);
 	setLayout(layout);
 
-	fileLabel = new QLabel("Image Path");
+	fileLabel = new QLabel("<h3>Image Path</h3>");
 	fileLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	configLabel = new QLabel("Configuration File");
+	fileLabel->setTextFormat(Qt::RichText);
+	configLabel = new QLabel("<h3>Configuration File</h3>");
 	configLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	answerLabel = new QLabel("Answer Key");
+	configLabel->setTextFormat(Qt::RichText);
+	answerLabel = new QLabel("<h3>Answer Key</h3>");
 	answerLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	answerLabel->setTextFormat(Qt::RichText);
 	layout->addWidget(fileLabel, 1, 0);
 	layout->addWidget(configLabel, 1, 1);
 	layout->addWidget(answerLabel, 1, 2);
