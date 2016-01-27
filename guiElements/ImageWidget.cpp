@@ -28,7 +28,7 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	QPushButton::connect(add, SIGNAL(released()), this, SLOT(addFiles()));
 
 	//Add add button to layout
-	layout->addWidget(add, 0, 0);
+	layout->addWidget(add, 1000, 0);
 
 	//Create calculate button
 	calculate = new QPushButton("Calculate Score(s)");
@@ -38,14 +38,14 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//connect(calculate, SIGNAL(released()), parent, SLOT(calculate()));
 
 	//Add calculate button to layout
-	layout->addWidget(calculate, 0, 1);
+	layout->addWidget(calculate, 1000, 1);
 
 	//Create status
 	status = new QLabel("Status: IDLE");
 	status->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 	//Add status label to layout
-	layout->addWidget(status, 0, 2);
+	layout->addWidget(status, 1000, 2);
 
 	//Add empty widget to take up size
 	QWidget *empty1 = new QWidget();

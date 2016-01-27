@@ -17,9 +17,6 @@ public:
 	ZopperScanAPI(QWidget *parent = 0);
 	~ZopperScanAPI();
 
-	//Refresh UI
-	void refresh();
-
 	//Image get index from string
 	int getImage(std::string name);
 
@@ -39,6 +36,10 @@ public:
 	std::string getConfig(unsigned int index);
 
 public slots:
+
+	//Refresh UI
+	void refresh();
+
 	//Add image
 	void addImage(std::string name);
 

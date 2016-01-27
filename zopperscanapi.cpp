@@ -1,5 +1,6 @@
 #include "zopperscanapi.hpp"
 #include <Algorithm>
+#include <QDesktopWidget>
 
 //TODO: Redo for ScanFileWidget
 
@@ -13,8 +14,13 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	initVariables();
 
 	//Add navbar to window
-	navbar = new NavBar();
+	navbar = new NavBar(this);
 	setCentralWidget(navbar);
+
+	//Set Size
+	adjustSize();
+	setMinimumWidth(435);
+	setMinimumHeight(400);
 
 	//Hide toolbar
 	ui.mainToolBar->hide();
@@ -24,10 +30,6 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Set Title
 	setWindowTitle(tr("ScanGrader v%1").arg(version));
-
-	//Set Size
-	setMinimumWidth(850); //Minimum width to fit all current elements
-	setMinimumHeight(600); //Minimum height
 }
 
 ZopperScanAPI::~ZopperScanAPI()
@@ -36,12 +38,6 @@ ZopperScanAPI::~ZopperScanAPI()
 }
 
 //**********Public Functions**********
-
-//Refresh UI
-void ZopperScanAPI::refresh() {
-
-}
-
 
 //Image get index from string
 int ZopperScanAPI::getImage(std::string name) {
@@ -108,6 +104,11 @@ std::string ZopperScanAPI::getConfig(unsigned int index) {
 }
 
 //**********Public Slots************
+
+//Refresh UI
+void ZopperScanAPI::refresh() {
+	adjustSize();
+}
 
 //Calculate results based on current settings
 void ZopperScanAPI::calculate() {
@@ -251,10 +252,8 @@ void ZopperScanAPI::initVariables() {
 
 //Connect Image
 void ZopperScanAPI::connectImage() {
-	//connect(navbar->image->add, SIGNAL(released()), this, SLOT(addImage("")));
-	//connect(navbar->image->remove, SIGNAL(released()), this, SLOT(removeImage(selected)));
-	//connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected - 1)));
-	//connect(navbar->image->up, SIGNAL(released()), this, SLOT(swapImage(selected, selected + 1)));
+	//connect(navbar->image->add, SIGNAL(released()), this, SLOT(refresh()));
+	
 }
 
 //Connect Keys
