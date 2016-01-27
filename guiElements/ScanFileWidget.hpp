@@ -33,7 +33,7 @@ public:
 	void updateAnswerKeys(const std::vector<std::string> &answerKeys);
 
 	//Get path
-	QUrl getPath();
+	const QUrl getPath();
 
 	//Get selected config file
 	std::string getConfigFile();

@@ -40,41 +40,8 @@ public slots:
 	//Refresh UI
 	void refresh();
 
-	//Add image
-	void addImage(std::string name);
-
-	//Remove image by name
-	void removeImage(std::string name);
-
-	//Remove image by index
-	void removeImage(unsigned int index);
-
-	//Swap image, swaps two indexes of images
-	void swapImage(unsigned int a, unsigned int b);
-
-	//Add answer key
-	void addKey(std::string name);
-
-	//Remove answer key
-	void removeKey(std::string name);
-
-	//Remove answer key by index
-	void removeKey(unsigned int index);
-
-	//Add configuration file
-	void addConfig(std::string name);
-
-	//Remove configuration file
-	void removeConfig(std::string name);
-
-	//Remove configuration file by index
-	void removeConfig(unsigned int index);
-
 	//Calculate results based on current settings
 	void calculate();
-
-	//Clear variables
-	void clearVariables();
 
 private:
 	Ui::ZopperScanAPIClass ui;
@@ -84,6 +51,12 @@ private:
 
 	//Initialize variables
 	void initVariables();
+
+	//Clear variables
+	void clearVariables();
+
+	//Get Image Data
+	void getImageData();
 
 	//Functions to connect signals and slots
 	void connectImage();
@@ -130,6 +103,36 @@ private:
 
 	//Percentage score out of total of analyzed images
 	std::vector<double> percentScore;
+
+	//Add image
+	void addImage(std::string name);
+
+	//Remove image by name
+	void removeImage(std::string name);
+
+	//Remove image by index
+	void removeImage(unsigned int index);
+
+	//Swap image, swaps two indexes of images
+	void swapImage(unsigned int a, unsigned int b);
+
+	//Add answer key
+	void addKey(std::string name);
+
+	//Remove answer key
+	void removeKey(std::string name);
+
+	//Remove answer key by index
+	void removeKey(unsigned int index);
+
+	//Add configuration file
+	void addConfig(std::string name);
+
+	//Remove configuration file
+	void removeConfig(std::string name);
+
+	//Remove configuration file by index
+	void removeConfig(unsigned int index);
 };
 
 #endif // ZOPPERSCANAPI_H

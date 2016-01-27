@@ -30,8 +30,11 @@ public:
 	//Calculate button
 	QPushButton *calculate;
 
+	//Status label
+	QLabel *status;
+
 	//Get scanfiles
-	std::vector<ScanFileWidget *> getScanFiles();
+	const std::vector<ScanFileWidget *>* getScanFiles();
 
 public slots:
 
@@ -66,7 +69,7 @@ private:
 	QLabel *fileLabel;
 	QLabel *configLabel;
 	QLabel *answerLabel;
-	QLabel *status;
+	QLabel *statusLabel;
 
 	//Widgets for buttons
 	std::vector<QWidget*> buttons;

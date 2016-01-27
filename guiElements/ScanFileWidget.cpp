@@ -55,7 +55,7 @@ void ScanFileWidget::updateAnswerKeys(const std::vector<std::string> &answerKeys
 }
 
 //Get path
-QUrl ScanFileWidget::getPath() {
+const QUrl ScanFileWidget::getPath() {
 	return *path;
 }
 

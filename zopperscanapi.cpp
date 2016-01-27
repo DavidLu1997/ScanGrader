@@ -18,6 +18,14 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	navbar->adjustSize();
 	setCentralWidget(navbar);
 
+	//Connect buttons
+	connectImage();
+	connectConfig();
+	connectExport();
+	connectKeys();
+	connectOptions();
+	connectResults();
+
 	//Set Size
 	QDesktopWidget dw;
 	setMinimumSize(dw.width() * 0.5, dw.height() * 0.5);
@@ -114,6 +122,15 @@ void ZopperScanAPI::refresh() {
 
 //Calculate results based on current settings
 void ZopperScanAPI::calculate() {
+	//Set status
+	navbar->image->status->setText("Calculating");
+
+	//Get config files
+	
+	//Get Keys
+
+	//Get images
+
 	//Configure answer keys
 	keys->clear();
 	for (unsigned int i = 0; i < keyPaths->size(); i++) {
@@ -145,6 +162,101 @@ void ZopperScanAPI::calculate() {
 		score.push_back(compare(answers[i], solutions[useKey->at(i)]));
 		percentScore.push_back((double)score[i] / answers[i].size());
 	}
+
+	//Set status
+	navbar->image->status->setText("Results available");
+}
+
+
+
+//**********Private Functions**********
+
+//Initialize variables
+void ZopperScanAPI::initVariables() {
+	images = new std::vector<AnalyzeImage>;
+	imagePaths = new std::vector<std::string>;
+	useKey = new std::vector<unsigned int>;
+	configPaths = new std::vector<std::string>;
+	keys = new std::vector<AnalyzeImage>;
+	keyPaths = new std::vector<std::string>;
+	useFile = new std::vector<unsigned int>;
+}
+
+//Clear variables
+void ZopperScanAPI::clearVariables() {
+	images->clear();
+	imagePaths->clear();
+	useKey->clear();
+	configPaths->clear();
+	keys->clear();
+	keyPaths->clear();
+	useFile->clear();
+	score.clear();
+	percentScore.clear();
+	answers.clear();
+	solutions.clear();
+}
+
+//Get image data
+void ZopperScanAPI::getImageData() {
+	//Clear variables
+	clearVariables();
+	
+	//Get image details
+	for (unsigned int i = 0; i < navbar->image->getScanFiles()->size(); i++) {
+		imagePaths->push_back(navbar->image->getScanFiles()->at(i)->getPath().toString().toStdString());
+		keyPaths->push_back(navbar->image->getScanFiles()->at(i)->getAnswerKey());
+		configPaths->push_back(navbar->image->getScanFiles()->at(i)->getConfigFile());
+
+	}
+}
+
+//Connect Image
+void ZopperScanAPI::connectImage() {
+	connect(navbar->image->add, SIGNAL(released()), this, SLOT(refresh()));
+	connect(navbar->image->calculate, SIGNAL(released()), this, SLOT(calculate()));
+}
+
+//Connect Keys
+void ZopperScanAPI::connectKeys() {
+
+}
+
+//Connect Config
+void ZopperScanAPI::connectConfig() {
+
+}
+
+//Connect Results
+void ZopperScanAPI::connectResults() {
+
+}
+
+//Connect Export
+void ZopperScanAPI::connectExport() {
+
+}
+
+//Connect Options
+void ZopperScanAPI::connectOptions() {
+
+}
+
+
+//Compare two int vectors, returns number of equalities
+//TODO Rewrite as template
+int ZopperScanAPI::compare(std::vector<int> a, std::vector<int> b) {
+	//Size equality check
+	if (a.size() != b.size()) {
+		return -1;
+	}
+	int result = 0;
+	for (unsigned int i = 0; i < a.size(); i++) {
+		if (a[i] == b[i]) {
+			result++;
+		}
+	}
+	return result;
 }
 
 //Add image
@@ -222,80 +334,4 @@ void ZopperScanAPI::removeConfig(std::string name) {
 //Remove configuration file by index
 void ZopperScanAPI::removeConfig(unsigned int index) {
 	configPaths->erase(keyPaths->begin() + index);
-}
-
-//Clear variables
-void ZopperScanAPI::clearVariables() {
-	images->clear();
-	imagePaths->clear();
-	useKey->clear();
-	configPaths->clear();
-	keys->clear();
-	keyPaths->clear();
-	useFile->clear();
-	score.clear();
-	percentScore.clear();
-	answers.clear();
-	solutions.clear();
-}
-
-//**********Private Functions**********
-
-//Initialize variables
-void ZopperScanAPI::initVariables() {
-	images = new std::vector<AnalyzeImage>;
-	imagePaths = new std::vector<std::string>;
-	useKey = new std::vector<unsigned int>;
-	configPaths = new std::vector<std::string>;
-	keys = new std::vector<AnalyzeImage>;
-	keyPaths = new std::vector<std::string>;
-	useFile = new std::vector<unsigned int>;
-}
-
-//Connect Image
-void ZopperScanAPI::connectImage() {
-	//connect(navbar->image->add, SIGNAL(released()), this, SLOT(refresh()));
-	
-}
-
-//Connect Keys
-void ZopperScanAPI::connectKeys() {
-
-}
-
-//Connect Config
-void ZopperScanAPI::connectConfig() {
-
-}
-
-//Connect Results
-void ZopperScanAPI::connectResults() {
-
-}
-
-//Connect Export
-void ZopperScanAPI::connectExport() {
-
-}
-
-//Connect Options
-void ZopperScanAPI::connectOptions() {
-
-}
-
-
-//Compare two int vectors, returns number of equalities
-//TODO Rewrite as template
-int ZopperScanAPI::compare(std::vector<int> a, std::vector<int> b) {
-	//Size equality check
-	if (a.size() != b.size()) {
-		return -1;
-	}
-	int result = 0;
-	for (unsigned int i = 0; i < a.size(); i++) {
-		if (a[i] == b[i]) {
-			result++;
-		}
-	}
-	return result;
 }

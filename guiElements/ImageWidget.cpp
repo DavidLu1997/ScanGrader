@@ -40,11 +40,19 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//Add calculate button to layout
 	layout->addWidget(calculate, 1000, 1);
 
-	//Create status
-	status = new QLabel("Status: IDLE");
-	status->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//Create status label
+	//statusLabel = new QLabel("Status: ");
+	//statusLabel->setAlignment(Qt::AlignRight);
+	//statusLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
 	//Add status label to layout
+	//layout->addWidget(statusLabel, 1000, 2);
+
+	//Create status
+	status = new QLabel("Idle");
+	status->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+	//ADd status to layout
 	layout->addWidget(status, 1000, 2);
 
 	//Add empty widget to take up size
@@ -71,10 +79,21 @@ ImageWidget::~ImageWidget() {
 	delete add;
 }
 
+//Get scanfiles
+const std::vector<ScanFileWidget *>* ImageWidget::getScanFiles() {
+	return &scanFiles;
+}
+
 //**********Public Slots**********
 
 //Refresh UI
 void ImageWidget::refresh() {
+	if (scanFiles.size() < 1) {
+		calculate->setEnabled(false);
+	}
+	else {
+		calculate->setEnabled(true);
+	}
 	layout->update();
 	update();
 }
@@ -123,6 +142,6 @@ void ImageWidget::addScanFileWidget(const QUrl &url) {
 	scanFiles.at(scanFiles.size() - 1)->updatePath(url);
 	initButtons();
 	layout->addWidget(buttons.at(buttons.size() - 1), buttons.size() + 1, 3);
-
+	status->setText("Idle");
 	refresh();
 }
