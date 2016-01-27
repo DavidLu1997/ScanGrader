@@ -1,4 +1,4 @@
-#include "ConfigFileWidget.hpp"
+#include "ConfigFileWidget.hpp"	 
 
 //Constructor
 ConfigFileWidget::ConfigFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QWidget *parent) {

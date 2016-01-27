@@ -9,22 +9,17 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	//Initialize answer key
 	answerKey = new QComboBox();
 
-	//Initialize config file
-	configFile = new QComboBox();
-
 	//Initialize row
 	row = r;
 
 	//Add widgets to header
 	layout->addWidget(file, row, 0);
 	layout->addWidget(answerKey, row, 1);
-	layout->addWidget(configFile, row, 2);
 }
 
 //Destructor
 ScanFileWidget::~ScanFileWidget() {
 	delete file;
-	delete configFile;
 	delete answerKey;
 }
 
@@ -36,32 +31,18 @@ void ScanFileWidget::updatePath(const QUrl &url) {
 	file->setText(path->fileName());
 }
 
-//Update config file list
-void ScanFileWidget::updateConfigFile(const std::vector<std::string> &configFiles) {
-	configFile->clear();
-
-	for (unsigned int i = 0; i < configFiles.size(); i++) {
-		configFile->addItem(QString(configFiles[i].c_str()));
-	}
-}
-
 //Update answer keys list
-void ScanFileWidget::updateAnswerKeys(const std::vector<std::string> &answerKeys) {
+void ScanFileWidget::updateAnswerKeys(const QList<QUrl> &urls) {
 	answerKey->clear();
 
-	for (unsigned int i = 0; i < answerKeys.size(); i++) {
-		answerKey->addItem(QString(answerKeys[i].c_str()));
+	for (unsigned int i = 0; i < urls.size(); i++) {
+		answerKey->addItem(urls.at(i).fileName());
 	}
 }
 
 //Get path
 const QUrl ScanFileWidget::getPath() {
 	return *path;
-}
-
-//Get selected config file
-std::string ScanFileWidget::getConfigFile() {
-	return configFile->currentText().toStdString();
 }
 
 //Get selected answer key

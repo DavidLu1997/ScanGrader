@@ -36,6 +36,9 @@ public:
 	//Get scanfiles
 	const std::vector<ScanFileWidget *>* getScanFiles();
 
+	//Update keys
+	void updateKeys(const QList<QUrl> &urls);
+
 public slots:
 
 	//Refresh UI

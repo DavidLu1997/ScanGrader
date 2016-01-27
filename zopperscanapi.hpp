@@ -43,6 +43,12 @@ public slots:
 	//Calculate results based on current settings
 	void calculate();
 
+	//Update configfile comboboxes
+	void updateConfig();
+
+	//Update answer key comboboxes
+	void updateKeys();
+
 private:
 	Ui::ZopperScanAPIClass ui;
 

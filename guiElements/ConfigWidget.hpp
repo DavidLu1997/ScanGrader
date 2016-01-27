@@ -30,6 +30,9 @@ public:
 	//Get file URL from file name
 	QUrl getFileUrl(std::string name);
 
+	//Push button
+	QPushButton *addConfig;
+
 public slots:
 	//Refresh
 	void refresh();
@@ -47,9 +50,6 @@ private:
 	//Header Labels
 	QLabel *name;
 	QLabel *path;
-
-	//Push button
-	QPushButton *addConfig;
 
 	//QWidgets for each file
 	std::vector<ConfigFileWidget *> configFiles;

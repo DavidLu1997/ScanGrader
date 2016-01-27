@@ -10,15 +10,11 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	fileLabel = new QLabel("<h3>Image</h3>");
 	fileLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	fileLabel->setTextFormat(Qt::RichText);
-	configLabel = new QLabel("<h3>Configuration File</h3>");
-	configLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	configLabel->setTextFormat(Qt::RichText);
 	answerLabel = new QLabel("<h3>Answer Key</h3>");
 	answerLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	answerLabel->setTextFormat(Qt::RichText);
 	layout->addWidget(fileLabel, 1, 0);
-	layout->addWidget(configLabel, 1, 1);
-	layout->addWidget(answerLabel, 1, 2);
+	layout->addWidget(answerLabel, 1, 1);
 
 	//Create add button
 	add = new QPushButton("Add Scan Image(s)");
@@ -65,9 +61,6 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	QWidget *empty3 = new QWidget();
 	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty3, 999, 2);
-	QWidget *empty4 = new QWidget();
-	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	layout->addWidget(empty4, 999, 3);
 
 	//Refresh
 	refresh();
@@ -82,6 +75,13 @@ ImageWidget::~ImageWidget() {
 //Get scanfiles
 const std::vector<ScanFileWidget *>* ImageWidget::getScanFiles() {
 	return &scanFiles;
+}
+
+//Update keys
+void ImageWidget::updateKeys(const QList<QUrl> &urls) {
+	for (unsigned int i = 0; i < scanFiles.size(); i++) {
+		scanFiles.at(i)->updateAnswerKeys(urls);
+	}
 }
 
 //**********Public Slots**********
@@ -141,7 +141,7 @@ void ImageWidget::addScanFileWidget(const QUrl &url) {
 	scanFiles.push_back(new ScanFileWidget(layout, scanFiles.size() + 2));
 	scanFiles.at(scanFiles.size() - 1)->updatePath(url);
 	initButtons();
-	layout->addWidget(buttons.at(buttons.size() - 1), buttons.size() + 1, 3);
+	layout->addWidget(buttons.at(buttons.size() - 1), buttons.size() + 1, 2);
 	status->setText("Idle");
 	refresh();
 }

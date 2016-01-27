@@ -26,17 +26,11 @@ public:
 	//Update path
 	void updatePath(const QUrl &url);
 
-	//Update config file list
-	void updateConfigFile(const std::vector<std::string> &configFiles);
-
 	//Update answer keys list
-	void updateAnswerKeys(const std::vector<std::string> &answerKeys);
+	void updateAnswerKeys(const QList<QUrl> &urls);
 
 	//Get path
 	const QUrl getPath();
-
-	//Get selected config file
-	std::string getConfigFile();
 
 	//Get selected answer key
 	std::string getAnswerKey();
@@ -52,9 +46,6 @@ private:
 	//File path
 	QUrl *path;
 	QLabel *file;
-
-	//Configuration file to use
-	QComboBox *configFile;
 	
 	//Answer key to use
 	QComboBox *answerKey;

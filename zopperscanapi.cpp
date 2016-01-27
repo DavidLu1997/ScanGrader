@@ -164,6 +164,33 @@ void ZopperScanAPI::calculate() {
 	navbar->image->status->setText("Results available");
 }
 
+//Update config file comboboxes
+void ZopperScanAPI::updateConfig() {
+	QList<QUrl> urls = navbar->config->getFileUrls();
+
+	//Fill comboboxes
+	navbar->key->updateConfig(urls);
+
+	//Local
+	configPaths->clear();
+	for (unsigned int i = 0; i < urls.size(); i++) {
+		configPaths->push_back(urls.at(i).toString().toStdString());
+	}
+}
+
+//Update answer key comboboxes
+void ZopperScanAPI::updateKeys() {
+	QList<QUrl> urls = navbar->key->getFileUrls();
+
+	//Fill comboboxes
+	navbar->image->updateKeys(urls);
+
+	//Local
+	keyPaths->clear();
+	for (unsigned int i = 0; i < urls.size(); i++) {
+		keyPaths->push_back(urls.at(i).toString().toStdString());
+	}
+}
 
 
 //**********Private Functions**********
@@ -217,17 +244,20 @@ void ZopperScanAPI::getImageData() {
 //Connect Image
 void ZopperScanAPI::connectImage() {
 	connect(navbar->image->add, SIGNAL(released()), this, SLOT(refresh()));
+	connect(navbar->image->add, SIGNAL(released()), this, SLOT(updateKeys()));
+	connect(navbar->image->add, SIGNAL(released()), this, SLOT(updateConfig()));
 	connect(navbar->image->calculate, SIGNAL(released()), this, SLOT(calculate()));
 }
 
 //Connect Keys
 void ZopperScanAPI::connectKeys() {
-
+	connect(navbar->key->addKey, SIGNAL(released()), this, SLOT(updateKeys()));
+	connect(navbar->key->addKey, SIGNAL(released()), this, SLOT(updateConfig()));
 }
 
 //Connect Config
 void ZopperScanAPI::connectConfig() {
-
+	connect(navbar->config->addConfig, SIGNAL(released()), this, SLOT(updateConfig()));
 }
 
 //Connect Results
