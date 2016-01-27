@@ -15,12 +15,12 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Add navbar to window
 	navbar = new NavBar(this);
+	navbar->adjustSize();
 	setCentralWidget(navbar);
 
 	//Set Size
-	adjustSize();
-	setMinimumWidth(435);
-	setMinimumHeight(400);
+	QDesktopWidget dw;
+	setMinimumSize(dw.width() * 0.5, dw.height() * 0.5);
 
 	//Hide toolbar
 	ui.mainToolBar->hide();
@@ -30,6 +30,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Set Title
 	setWindowTitle(tr("ScanGrader v%1").arg(version));
+	adjustSize();
 }
 
 ZopperScanAPI::~ZopperScanAPI()
@@ -108,6 +109,7 @@ std::string ZopperScanAPI::getConfig(unsigned int index) {
 //Refresh UI
 void ZopperScanAPI::refresh() {
 	adjustSize();
+	update();
 }
 
 //Calculate results based on current settings
