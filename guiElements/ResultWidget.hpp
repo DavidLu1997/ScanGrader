@@ -21,17 +21,25 @@ public:
 	~ResultWidget();
 
 	//Add row
-	void addRow(std::string id, std::vector<int> answers, std::vector<int> solutions);
+	void addRow(std::string id, const std::vector<int> &answers, const std::vector<int> &solutions);
 
 	//Remove row
 	void removeRow(std::string id);
 
+	enum exportType {CSV = 1, TXT = 0};
+
 public slots: 
 	
-	//Clear display
-	void clear();
+	//Refresh()
+	void refresh();
 
-	//Recalculate
+	//Clear display
+	void clearDisplay();
+
+	//Clear data
+	void clearData();
+
+	//Calculate
 	void calculate();
 
 	//Display calculated results
@@ -45,6 +53,9 @@ public slots:
 
 	//Change export name
 	void changeExportName(const QString &name);
+
+	//Change export type
+	void changeExportType(int type);
 
 private slots:
 	
@@ -60,15 +71,17 @@ private:
 
 	//Title Labels
 	QLabel *summary;
+	QLabel *idTitle;
 	QLabel *correctTitle;
 	QLabel *wrongTitle;
 	QLabel *totalTitle;
 	QLabel *percentTitle;
-	QLabel *deviationTitle;
 
 	//Buttons
-	QPushButton *refresh;
-	QPushButton *export;
+	QBoxLayout *buttonLayout;
+	QWidget *buttonWidget;
+	QPushButton *refreshButton;
+	QPushButton *exportButton;
 
 	//Information labels, vector
 	std::vector<QLabel *> id;
@@ -76,7 +89,6 @@ private:
 	std::vector<QLabel *> wrong;
 	std::vector<QLabel *> total;
 	std::vector<QLabel *> percent;
-	std::vector<QLabel *> deviation;
 
 	//Raw data
 	std::vector<std::string> idList;
@@ -86,15 +98,16 @@ private:
 	std::vector<int> wrongAnswers;
 	std::vector<int> totalQuestions;
 	std::vector<double> percentScore;
-	std::vector<double> deviationAverage;
 	double average;
 	double median;
-	double stdev;
-	double min;
-	double max;
+	int min;
+	int max;
 
 	//Export name
 	QString exportName;
+
+	//Export type
+	int exportT = exportType::CSV;
 };
 
 #endif
