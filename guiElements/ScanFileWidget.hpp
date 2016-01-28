@@ -35,10 +35,18 @@ public:
 	//Get selected answer key
 	std::string getAnswerKey();
 
+	//Remove
+	QPushButton *remove;
+
+	//Deleted
+	bool deleted = false;
+
 public slots:
 	
-private slots:
-	
+private slots :
+
+	//Delete
+	void setDeleted();
 private:
 	//Row
 	unsigned int row;

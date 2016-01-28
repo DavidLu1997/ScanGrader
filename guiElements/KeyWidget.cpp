@@ -33,14 +33,17 @@ KeyWidget::KeyWidget(QWidget *parent) {
 	QWidget *empty3 = new QWidget();
 	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty3, 999, 2);
-	QWidget *empty4 = new QWidget();
-	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	layout->addWidget(empty4, 999, 3);
 
 	//Initialize push button
 	addKey = new QPushButton("Add Answer Key");
+	addKey->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(addKey, 1000, 0);
 	connect(addKey, SIGNAL(released()), this, SLOT(addFiles()));
+
+	refreshButton = new QPushButton("Refresh");
+	refreshButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	layout->addWidget(refreshButton, 1000, 1);
+	connect(refreshButton, SIGNAL(released()), this, SLOT(refresh()));
 
 	setLayout(layout);
 }
@@ -67,6 +70,11 @@ void KeyWidget::refresh() {
 
 void KeyWidget::updateConfig(const QList<QUrl> &urls) {
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		if (keyFiles.at(i)->deleted) {
+			keyFiles.erase(keyFiles.begin() + i);
+			i--;
+			continue;
+		}
 		keyFiles.at(i)->updateConfigFiles(urls);
 	}
 }
@@ -75,6 +83,11 @@ std::vector<std::string> KeyWidget::getFileNames() {
 	std::vector<std::string> fileNames;
 
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		if (keyFiles.at(i)->deleted) {
+			keyFiles.erase(keyFiles.begin() + i);
+			i--;
+			continue;
+		}
 		fileNames.push_back(keyFiles.at(i)->getName().toStdString());
 	}
 
@@ -85,6 +98,11 @@ QList<QUrl> KeyWidget::getFileUrls() {
 	QList<QUrl> urls;
 
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		if (keyFiles.at(i)->deleted) {
+			keyFiles.erase(keyFiles.begin() + i);
+			i--;
+			continue;
+		}
 		urls.push_back(keyFiles.at(i)->getUrl());
 	}
 	return urls;
@@ -94,6 +112,11 @@ QUrl KeyWidget::getFileUrl(std::string name) {
 	//Simple search
 	//TODO: Optimize
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		if (keyFiles.at(i)->deleted) {
+			keyFiles.erase(keyFiles.begin() + i);
+			i--;
+			continue;
+		}
 		if (keyFiles.at(i)->getName().toStdString() == name) {
 			return keyFiles.at(i)->getUrl();
 		}

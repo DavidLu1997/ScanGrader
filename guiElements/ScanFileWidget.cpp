@@ -8,6 +8,10 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 
 	//Initialize answer key
 	answerKey = new QComboBox();
+	
+	//Initialize remove
+	remove = new QPushButton("Remove");
+	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));
 
 	//Initialize row
 	row = r;
@@ -15,12 +19,19 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	//Add widgets to header
 	layout->addWidget(file, row, 0);
 	layout->addWidget(answerKey, row, 1);
+	layout->addWidget(remove, row, 2);
 }
 
 //Destructor
 ScanFileWidget::~ScanFileWidget() {
+	
+}
+
+void ScanFileWidget::setDeleted() {
 	delete file;
 	delete answerKey;
+	delete remove;
+	deleted = true;
 }
 
 //**********Public Functions**********

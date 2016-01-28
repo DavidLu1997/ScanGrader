@@ -32,6 +32,7 @@ ConfigWidget::ConfigWidget(QWidget *parent) {
 
 	//Initialize push button
 	addConfig = new QPushButton("Add Configuration File");
+	addConfig->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(addConfig, 1000, 0);
 	connect(addConfig, SIGNAL(released()), this, SLOT(addFiles()));
 
@@ -72,6 +73,11 @@ QList<QUrl> ConfigWidget::getFileUrls() {
 	QList<QUrl> urls;
 
 	for (unsigned int i = 0; i < configFiles.size(); i++) {
+		if (configFiles.at(i)->deleted) {
+			configFiles.erase(configFiles.begin() + i);
+			i--;
+			continue;
+		}
 		urls.push_back(configFiles.at(i)->getUrl());
 	}
 	return urls;
@@ -81,6 +87,11 @@ QUrl ConfigWidget::getFileUrl(std::string name) {
 	//Simple search
 	//TODO: Optimize
 	for (unsigned int i = 0; i < configFiles.size(); i++) {
+		if (configFiles.at(i)->deleted) {
+			configFiles.erase(configFiles.begin() + i);
+			i--;
+			continue;
+		}
 		if (configFiles.at(i)->getName().toStdString() == name) {
 			return configFiles.at(i)->getUrl();
 		}

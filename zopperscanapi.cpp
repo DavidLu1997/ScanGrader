@@ -122,9 +122,6 @@ void ZopperScanAPI::refresh() {
 
 //Calculate results based on current settings
 void ZopperScanAPI::calculate() {
-	//Set status
-	navbar->image->status->setText("Calculating");
-
 	//Get data
 	getImageData();
 
@@ -159,9 +156,6 @@ void ZopperScanAPI::calculate() {
 		score.push_back(compare(answers[i], solutions[useKey->at(i)]));
 		percentScore.push_back((double)score[i] / answers[i].size());
 	}
-
-	//Set status
-	navbar->image->status->setText("Results available");
 }
 
 //Update config file comboboxes
@@ -247,12 +241,18 @@ void ZopperScanAPI::connectImage() {
 	connect(navbar->image->add, SIGNAL(released()), this, SLOT(updateKeys()));
 	connect(navbar->image->add, SIGNAL(released()), this, SLOT(updateConfig()));
 	connect(navbar->image->calculate, SIGNAL(released()), this, SLOT(calculate()));
+	connect(navbar->image->refreshButton, SIGNAL(released()), this, SLOT(updateKeys()));
+	connect(navbar->image->refreshButton, SIGNAL(released()), this, SLOT(updateConfig()));
+	connect(navbar->image->refreshButton, SIGNAL(released()), this, SLOT(refresh()));
 }
 
 //Connect Keys
 void ZopperScanAPI::connectKeys() {
 	connect(navbar->key->addKey, SIGNAL(released()), this, SLOT(updateKeys()));
 	connect(navbar->key->addKey, SIGNAL(released()), this, SLOT(updateConfig()));
+	connect(navbar->key->refreshButton, SIGNAL(released()), this, SLOT(updateKeys()));
+	connect(navbar->key->refreshButton, SIGNAL(released()), this, SLOT(updateConfig()));
+	connect(navbar->key->refreshButton, SIGNAL(released()), this, SLOT(refresh()));
 }
 
 //Connect Config

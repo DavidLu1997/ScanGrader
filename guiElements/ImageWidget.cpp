@@ -30,11 +30,18 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	calculate = new QPushButton("Calculate Score(s)");
 	calculate->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-	//Connect calculate
-	//connect(calculate, SIGNAL(released()), parent, SLOT(calculate()));
-
 	//Add calculate button to layout
 	layout->addWidget(calculate, 1000, 1);
+
+	//Create update button
+	refreshButton = new QPushButton("Refresh");
+	refreshButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+	//Add calculate button to layout
+	layout->addWidget(refreshButton, 1000, 2);
+
+	//Connect calculate
+	//connect(calculate, SIGNAL(released()), parent, SLOT(calculate()));
 
 	//Create status label
 	//statusLabel = new QLabel("Status: ");
@@ -45,11 +52,11 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//layout->addWidget(statusLabel, 1000, 2);
 
 	//Create status
-	status = new QLabel("Idle");
-	status->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//status = new QLabel("Idle");
+	////status->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-	//ADd status to layout
-	layout->addWidget(status, 1000, 2);
+	//Add status to layout
+	//layout->addWidget(status, 1000, 2);
 
 	//Add empty widget to take up size
 	QWidget *empty1 = new QWidget();
@@ -80,6 +87,11 @@ const std::vector<ScanFileWidget *>* ImageWidget::getScanFiles() {
 //Update keys
 void ImageWidget::updateKeys(const QList<QUrl> &urls) {
 	for (unsigned int i = 0; i < scanFiles.size(); i++) {
+		if (scanFiles.at(i)->deleted) {
+			scanFiles.erase(scanFiles.begin() + i);
+			i--;
+			continue;
+		}
 		scanFiles.at(i)->updateAnswerKeys(urls);
 	}
 }
@@ -103,7 +115,7 @@ void ImageWidget::refresh() {
 //Add File Dialog
 void ImageWidget::addFiles() {
 	directory = QFileDialog::getOpenFileUrls(this, "Open Image File", QUrl("/"), "Image Files (*.bmp)");
-
+	
 	for (unsigned int i = 0; i < directory.size(); i++) {
 		addScanFileWidget(directory.at(i));
 	}
@@ -111,37 +123,10 @@ void ImageWidget::addFiles() {
 
 //**********Private Functions**********
 
-//Initialize Buttons
-void ImageWidget::initButtons() {
-	//Initialize button widget
-	buttons.push_back(new QWidget());
-
-	//Initialize button layout
-	buttonLayout.push_back(new QBoxLayout(QBoxLayout::LeftToRight));
-
-	//Initialize remove button
-	removeButton.push_back(new QPushButton("Remove"));
-
-	//Add buttons to layout
-	buttonLayout.at(buttonLayout.size() - 1)->addWidget(removeButton.at(removeButton.size() - 1));
-
-	//Set Layout
-	buttons.at(buttons.size() - 1)->setLayout(buttonLayout.at(buttonLayout.size() - 1));
-
-	//Connect buttons
-	connect(removeButton.at(removeButton.size() - 1), SIGNAL(released()), scanFiles.at(scanFiles.size() - 1), SLOT(deleteLater()));
-	connect(removeButton.at(removeButton.size() - 1), SIGNAL(released()), buttons.at(buttons.size() - 1), SLOT(deleteLater()));
-
-	//Connect all buttons to refresh
-	connect(removeButton.at(removeButton.size() - 1), SIGNAL(released()), this, SLOT(refresh()));
-}
-
 //Add ScanFileWidget
 void ImageWidget::addScanFileWidget(const QUrl &url) {
 	scanFiles.push_back(new ScanFileWidget(layout, scanFiles.size() + 2));
 	scanFiles.at(scanFiles.size() - 1)->updatePath(url);
-	initButtons();
-	layout->addWidget(buttons.at(buttons.size() - 1), buttons.size() + 1, 2);
-	status->setText("Idle");
+	connect(scanFiles.at(scanFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
 	refresh();
 }

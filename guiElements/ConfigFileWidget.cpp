@@ -9,14 +9,19 @@ ConfigFileWidget::ConfigFileWidget(QUrl URL, QGridLayout *layout, unsigned int r
 	layout->addWidget(path, row, 1);
 	remove = new QPushButton("Remove");
 	layout->addWidget(remove, row, 2);
-	connect(remove, SIGNAL(released()), this, SLOT(deleteLater()));
+	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));
 }
 
 //Destructor
 ConfigFileWidget::~ConfigFileWidget() {
+	
+}
+
+void ConfigFileWidget::setDeleted() {
 	delete name;
 	delete path;
 	delete remove;
+	deleted = true;
 }
 
 //Get URL

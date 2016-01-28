@@ -30,8 +30,11 @@ public:
 	//Calculate button
 	QPushButton *calculate;
 
+	//Update button
+	QPushButton *refreshButton;
+
 	//Status label
-	QLabel *status;
+	//QLabel *status;
 
 	//Get scanfiles
 	const std::vector<ScanFileWidget *>* getScanFiles();
@@ -65,23 +68,11 @@ private:
 	//Menu labout
 	QBoxLayout *menuLayout;
 
-	//Initialize buttons
-	void initButtons();
-
 	//Header labels
 	QLabel *fileLabel;
 	QLabel *configLabel;
 	QLabel *answerLabel;
-	QLabel *statusLabel;
-
-	//Widgets for buttons
-	std::vector<QWidget*> buttons;
-
-	//Layouts for buttons
-	std::vector<QBoxLayout*> buttonLayout;
-
-	//Remove buttons
-	std::vector<QPushButton*> removeButton;
+	//QLabel *statusLabel;
 };
 
 #endif

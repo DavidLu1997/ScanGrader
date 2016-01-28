@@ -34,10 +34,14 @@ public:
 	//Remove button
 	QPushButton *remove;
 
+	//Deleted
+	bool deleted = false;
+
 public slots:
 
 private slots :
-	
+	//Deleted
+	void setDeleted();
 
 private:
 

@@ -37,6 +37,9 @@ public:
 	//Push button
 	QPushButton *addKey;
 
+	//Refresh button
+	QPushButton *refreshButton;
+
 public slots:
 
 	//Add answer key files

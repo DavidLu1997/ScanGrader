@@ -27,10 +27,12 @@ public:
 	//Remove button
 	QPushButton *remove;
 
+	bool deleted = false;
+
 public slots:
 
-private slots:
-
+private slots :
+	void setDeleted();
 private:
 	
 	//Url
