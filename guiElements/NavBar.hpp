@@ -38,6 +38,9 @@ public:
 	//Export widget
 	ExportWidget *exportW; //Not named export due to keyword
 
+	//About widget
+	AboutWidget *about;
+
 private:
 	
 	//ScrollAreas
@@ -47,6 +50,7 @@ private:
 	QScrollArea *resultScroll;
 	QScrollArea *optionScroll;
 	QScrollArea *exportWScroll;
+	QScrollArea *aboutScroll;
 };
 
 #endif // NAVBAR_H

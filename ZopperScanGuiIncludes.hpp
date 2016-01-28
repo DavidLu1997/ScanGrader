@@ -6,3 +6,4 @@
 #include "guiElements\OptionWidget.hpp"
 #include "guiElements\ResultWidget.hpp"
 #include "guiElements\ScanFileWidget.hpp"
+#include "guiElements\AboutWidget.hpp"

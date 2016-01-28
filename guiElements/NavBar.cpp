@@ -46,6 +46,13 @@ NavBar::NavBar(QWidget *parent) {
 	optionScroll->setWidget(option);
 	addTab(optionScroll, "Options");
 
+	//About Widget
+	about = new AboutWidget(this);
+	aboutScroll = new QScrollArea;
+	aboutScroll->setWidgetResizable(true);
+	aboutScroll->setWidget(about);
+	addTab(aboutScroll, "About");
+
 	setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 }
 
@@ -63,4 +70,6 @@ NavBar::~NavBar() {
 	delete exportWScroll;
 	delete option;
 	delete optionScroll;
+	delete about;
+	delete aboutScroll;
 }
