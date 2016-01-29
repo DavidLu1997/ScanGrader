@@ -1,5 +1,6 @@
 #include "ResultWidget.hpp"
 #include <algorithm>
+#include <fstream>
 
 //Constructor
 ResultWidget::ResultWidget(QWidget *parent) {
@@ -44,6 +45,8 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	percentTitle = new QLabel("<h3>Percentage Score</h3>");
 	percentTitle->setTextFormat(Qt::RichText);
 	percentTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+	exportName = QString("Results");
 }
 
 //Destructor
@@ -205,12 +208,40 @@ void ResultWidget::display() {
 
 //Export results to CSV
 void ResultWidget::exportCSV() {
+	std::ofstream out(exportName.toStdString() + ".csv", std::ios::out);
 
+	//Print out summary
+	out << "Average:," << average << ",Median:," << median << ",Minimum:," << min << ",Maximum:," << max << std::endl;
+
+	//Print out results
+	for (unsigned int i = 0; i < idList.size(); i++) {
+		out << idList[i] << ",";
+		out << correctAnswers[i] << ",";
+		out << wrongAnswers[i] << ",";
+		out << totalQuestions[i] << ",";
+		out << percentScore[i] << std::endl;
+	}
+
+	out.close();
 }
 
 //Export to txt
 void ResultWidget::exportTXT() {
+	std::ofstream out(exportName.toStdString() + ".txt", std::ios::out);
 
+	//Print out summary
+	out << "Average: " << average << "\nMedian: " << median << "\nMinimum: " << min << "\nMaximum: " << max << std::endl;
+
+	//Print out results
+	for (unsigned int i = 0; i < idList.size(); i++) {
+		out << idList[i] << " ";
+		out << correctAnswers[i] << " ";
+		out << wrongAnswers[i] << " ";
+		out << totalQuestions[i] << " ";
+		out << percentScore[i] << std::endl;
+	}
+
+	out.close();
 }
 
 //Change export name
