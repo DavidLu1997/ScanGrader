@@ -26,7 +26,7 @@ public:
 	//Remove row
 	void removeRow(std::string id);
 
-	enum exportType {CSV = 1, TXT = 0};
+	enum fileType {CSV = 1, TXT = 0};
 
 public slots: 
 	
@@ -104,10 +104,10 @@ private:
 	int max;
 
 	//Export name
-	QString exportName;
+	std::string exportName;
 
 	//Export type
-	int exportT = exportType::CSV;
+	std::string exportType;
 };
 
 #endif

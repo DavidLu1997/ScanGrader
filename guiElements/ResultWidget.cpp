@@ -14,7 +14,7 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	buttonLayout->addWidget(refreshButton);
 	exportButton = new QPushButton("Export");
 	buttonLayout->addWidget(exportButton);
-	changeExportType(exportType::CSV);
+	changeExportType(fileType::CSV);
 	buttonWidget->setLayout(buttonLayout);
 
 	//Layout
@@ -207,8 +207,8 @@ void ResultWidget::display() {
 }
 
 //Export results to CSV
-void ResultWidget::exportCSV() {
-	std::ofstream out(exportName.toStdString() + ".csv", std::ios::out);
+void ResultWidget::exportToFile() {
+	std::ofstream out(exportName + exportType, std::ios::out);
 
 	//Print out summary
 	out << "Average:," << average << ",Median:," << median << ",Minimum:," << min << ",Maximum:," << max << std::endl;
@@ -225,31 +225,21 @@ void ResultWidget::exportCSV() {
 	out.close();
 }
 
-//Export to txt
-void ResultWidget::exportTXT() {
-	std::ofstream out(exportName.toStdString() + ".txt", std::ios::out);
-
-	//Print out summary
-	out << "Average: " << average << "\nMedian: " << median << "\nMinimum: " << min << "\nMaximum: " << max << std::endl;
-
-	//Print out results
-	for (unsigned int i = 0; i < idList.size(); i++) {
-		out << idList[i] << " ";
-		out << correctAnswers[i] << " ";
-		out << wrongAnswers[i] << " ";
-		out << totalQuestions[i] << " ";
-		out << percentScore[i] << std::endl;
-	}
-
-	out.close();
-}
-
 //Change export name
 void ResultWidget::changeExportName(const QString &name) {
-	exportName = name;
+	exportName = name.toStdString();
 }
 
 //Change export type
 void ResultWidget::changeExportType(int type) {
-	exportT = type;
+	switch (type) {
+	case fileType::CSV:
+		exportType = ".csv";
+		break;
+	case fileType::TXT:
+		exportType = ".txt";
+		break;
+	default:
+		break;
+	}
 }
