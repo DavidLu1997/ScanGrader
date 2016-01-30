@@ -45,11 +45,8 @@ public slots:
 	//Display calculated results
 	void display();
 
-	//Export results to CSV
-	void exportCSV();
-
-	//Export to txt
-	void exportTXT();
+	//Export results
+	void exportToFile();
 
 	//Change export name
 	void changeExportName(const QString &name);
