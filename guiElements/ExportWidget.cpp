@@ -53,6 +53,7 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	portLabel = new QLabel("Port: ");
 	sqlLayout->addWidget(portLabel, 2, 0);
 	port = new QLineEdit();
+	port->setValidator(new QIntValidator(0, 10000, this));
 	sqlLayout->addWidget(port, 2, 1);
 	userLabel = new QLabel("Username: ");
 	sqlLayout->addWidget(userLabel, 3, 0);
@@ -61,7 +62,7 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	passwordLabel = new QLabel("Password: ");
 	sqlLayout->addWidget(passwordLabel, 4, 0);
 	password = new QLineEdit();
-	password->setEchoMode(QLineEdit::Password);
+	password->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 	sqlLayout->addWidget(password, 4, 1);
 	test = new QPushButton("Test Connection");
 	sqlLayout->addWidget(test, 5, 0);
@@ -123,7 +124,6 @@ ExportWidget::~ExportWidget() {
 	delete userLabel;
 	delete password;
 	delete passwordLabel;
-	delete apply;
 	delete fileButton;
 	delete sqlButton;
 	delete fileWidget;

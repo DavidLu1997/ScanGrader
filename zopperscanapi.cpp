@@ -262,7 +262,15 @@ void ZopperScanAPI::connectConfig() {
 
 //Connect Results
 void ZopperScanAPI::connectResults() {
-
+	//Connect export lines
+	connect(navbar->exportW->fileName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeExportName(const QString)));
+	connect(navbar->exportW->fileType, SIGNAL(currentIndexChanged(int)), navbar->result, SLOT(changeExportType(int)));
+	connect(navbar->exportW->radioButtons, SIGNAL(buttonReleased(int)), navbar->result, SLOT(changeExportType(int)));
+	connect(navbar->exportW->hostName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeHostName(const QString)));
+	connect(navbar->exportW->databaseName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeDatabaseName(const QString)));
+	connect(navbar->exportW->port, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changePort(const QString)));
+	connect(navbar->exportW->user, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeUserName(const QString)));
+	connect(navbar->exportW->password, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changePassword(const QString)));
 }
 
 //Connect Export

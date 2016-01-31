@@ -267,6 +267,31 @@ void ResultWidget::changeExportName(const QString &name) {
 }
 
 //Change export type
-void ResultWidget::changeExportType(fileType type) {
+void ResultWidget::changeExportType(int type) {
 	exportType = type;
+}
+
+//Change host name
+void ResultWidget::changeHostName(const QString &name) {
+	serverHostName = name;
+}
+
+//Change databaseName
+void ResultWidget::changeDatabaseName(const QString &name) {
+	serverDatabaseName = name;
+}
+
+//Change port
+void ResultWidget::changePort(const QString &name) {
+	port = name.toInt();
+}
+
+//Change userName
+void ResultWidget::changeUserName(const QString &name) {
+	serverUserName = name;
+}
+
+//Change password
+void ResultWidget::changePassword(const QString &name) {
+	serverPassword = name;
 }

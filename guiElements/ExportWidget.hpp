@@ -48,9 +48,6 @@ public:
 	QLineEdit *password;
 	QLabel *passwordLabel;
 
-	//Apply
-	QPushButton *apply;
-
 	//Test
 	QPushButton *test;
 

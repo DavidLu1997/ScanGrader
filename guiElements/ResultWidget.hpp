@@ -58,7 +58,22 @@ public slots:
 	void changeExportName(const QString &name);
 
 	//Change export type
-	void changeExportType(fileType type);
+	void changeExportType(int type);
+
+	//Change host name
+	void changeHostName(const QString &name);
+
+	//Change databaseName
+	void changeDatabaseName(const QString &name);
+
+	//Change port
+	void changePort(const QString &name);
+
+	//Change userName
+	void changeUserName(const QString &name);
+
+	//Change password
+	void changePassword(const QString &name);
 
 private slots:
 	
@@ -110,7 +125,7 @@ private:
 	std::string exportName;
 
 	//Export type
-	fileType exportType;
+	int exportType;
 
 	//Server information
 	QString serverHostName;
