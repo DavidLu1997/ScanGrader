@@ -42,25 +42,31 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	fileWidget->setLayout(fileLayout);
 
 	//SQL
-	serverLabel = new QLabel("Server Name: ");
-	sqlLayout->addWidget(serverLabel, 0, 0);
-	serverName = new QLineEdit();
-	sqlLayout->addWidget(serverName, 0, 1);
+	hostLabel = new QLabel("Host Name: ");
+	sqlLayout->addWidget(hostLabel, 0, 0);
+	hostName = new QLineEdit();
+	sqlLayout->addWidget(hostName, 0, 1);
+	databaseLabel = new QLabel("Database Name: ");
+	sqlLayout->addWidget(databaseLabel, 1, 0);
+	databaseName = new QLineEdit();
+	sqlLayout->addWidget(databaseName, 1, 1);
 	portLabel = new QLabel("Port: ");
-	sqlLayout->addWidget(portLabel, 1, 0);
+	sqlLayout->addWidget(portLabel, 2, 0);
 	port = new QLineEdit();
-	sqlLayout->addWidget(port, 1, 1);
+	sqlLayout->addWidget(port, 2, 1);
 	userLabel = new QLabel("Username: ");
-	sqlLayout->addWidget(userLabel, 2, 0);
+	sqlLayout->addWidget(userLabel, 3, 0);
 	user = new QLineEdit();
-	sqlLayout->addWidget(user, 2, 1);
+	sqlLayout->addWidget(user, 3, 1);
 	passwordLabel = new QLabel("Password: ");
-	sqlLayout->addWidget(passwordLabel, 3, 0);
+	sqlLayout->addWidget(passwordLabel, 4, 0);
 	password = new QLineEdit();
 	password->setEchoMode(QLineEdit::Password);
-	sqlLayout->addWidget(password, 3, 1);
+	sqlLayout->addWidget(password, 4, 1);
 	test = new QPushButton("Test Connection");
-	sqlLayout->addWidget(test, 4, 0);
+	sqlLayout->addWidget(test, 5, 0);
+	connectStatus = new QLabel("Untested");
+	sqlLayout->addWidget(connectStatus, 5, 1);
 	QWidget *empty3 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	sqlLayout->addWidget(empty3, 999, 0);
@@ -79,8 +85,6 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	layout->addWidget(sqlButton, 1, 1);
 	layout->addWidget(fileWidget, 2, 0);
 	layout->addWidget(sqlWidget, 2, 1);
-	apply = new QPushButton("Apply");
-	layout->addWidget(apply, 1000, 0);
 	QWidget *empty5 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty5, 999, 0);
@@ -91,6 +95,12 @@ ExportWidget::ExportWidget(QWidget *parent) {
 
 	//Connect
 	connect(radioButtons, SIGNAL(buttonReleased(int)), this, SLOT(selectionChanged(int)));
+	connect(test, SIGNAL(released()), this, SLOT(testConnection()));
+	connect(hostName, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	connect(databaseName, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	connect(port, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	connect(user, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	connect(password, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
 	fileButton->setChecked(true);
 	selectionChanged(1);
 	
@@ -103,8 +113,10 @@ ExportWidget::~ExportWidget() {
 	delete fileLabel;
 	delete fileType;
 	delete fileTypeLabel;
-	delete serverName;
-	delete serverLabel;
+	delete hostName;
+	delete hostLabel;
+	delete databaseName;
+	delete databaseLabel;
 	delete port;
 	delete portLabel;
 	delete user;
@@ -137,4 +149,20 @@ void ExportWidget::selectionChanged(int id) {
 	default:
 		break;
 	}
+}
+
+//Test connection
+void ExportWidget::testConnection() {
+	//TODO Test
+	if (connectionGood) {
+		connectStatus->setText("Connection Successful");
+	}
+	else {
+		connectStatus->setText("Connection Failed");
+	}
+}
+
+//Reset status
+void ExportWidget::statusReset(const QString &text) {
+	connectStatus->setText("Untested");
 }

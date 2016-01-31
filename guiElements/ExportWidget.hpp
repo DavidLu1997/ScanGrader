@@ -37,8 +37,10 @@ public:
 	QLabel *fileTypeLabel;
 
 	//Server info
-	QLineEdit *serverName;
-	QLabel *serverLabel;
+	QLineEdit *hostName;
+	QLabel *hostLabel;
+	QLineEdit *databaseName;
+	QLabel *databaseLabel;
 	QLineEdit *port;
 	QLabel *portLabel;
 	QLineEdit *user;
@@ -52,9 +54,18 @@ public:
 	//Test
 	QPushButton *test;
 
+	//Connection good
+	bool connectionGood = false;
+
 public slots:
 	//Change selection
 	void selectionChanged(int id);
+
+	//Test connection
+	void testConnection();
+
+	//Status reset
+	void statusReset(const QString &text);
 
 private slots:
 	
@@ -75,6 +86,9 @@ private:
 	QGridLayout *fileLayout;
 	QWidget *sqlWidget;
 	QGridLayout *sqlLayout;
+
+	//Connection status
+	QLabel *connectStatus;
 };
 
 #endif

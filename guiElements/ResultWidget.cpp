@@ -206,7 +206,24 @@ void ResultWidget::display() {
 	update();
 }
 
-//Export results
+//Export Results
+void ResultWidget::exportResults() {
+	switch (exportType) {
+	case CSV:
+		exportToFile();
+		break;
+	case TXT:
+		exportToFile();
+		break;
+	case SQL:
+		exportToServer();
+		break;
+	default:
+		break;
+	}
+}
+
+//Export results to file
 void ResultWidget::exportToFile() {
 	std::string fileName;
 	char delimiter = ' ';
@@ -237,6 +254,11 @@ void ResultWidget::exportToFile() {
 	}
 
 	out.close();
+}
+
+//Export results to server
+void ResultWidget::exportToServer() {
+
 }
 
 //Change export name

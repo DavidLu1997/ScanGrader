@@ -26,7 +26,7 @@ public:
 	//Remove row
 	void removeRow(std::string id);
 
-	enum fileType {CSV = 1, TXT = 0};
+	enum fileType {CSV = 0, TXT = 1, SQL = 2};
 
 public slots: 
 	
@@ -45,8 +45,14 @@ public slots:
 	//Display calculated results
 	void display();
 
-	//Export results
+	//Export Results
+	void exportResults();
+
+	//Export results to file
 	void exportToFile();
+
+	//Export results to server
+	void exportToServer();
 
 	//Change export name
 	void changeExportName(const QString &name);
@@ -105,6 +111,13 @@ private:
 
 	//Export type
 	fileType exportType;
+
+	//Server information
+	QString serverHostName;
+	QString serverDatabaseName;
+	int port;
+	QString serverUserName;
+	QString serverPassword;
 };
 
 #endif
