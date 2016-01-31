@@ -46,7 +46,7 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	percentTitle->setTextFormat(Qt::RichText);
 	percentTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 
-	exportName = QString("Results");
+	exportName = "Results";
 }
 
 //Destructor
@@ -206,19 +206,33 @@ void ResultWidget::display() {
 	update();
 }
 
-//Export results to CSV
+//Export results
 void ResultWidget::exportToFile() {
-	std::ofstream out(exportName + exportType, std::ios::out);
+	std::string fileName;
+	char delimiter = ' ';
+
+	switch (exportType) {
+	case fileType::CSV:
+		delimiter = ',';
+		fileName = exportName + ".csv";
+		break;
+	case fileType::TXT:
+		delimiter = ' ';
+		fileName = exportName + ".txt";
+		break;
+	}
+
+	std::ofstream out(fileName, std::ios::out);
 
 	//Print out summary
-	out << "Average:," << average << ",Median:," << median << ",Minimum:," << min << ",Maximum:," << max << std::endl;
+	out << "Average:" << delimiter << average << delimiter << "Median:" << delimiter << median << delimiter << "Minimum:" << delimiter << min << delimiter << "Maximum:" << delimiter << max << std::endl;
 
 	//Print out results
 	for (unsigned int i = 0; i < idList.size(); i++) {
-		out << idList[i] << ",";
-		out << correctAnswers[i] << ",";
-		out << wrongAnswers[i] << ",";
-		out << totalQuestions[i] << ",";
+		out << idList[i] << delimiter;
+		out << correctAnswers[i] << delimiter;
+		out << wrongAnswers[i] << delimiter;
+		out << totalQuestions[i] << delimiter;
 		out << percentScore[i] << std::endl;
 	}
 
@@ -231,15 +245,6 @@ void ResultWidget::changeExportName(const QString &name) {
 }
 
 //Change export type
-void ResultWidget::changeExportType(int type) {
-	switch (type) {
-	case fileType::CSV:
-		exportType = ".csv";
-		break;
-	case fileType::TXT:
-		exportType = ".txt";
-		break;
-	default:
-		break;
-	}
+void ResultWidget::changeExportType(fileType type) {
+	exportType = type;
 }

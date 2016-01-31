@@ -52,7 +52,7 @@ public slots:
 	void changeExportName(const QString &name);
 
 	//Change export type
-	void changeExportType(int type);
+	void changeExportType(fileType type);
 
 private slots:
 	
@@ -104,7 +104,7 @@ private:
 	std::string exportName;
 
 	//Export type
-	std::string exportType;
+	fileType exportType;
 };
 
 #endif
