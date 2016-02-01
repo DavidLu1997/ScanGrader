@@ -80,7 +80,8 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	//Main widget
 	layout = new QGridLayout();
 
-	intro = new QLabel("Export type: ");
+	intro = new QLabel("<h3>Export type:</h3>");
+	intro->setTextFormat(Qt::RichText); 
 	layout->addWidget(intro, 0, 0);
 	layout->addWidget(fileButton, 1, 0);
 	layout->addWidget(sqlButton, 1, 1);
