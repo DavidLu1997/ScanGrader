@@ -11,7 +11,7 @@ AboutWidget::AboutWidget(QWidget *parent) {
 	layout->addWidget(title);
 	desc = new QLabel("Lorem ipsum I don't know how this goes.");
 	layout->addWidget(desc);
-	authors = new QLabel("<b>David Lu</b> and <b>Anmol Mago</b>");
+	authors = new QLabel("<b>David Lu</b>");
 	authors->setTextFormat(Qt::RichText);
 	layout->addWidget(authors);
 	version = new QLabel();
