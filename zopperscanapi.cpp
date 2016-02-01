@@ -43,14 +43,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 ZopperScanAPI::~ZopperScanAPI()
 {
-	delete navbar;
-	delete images;
-	delete imagePaths;
-	delete useKey;
-	delete configPaths;
-	delete keys;
-	delete keyPaths;
-	delete useFile;
+
 }
 
 //**********Public Functions**********

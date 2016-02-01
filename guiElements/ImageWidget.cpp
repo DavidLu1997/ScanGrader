@@ -93,10 +93,7 @@ ImageWidget::~ImageWidget() {
 	delete add;
 	delete calculate;
 	delete refreshButton;
-	delete menuLayout;
 	delete fileLabel;
-	delete configLabel;
-	delete answerLabel;
 	scanFiles.clear();
 }
 

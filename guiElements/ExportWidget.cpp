@@ -130,9 +130,6 @@ ExportWidget::~ExportWidget() {
 	delete fileWidget;
 	delete sqlWidget;
 	delete layout;
-	delete fileLayout;
-	delete sqlLayout;
-	delete test;
 }
 
 //Change selection

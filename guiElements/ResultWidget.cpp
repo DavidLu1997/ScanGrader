@@ -53,7 +53,6 @@ ResultWidget::ResultWidget(QWidget *parent) {
 ResultWidget::~ResultWidget() {
 	delete layout;
 	delete table;
-	delete tableLayout;
 	delete summary;
 	delete idTitle;
 	delete correctTitle;
