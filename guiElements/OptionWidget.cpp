@@ -24,7 +24,7 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	threshold->setTickPosition(QSlider::TicksBothSides);
 	layout->addWidget(threshold, 1, 2);
 	thresholdValue = new QSpinBox();
-	thresholdValue->setMaximumWidth(50);
+	thresholdValue->setMaximumWidth(100);
 	thresholdValue->setRange(0, 255);
 	thresholdValue->setSingleStep(1);
 	thresholdValue->setValue(defaultThreshold);
@@ -44,8 +44,9 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	percent->setTickPosition(QSlider::TicksBothSides);
 	layout->addWidget(percent, 2, 2);
 	percentValue = new QSpinBox();
-	percentValue->setMaximumWidth(50);
+	percentValue->setMaximumWidth(100);
 	percentValue->setSingleStep(1);
+	percentValue->setRange(0, 100);
 	percentValue->setValue(defaultPercent);
 	percentValue->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(percentValue, 2, 1);

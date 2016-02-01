@@ -28,7 +28,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Set Size
 	QDesktopWidget dw;
-	setMinimumSize(dw.width() * 0.5, dw.height() * 0.5);
+	setMinimumSize(dw.width() * 0.4, dw.height() * 0.4);
 
 	//Hide toolbar
 	ui.mainToolBar->hide();
