@@ -33,6 +33,21 @@ KeyWidget::KeyWidget(QWidget *parent) {
 	QWidget *empty3 = new QWidget();
 	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty3, 999, 2);
+	QWidget *empty4 = new QWidget();
+	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty4, 0, 4);
+	QWidget *empty5 = new QWidget();
+	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty5, 1, 4);
+	QWidget *empty6 = new QWidget();
+	empty6->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty6, 2, 4);
+
+	layout->setColumnStretch(0, 10);
+	layout->setColumnStretch(1, 10);
+	layout->setColumnStretch(2, 10);
+	layout->setColumnStretch(3, 0);
+	layout->setColumnStretch(4, 100);
 
 	//Initialize push button
 	addKey = new QPushButton("Add Answer Key");
@@ -53,6 +68,7 @@ KeyWidget::~KeyWidget() {
 	delete name;
 	delete path;
 	delete addKey;
+	keyFiles.clear();
 }
 
 void KeyWidget::addFiles() {

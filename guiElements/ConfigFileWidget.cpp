@@ -14,7 +14,9 @@ ConfigFileWidget::ConfigFileWidget(QUrl URL, QGridLayout *layout, unsigned int r
 
 //Destructor
 ConfigFileWidget::~ConfigFileWidget() {
-	
+	delete name;
+	delete path;
+	delete remove;
 }
 
 void ConfigFileWidget::setDeleted() {

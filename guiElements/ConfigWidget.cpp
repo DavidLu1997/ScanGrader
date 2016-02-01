@@ -29,6 +29,20 @@ ConfigWidget::ConfigWidget(QWidget *parent) {
 	QWidget *empty3 = new QWidget();
 	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty3, 999, 2);
+	QWidget *empty4 = new QWidget();
+	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty4, 0, 3);
+	QWidget *empty5 = new QWidget();
+	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty5, 1, 3);
+	QWidget *empty6 = new QWidget();
+	empty6->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty6, 2, 3);
+
+	layout->setColumnStretch(0, 10);
+	layout->setColumnStretch(1, 10);
+	layout->setColumnStretch(2, 0);
+	layout->setColumnStretch(3, 100);
 
 	//Initialize push button
 	addConfig = new QPushButton("Add Configuration File");
@@ -44,6 +58,7 @@ ConfigWidget::~ConfigWidget() {
 	delete name;
 	delete path;
 	delete addConfig;
+	configFiles.clear();
 }
 
 void ConfigWidget::addFiles() {

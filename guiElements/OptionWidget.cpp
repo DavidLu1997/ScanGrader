@@ -24,10 +24,11 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	threshold->setTickPosition(QSlider::TicksBothSides);
 	layout->addWidget(threshold, 1, 2);
 	thresholdValue = new QSpinBox();
-	//thresholdValue->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	thresholdValue->setMaximumWidth(50);
 	thresholdValue->setRange(0, 255);
 	thresholdValue->setSingleStep(1);
 	thresholdValue->setValue(defaultThreshold);
+	thresholdValue->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(thresholdValue, 1, 1);
 
 	//Percent
@@ -43,10 +44,10 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	percent->setTickPosition(QSlider::TicksBothSides);
 	layout->addWidget(percent, 2, 2);
 	percentValue = new QSpinBox();
-	//percentValue->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	percentValue->setRange(0, 100);
+	percentValue->setMaximumWidth(50);
 	percentValue->setSingleStep(1);
 	percentValue->setValue(defaultPercent);
+	percentValue->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(percentValue, 2, 1);
 
 	//Default
@@ -65,6 +66,15 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	QWidget *empty3 = new QWidget();
 	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty3, 999, 2);
+	QWidget *empty4 = new QWidget();
+	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty4, 0, 3);
+	QWidget *empty5 = new QWidget();
+	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty5, 1, 3);
+	QWidget *empty6 = new QWidget();
+	empty6->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty6, 2, 3);
 
 	//Connect
 	connect(threshold, SIGNAL(valueChanged(int)), this, SLOT(thresholdChanged(int)));
@@ -73,7 +83,12 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	connect(percentValue, SIGNAL(valueChanged(int)), this, SLOT(percentChanged(int)));
 	connect(defaultSettings, SIGNAL(released()), this, SLOT(revertDefault()));
 	connect(newDefault, SIGNAL(released()), this, SLOT(setDefault()));
+
 	//Set Layout
+	layout->setColumnStretch(0, 0);
+	layout->setColumnStretch(1, 0);
+	layout->setColumnStretch(2, 100);
+	layout->setColumnStretch(3, 100);
 	setLayout(layout);
 }
 

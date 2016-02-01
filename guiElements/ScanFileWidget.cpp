@@ -24,7 +24,10 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 
 //Destructor
 ScanFileWidget::~ScanFileWidget() {
-	
+	delete remove;
+	delete path;
+	delete file;
+	delete answerKey;
 }
 
 void ScanFileWidget::setDeleted() {
