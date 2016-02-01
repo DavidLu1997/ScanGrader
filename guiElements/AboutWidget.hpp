@@ -5,6 +5,8 @@
 #define ABOUTWIDGET_H
 
 #include <QtWidgets\QWidget>
+#include <QtWidgets\QBoxLayout>
+#include <QtWidgets\QLabel>
 
 class AboutWidget : public QWidget {
 	Q_OBJECT
@@ -15,12 +17,25 @@ public:
 
 	//Destructor
 	~AboutWidget();
-	public slots:
 
-	private slots :
+	//Version
+	QLabel *version;
+
+	//Update version
+	void updateVersion(double ver);
+
+public slots:
+
+private slots:
 
 private:
+	//Main layout
+	QBoxLayout *layout;
 
+	//Labels
+	QLabel *title;
+	QLabel *desc;
+	QLabel *authors;
 };
 
 #endif

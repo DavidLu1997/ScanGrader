@@ -71,6 +71,7 @@ private:
 	void connectResults();
 	void connectExport();
 	void connectOptions();
+	void connectAbout();
 
 	//Compare two int vectors, returns number of equalities
 	//TODO Rewrite as template

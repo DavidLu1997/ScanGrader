@@ -88,10 +88,10 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	layout->addWidget(fileWidget, 2, 0);
 	layout->addWidget(sqlWidget, 2, 1);
 	QWidget *empty5 = new QWidget();
-	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty5, 999, 0);
 	QWidget *empty6 = new QWidget();
-	empty2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	empty6->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty6, 999, 1);
 	setLayout(layout);
 

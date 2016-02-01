@@ -25,6 +25,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	connectKeys();
 	connectOptions();
 	connectResults();
+	connectAbout();
 
 	//Set Size
 	QDesktopWidget dw;
@@ -37,7 +38,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	statusBar()->hide();
 
 	//Set Title
-	setWindowTitle(tr("ScanGrader v%1").arg(version));
+	setWindowTitle("ScanGrader");
 	adjustSize();
 }
 
@@ -281,6 +282,11 @@ void ZopperScanAPI::connectExport() {
 //Connect Options
 void ZopperScanAPI::connectOptions() {
 
+}
+
+//Connect About
+void ZopperScanAPI::connectAbout() {
+	navbar->about->updateVersion(version);
 }
 
 
