@@ -40,8 +40,8 @@ GeneratedFiles*/
 Win32*/
 x64*/
 Resources*/
-.csv
-.zip
+*.csv
+*.zip
 
 # Project specific files
 *.jpg
