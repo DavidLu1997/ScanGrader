@@ -36,8 +36,11 @@ public:
 	//Status label
 	//QLabel *status;
 
-	//Get scanfiles
-	const std::vector<ScanFileWidget *>* getScanFiles();
+	//Get image urls
+	QList<QUrl> getImageUrls();
+
+	//Get key indexes
+	std::vector<int> getKeyIndexes();
 
 	//Update keys
 	void updateKeys(const QList<QUrl> &urls);

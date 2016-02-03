@@ -17,24 +17,6 @@ public:
 	ZopperScanAPI(QWidget *parent = 0);
 	~ZopperScanAPI();
 
-	//Image get index from string
-	int getImage(std::string name);
-
-	//Image get string from index
-	std::string getImage(unsigned int index);
-
-	//Key get index from string
-	int getKey(std::string name);
-
-	//Key get string from index
-	std::string getKey(unsigned int index);
-
-	//Config get index from string
-	int getConfig(std::string name);
-
-	//Config get string from index
-	std::string getConfig(unsigned int index);
-
 public slots:
 
 	//Refresh UI
@@ -55,9 +37,6 @@ private:
 	//Main NavBar
 	NavBar *navbar;
 
-	//Initialize variables
-	void initVariables();
-
 	//Clear variables
 	void clearVariables();
 
@@ -77,26 +56,23 @@ private:
 	int compare(std::vector<int> a, std::vector<int> b);
 
 	//Images to analyze
-	std::vector<AnalyzeImage> *images;
+	std::vector<AnalyzeImage> images;
 
 	//Image names to analyze (file paths)
-	std::vector<std::string> *imagePaths;
+	std::vector<std::string> imagePaths;
 
 	//Keys to use, indexes
 	//Same size as images
-	std::vector<unsigned int> *useKey;
-
-	//Configuration files to use (file paths)
-	std::vector<std::string> *configPaths;
+	std::vector<unsigned int> useKey;
 
 	//Answer Keys
-	std::vector<AnalyzeImage> *keys;
+	std::vector<AnalyzeImage> keys;
 
 	//Answer key files to use(file paths)
-	std::vector<std::string> *keyPaths;
+	std::vector<std::string> keyPaths;
 
 	//Answer key config files to use, same size as keyPaths
-	std::vector<unsigned int> *useFile;
+	std::vector<std::string> useFile;
 
 	//Answers of images
 	std::vector<std::vector<int>> answers;
@@ -109,36 +85,6 @@ private:
 
 	//Percentage score out of total of analyzed images
 	std::vector<double> percentScore;
-
-	//Add image
-	void addImage(std::string name);
-
-	//Remove image by name
-	void removeImage(std::string name);
-
-	//Remove image by index
-	void removeImage(unsigned int index);
-
-	//Swap image, swaps two indexes of images
-	void swapImage(unsigned int a, unsigned int b);
-
-	//Add answer key
-	void addKey(std::string name);
-
-	//Remove answer key
-	void removeKey(std::string name);
-
-	//Remove answer key by index
-	void removeKey(unsigned int index);
-
-	//Add configuration file
-	void addConfig(std::string name);
-
-	//Remove configuration file
-	void removeConfig(std::string name);
-
-	//Remove configuration file by index
-	void removeConfig(unsigned int index);
 };
 
 #endif // ZOPPERSCANAPI_H

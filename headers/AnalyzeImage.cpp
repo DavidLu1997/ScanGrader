@@ -57,10 +57,10 @@ bool AnalyzeImage::calculate() {
 	}
 
 	//Get answers
-	getAnswers();
+	answers = getAnswers();
 
 	//Get ID
-	getID();
+	id = getID();
 
 	calculated = true;
 	return true;

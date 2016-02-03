@@ -41,6 +41,9 @@ public:
 	//Deleted
 	bool deleted = false;
 
+	//Answer key to use
+	QComboBox *answerKey;
+
 public slots:
 	
 private slots :
@@ -54,9 +57,6 @@ private:
 	//File path
 	QUrl *path;
 	QLabel *file;
-	
-	//Answer key to use
-	QComboBox *answerKey;
 };
 
 #endif

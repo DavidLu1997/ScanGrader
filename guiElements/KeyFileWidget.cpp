@@ -5,7 +5,7 @@ KeyFileWidget::KeyFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QW
 	url = new QUrl(URL);
 	name = new QLabel(url->fileName());
 	layout->addWidget(name, row, 0);
-	path = new QLabel(url->toString());
+	path = new QLabel(url->toLocalFile());
 	layout->addWidget(path, row, 1);
 	configFile = new QComboBox();
 	layout->addWidget(configFile, row, 2);
@@ -30,7 +30,7 @@ QUrl KeyFileWidget::getUrl() {
 
 //Get name
 QString KeyFileWidget::getName() {
-	return url->fileName();
+	return url->toLocalFile();
 }
 
 //Get url of config file

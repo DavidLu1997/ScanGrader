@@ -42,7 +42,7 @@ void ScanFileWidget::setDeleted() {
 //Update path
 void ScanFileWidget::updatePath(const QUrl &url) {
 	*path = url;
-	file->setText(path->fileName());
+	file->setText(path->toLocalFile());
 }
 
 //Update answer keys list

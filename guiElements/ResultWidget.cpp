@@ -19,34 +19,47 @@ ResultWidget::ResultWidget(QWidget *parent) {
 
 	//Layout
 	layout = new QBoxLayout(QBoxLayout::TopToBottom);
-	summary = new QLabel();
+	summary = new QLabel("No calculations yet");
 	table = new QWidget();
 	layout->addWidget(summary);
-	layout->addWidget(buttonWidget);
 	layout->addWidget(table);
+	layout->addWidget(buttonWidget);
+	QWidget *empty1 = new QWidget();
+	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty1);
 
 	//Title
+	tableLayout = new QGridLayout();
 	idTitle = new QLabel("<h3>ID</h3>");
 	idTitle->setTextFormat(Qt::RichText);
 	idTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	tableLayout->addWidget(idTitle, 0, 0);
 
 	correctTitle = new QLabel("<h3>Correct Questions</h3>");
 	correctTitle->setTextFormat(Qt::RichText);
 	correctTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	tableLayout->addWidget(correctTitle, 0, 1);
 
 	wrongTitle = new QLabel("<h3>Wrong Questions</h3>");
 	wrongTitle->setTextFormat(Qt::RichText);
 	wrongTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	tableLayout->addWidget(wrongTitle, 0, 2);
 
 	totalTitle = new QLabel("<h3>Total Questions</h3>");
 	totalTitle->setTextFormat(Qt::RichText);
 	totalTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	tableLayout->addWidget(totalTitle, 0, 3);
 
 	percentTitle = new QLabel("<h3>Percentage Score</h3>");
 	percentTitle->setTextFormat(Qt::RichText);
 	percentTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	tableLayout->addWidget(percentTitle, 0, 4);
+
+	table->setLayout(tableLayout);
 
 	exportName = "Results";
+
+	setLayout(layout);
 }
 
 //Destructor
@@ -124,9 +137,6 @@ void ResultWidget::clearDisplay() {
 	wrong.clear();
 	total.clear();
 	percent.clear();
-	delete summary;
-	delete tableLayout;
-	delete table;
 	update();
 }
 
@@ -171,6 +181,15 @@ void ResultWidget::calculate() {
 
 //Display calculated results
 void ResultWidget::display() {
+	//Remove others
+	for (unsigned int i = 0; i < id.size(); i++) {
+		tableLayout->removeWidget(id[i]);
+		tableLayout->removeWidget(correct[i]);
+		tableLayout->removeWidget(wrong[i]);
+		tableLayout->removeWidget(total[i]);
+		tableLayout->removeWidget(percent[i]);
+	}
+
 	clearDisplay();
 	//Construct summary
 	summary = new QLabel(tr("Average: %1 Median: %2 Min: %3 Max: %4").arg(average).arg(median).arg(min).arg(max));
@@ -181,22 +200,21 @@ void ResultWidget::display() {
 		correct.push_back(new QLabel(tr("%1").arg(correctAnswers[i])));
 		wrong.push_back(new QLabel(tr("%1").arg(wrongAnswers[i])));
 		total.push_back(new QLabel(tr("%1").arg(totalQuestions[i])));
-		percent.push_back(new QLabel(tr("%1").arg(percentScore[i])));
+		percent.push_back(new QLabel(tr("%1").arg(percentScore[i] * 100)));
 	}
 
 	//Add labels to grid
-	tableLayout = new QGridLayout();
-	tableLayout->addWidget(idTitle, 0, 0);
-	tableLayout->addWidget(correctTitle, 0, 1);
-	tableLayout->addWidget(wrongTitle, 0, 2);
-	tableLayout->addWidget(totalTitle, 0, 3);
-	tableLayout->addWidget(percentTitle, 0, 4);
+	tableLayout->addWidget(idTitle, 1, 0);
+	tableLayout->addWidget(correctTitle, 1, 1);
+	tableLayout->addWidget(wrongTitle, 1, 2);
+	tableLayout->addWidget(totalTitle, 1, 3);
+	tableLayout->addWidget(percentTitle, 1, 4);
 	for (unsigned int i = 0; i < id.size(); i++) {
-		tableLayout->addWidget(id[i], i + 1, 0);
-		tableLayout->addWidget(correct[i], i + 1, 1);
-		tableLayout->addWidget(wrong[i], i + 1, 2);
-		tableLayout->addWidget(total[i], i + 1, 3);
-		tableLayout->addWidget(percent[i], i + 1, 4);
+		tableLayout->addWidget(id[i], i + 2, 0);
+		tableLayout->addWidget(correct[i], i + 2, 1);
+		tableLayout->addWidget(wrong[i], i + 2, 2);
+		tableLayout->addWidget(total[i], i + 2, 3);
+		tableLayout->addWidget(percent[i], i + 2, 4);
 	}
 
 	//New layout
@@ -294,3 +312,4 @@ void ResultWidget::changeUserName(const QString &name) {
 void ResultWidget::changePassword(const QString &name) {
 	serverPassword = name;
 }
+

@@ -110,7 +110,7 @@ std::vector<std::string> KeyWidget::getFileNames() {
 	return fileNames;
 }
 
-QList<QUrl> KeyWidget::getFileUrls() {
+QList<QUrl> KeyWidget::getKeyUrls() {
 	QList<QUrl> urls;
 
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
@@ -120,6 +120,20 @@ QList<QUrl> KeyWidget::getFileUrls() {
 			continue;
 		}
 		urls.push_back(keyFiles.at(i)->getUrl());
+	}
+	return urls;
+}
+
+QList<QUrl> KeyWidget::getConfigUrls() {
+	QList<QUrl> urls;
+
+	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		if (keyFiles.at(i)->deleted) {
+			keyFiles.erase(keyFiles.begin() + i);
+			i--;
+			continue;
+		}
+		urls.push_back(keyFiles.at(i)->getConfigUrl());
 	}
 	return urls;
 }

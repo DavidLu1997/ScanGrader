@@ -5,7 +5,7 @@ ConfigFileWidget::ConfigFileWidget(QUrl URL, QGridLayout *layout, unsigned int r
 	url = URL;
 	name = new QLabel(url.fileName());
 	layout->addWidget(name, row, 0);
-	path = new QLabel(url.toString());
+	path = new QLabel(url.toLocalFile());
 	layout->addWidget(path, row, 1);
 	remove = new QPushButton("Remove");
 	layout->addWidget(remove, row, 2);

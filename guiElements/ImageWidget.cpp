@@ -97,11 +97,33 @@ ImageWidget::~ImageWidget() {
 	scanFiles.clear();
 }
 
-//Get scanfiles
-const std::vector<ScanFileWidget *>* ImageWidget::getScanFiles() {
-	return &scanFiles;
+//Get image files
+QList<QUrl> ImageWidget::getImageUrls() {
+	QList<QUrl> urls;
+	for (unsigned int i = 0; i < scanFiles.size(); i++) {
+		if (scanFiles.at(i)->deleted) {
+			scanFiles.erase(scanFiles.begin() + i);
+			i--;
+			continue;
+		}
+		urls.push_back(scanFiles.at(i)->getPath());
+	}
+	return urls;
 }
 
+//Get key indexes
+std::vector<int> ImageWidget::getKeyIndexes() {
+	std::vector<int> keys;
+	for (unsigned int i = 0; i < scanFiles.size(); i++) {
+		if (scanFiles.at(i)->deleted) {
+			scanFiles.erase(scanFiles.begin() + i);
+			i--;
+			continue;
+		}
+		keys.push_back(scanFiles.at(i)->answerKey->currentIndex());
+	}
+	return keys;
+}
 //Update keys
 void ImageWidget::updateKeys(const QList<QUrl> &urls) {
 	for (unsigned int i = 0; i < scanFiles.size(); i++) {
