@@ -17,6 +17,7 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	changeExportType(fileType::CSV);
 	buttonWidget->setLayout(buttonLayout);
 	connect(exportButton, SIGNAL(released()), this, SLOT(exportResults()));
+	exportButton->setEnabled(false);
 
 	//Layout
 	layout = new QBoxLayout(QBoxLayout::TopToBottom);
@@ -156,6 +157,7 @@ void ResultWidget::clearDisplay() {
 	total.clear();
 	percent.clear();
 	update();
+	exportButton->setEnabled(false);
 }
 
 //Clear data
@@ -225,6 +227,8 @@ void ResultWidget::display() {
 		tableLayout->addWidget(total[i], i + 2, 3);
 		tableLayout->addWidget(percent[i], i + 2, 4);
 	}
+
+	exportButton->setEnabled(true);
 
 	//New layout
 	table->setLayout(tableLayout);
