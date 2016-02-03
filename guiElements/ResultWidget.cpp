@@ -137,6 +137,19 @@ void ResultWidget::refresh() {
 
 //Clear display
 void ResultWidget::clearDisplay() {
+	for (unsigned int i = 0; i < id.size(); i++) {
+		tableLayout->removeWidget(id[i]);
+		delete id[i];
+		tableLayout->removeWidget(correct[i]);
+		delete correct[i];
+		tableLayout->removeWidget(wrong[i]);
+		delete wrong[i];
+		tableLayout->removeWidget(total[i]);
+		delete total[i];
+		tableLayout->removeWidget(percent[i]);
+		delete percent[i];
+	}
+	tableLayout->update();
 	id.clear();
 	correct.clear();
 	wrong.clear();
@@ -188,15 +201,6 @@ void ResultWidget::calculate() {
 
 //Display calculated results
 void ResultWidget::display() {
-	//Remove others
-	for (unsigned int i = 0; i < id.size(); i++) {
-		tableLayout->removeWidget(id[i]);
-		tableLayout->removeWidget(correct[i]);
-		tableLayout->removeWidget(wrong[i]);
-		tableLayout->removeWidget(total[i]);
-		tableLayout->removeWidget(percent[i]);
-	}
-
 	clearDisplay();
 	//Construct summary
 	averageLabel->setText(tr("<b>Average: %1%</b>").arg(average * 100));
