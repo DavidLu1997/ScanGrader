@@ -58,6 +58,10 @@ void ZopperScanAPI::calculate() {
 	clearVariables();
 	getImageData();
 
+	if (keyPaths.empty() || imagePaths.empty() || useFile.empty() || useKey.empty()) {
+		return;
+	}
+
 	//Calculate keys
 	for (unsigned int i = 0; i < keyPaths.size(); i++) {
 		keys.push_back(AnalyzeImage(keyPaths.at(i), useFile.at(i)));
@@ -154,6 +158,9 @@ void ZopperScanAPI::getImageData() {
 	//Get Key files
 	QList<QUrl> keyFiles = navbar->key->getKeyUrls();
 	QList<QUrl> configFiles = navbar->key->getConfigUrls();
+	if (configFiles.empty() || keyFiles.empty()) {
+		return;
+	}
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
 		keyPaths.push_back(keyFiles.at(i).toLocalFile().toStdString());
 		useFile.push_back(configFiles.at(i).toLocalFile().toStdString());
@@ -162,6 +169,9 @@ void ZopperScanAPI::getImageData() {
 	//Get image files
 	QList<QUrl> imageFiles = navbar->image->getImageUrls();
 	std::vector<int> keyIndexes = navbar->image->getKeyIndexes();
+	if (imageFiles.empty() || keyIndexes.empty()) {
+		return;
+	}
 	for (unsigned int i = 0; i < imageFiles.size(); i++) {
 		imagePaths.push_back(imageFiles.at(i).toLocalFile().toStdString());
 		useKey.push_back(keyIndexes.at(i));
