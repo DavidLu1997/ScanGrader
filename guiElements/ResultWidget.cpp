@@ -79,17 +79,6 @@ ResultWidget::ResultWidget(QWidget *parent) {
 ResultWidget::~ResultWidget() {
 	delete layout;
 	delete table;
-	delete averageLabel;
-	delete medianLabel;
-	delete minLabel;
-	delete maxLabel;
-	delete idTitle;
-	delete correctTitle;
-	delete wrongTitle;
-	delete totalTitle;
-	delete percentTitle;
-	delete refreshButton;
-	delete exportButton;
 }
 
 //Add row
