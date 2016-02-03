@@ -7,3 +7,9 @@ Accuracy on a standard 50 question scan sheet approaches 100% for scanner-based 
 
 This is currently being developed for two platforms , Windows x86 in this repository, and Android in another.
 In the future, we plan on deploying it to iOS, Windows UWP, and OS X.
+
+Current Releases:
+
+[Version 1.0 (BETA, Unstable)](https://github.com/DavidLu1997/ZopperScanAPI/blob/qtGui/ZopperScanAPI-1.0.zip)
+
+Known issues can be found in [readme.txt](https://github.com/DavidLu1997/ZopperScanAPI/blob/qtGui/readme.txt)
