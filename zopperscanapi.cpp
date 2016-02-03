@@ -22,10 +22,11 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	connectKeys();
 	connectOptions();
 	connectResults();
+	connectAbout();
 
 	//Set Size
 	QDesktopWidget dw;
-	setMinimumSize(dw.width() * 0.5, dw.height() * 0.5);
+	setMinimumSize(dw.width() * 0.4, dw.height() * 0.4);
 
 	//Hide toolbar
 	ui.mainToolBar->hide();
@@ -34,7 +35,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	statusBar()->hide();
 
 	//Set Title
-	setWindowTitle(tr("ScanGrader v%1").arg(version));
+	setWindowTitle("ScanGrader");
 	adjustSize();
 }
 
@@ -203,6 +204,11 @@ void ZopperScanAPI::connectExport() {
 //Connect Options
 void ZopperScanAPI::connectOptions() {
 
+}
+
+//Connect About
+void ZopperScanAPI::connectAbout() {
+	navbar->about->updateVersion(version);
 }
 
 //Compare two int vectors, returns number of equalities

@@ -46,6 +46,7 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	percentValue = new QSpinBox();
 	percentValue->setMaximumWidth(100);
 	percentValue->setSingleStep(1);
+	percentValue->setRange(0, 100);
 	percentValue->setValue(defaultPercent);
 	percentValue->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(percentValue, 2, 1);

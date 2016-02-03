@@ -20,12 +20,11 @@ AboutWidget::AboutWidget(QWidget *parent) {
 	QWidget *empty1 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty1);
-
 	setLayout(layout);
 
 }
 
-//Desctructor
+//Destructor
 AboutWidget::~AboutWidget() {
 	delete layout;
 }

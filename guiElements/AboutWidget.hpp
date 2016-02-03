@@ -26,7 +26,15 @@ public:
 
 	public slots:
 
-	private slots :
+	//Version
+	QLabel *version;
+
+	//Update version
+	void updateVersion(double ver);
+
+public slots:
+
+private slots:
 
 private:
 	//Main layout
