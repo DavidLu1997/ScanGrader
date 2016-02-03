@@ -41,6 +41,7 @@ Win32*/
 x64*/
 Resources*/
 .csv
+.zip
 
 # Project specific files
 *.jpg

@@ -9,9 +9,9 @@ AboutWidget::AboutWidget(QWidget *parent) {
 	title = new QLabel("<h3>ScanGrader</h3>");
 	title->setTextFormat(Qt::RichText);
 	layout->addWidget(title);
-	desc = new QLabel("Lorem ipsum I don't know how this goes.");
+	desc = new QLabel("An optical mark recognition program built to easily mark test/quizzes. See readme.txt for details.");
 	layout->addWidget(desc);
-	authors = new QLabel("<b>David Lu</b>");
+	authors = new QLabel("<b>&copy; David Lu 2016</b>");
 	authors->setTextFormat(Qt::RichText);
 	layout->addWidget(authors);
 	version = new QLabel();

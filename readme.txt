@@ -16,5 +16,3 @@ How to use:
 
 Known issues:
 - Export to SQL has not been implemented
-- Options currently do not do anything
-- Accuracy lacking
