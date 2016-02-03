@@ -16,20 +16,33 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	buttonLayout->addWidget(exportButton);
 	changeExportType(fileType::CSV);
 	buttonWidget->setLayout(buttonLayout);
+	connect(exportButton, SIGNAL(released()), this, SLOT(exportResults()));
 
 	//Layout
 	layout = new QBoxLayout(QBoxLayout::TopToBottom);
-	summary = new QLabel("No calculations yet");
 	table = new QWidget();
-	layout->addWidget(summary);
 	layout->addWidget(table);
 	layout->addWidget(buttonWidget);
 	QWidget *empty1 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty1);
+	tableLayout = new QGridLayout();
+
+	//Summary
+	averageLabel = new QLabel();
+	averageLabel->setTextFormat(Qt::RichText);
+	tableLayout->addWidget(averageLabel, 1, 0);
+	medianLabel = new QLabel();
+	medianLabel->setTextFormat(Qt::RichText);
+	tableLayout->addWidget(medianLabel, 1, 1);
+	maxLabel = new QLabel();
+	maxLabel->setTextFormat(Qt::RichText);
+	tableLayout->addWidget(maxLabel, 1, 2);
+	minLabel = new QLabel();
+	minLabel->setTextFormat(Qt::RichText);
+	tableLayout->addWidget(minLabel, 1, 3);
 
 	//Title
-	tableLayout = new QGridLayout();
 	idTitle = new QLabel("<h3>ID</h3>");
 	idTitle->setTextFormat(Qt::RichText);
 	idTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
@@ -66,7 +79,10 @@ ResultWidget::ResultWidget(QWidget *parent) {
 ResultWidget::~ResultWidget() {
 	delete layout;
 	delete table;
-	delete summary;
+	delete averageLabel;
+	delete medianLabel;
+	delete minLabel;
+	delete maxLabel;
 	delete idTitle;
 	delete correctTitle;
 	delete wrongTitle;
@@ -157,16 +173,18 @@ void ResultWidget::clearData() {
 
 //Calculate results
 void ResultWidget::calculate() {
-
 	//Get average, min, max
 	average = 0;
 	for (unsigned int i = 0; i < correctAnswers.size(); i++) {
-		average += correctAnswers[i];
+		average += (double)correctAnswers[i] / totalQuestions[i];
 	}
 	average /= correctAnswers.size();
 
 	//Get median, max, min
-	std::vector<int> correctCopy = correctAnswers;
+	std::vector<double> correctCopy;
+	for (unsigned int i = 0; i < correctAnswers.size(); i++) {
+		correctCopy.push_back((double)correctAnswers[i] / totalQuestions[i]);
+	}
 	std::sort(correctCopy.begin(), correctCopy.end());
 
 	if (correctCopy.size() % 2) {
@@ -192,7 +210,10 @@ void ResultWidget::display() {
 
 	clearDisplay();
 	//Construct summary
-	summary = new QLabel(tr("Average: %1 Median: %2 Min: %3 Max: %4").arg(average).arg(median).arg(min).arg(max));
+	averageLabel->setText(tr("<b>Average: %1%</b>").arg(average * 100));
+	medianLabel->setText(tr("<b>Median: %1%</b>").arg(median * 100));
+	maxLabel->setText(tr("<b>Maximum: %1%</b>").arg(max * 100));
+	minLabel->setText(tr("<b>Minimum: %1%</b>").arg(min * 100));
 
 	//Construct label vectors
 	for (unsigned int i = 0; i < idList.size(); i++) {
@@ -200,15 +221,10 @@ void ResultWidget::display() {
 		correct.push_back(new QLabel(tr("%1").arg(correctAnswers[i])));
 		wrong.push_back(new QLabel(tr("%1").arg(wrongAnswers[i])));
 		total.push_back(new QLabel(tr("%1").arg(totalQuestions[i])));
-		percent.push_back(new QLabel(tr("%1").arg(percentScore[i] * 100)));
+		percent.push_back(new QLabel(tr("%1%").arg(percentScore[i] * 100)));
 	}
 
 	//Add labels to grid
-	tableLayout->addWidget(idTitle, 1, 0);
-	tableLayout->addWidget(correctTitle, 1, 1);
-	tableLayout->addWidget(wrongTitle, 1, 2);
-	tableLayout->addWidget(totalTitle, 1, 3);
-	tableLayout->addWidget(percentTitle, 1, 4);
 	for (unsigned int i = 0; i < id.size(); i++) {
 		tableLayout->addWidget(id[i], i + 2, 0);
 		tableLayout->addWidget(correct[i], i + 2, 1);
@@ -260,6 +276,9 @@ void ResultWidget::exportToFile() {
 
 	//Print out summary
 	out << "Average:" << delimiter << average << delimiter << "Median:" << delimiter << median << delimiter << "Minimum:" << delimiter << min << delimiter << "Maximum:" << delimiter << max << std::endl;
+
+	//Print out headers
+	out << "ID" << delimiter << "Correct" << delimiter << "Wrong" << delimiter << "Total" << delimiter << "Percent Score" << std::endl;
 
 	//Print out results
 	for (unsigned int i = 0; i < idList.size(); i++) {

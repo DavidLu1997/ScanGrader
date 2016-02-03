@@ -91,8 +91,9 @@ void ZopperScanAPI::calculate() {
 
 	//Push out to result
 	navbar->result->clearDisplay();
+	navbar->result->clearData();
 	for (unsigned int i = 0; i < answers.size(); i++) {
-		navbar->result->addRow(tr("%1").arg(images.at(i).getID()).toStdString(), answers.at(i), solutions.at(i));
+		navbar->result->addRow(tr("%1").arg(images.at(i).getID()).toStdString(), answers.at(i), solutions.at(useKey.at(i)));
 	}
 	navbar->result->calculate();
 	navbar->result->display();
@@ -152,7 +153,7 @@ void ZopperScanAPI::getImageData() {
 	QList<QUrl> imageFiles = navbar->image->getImageUrls();
 	std::vector<int> keyIndexes = navbar->image->getKeyIndexes();
 	for (unsigned int i = 0; i < imageFiles.size(); i++) {
-		imagePaths.push_back(keyFiles.at(i).toLocalFile().toStdString());
+		imagePaths.push_back(imageFiles.at(i).toLocalFile().toStdString());
 		useKey.push_back(keyIndexes.at(i));
 	}
 	

@@ -183,15 +183,19 @@ int AnalyzeImage::getID() {
 			std::cerr << "Invalid bounds for ids or ID section does not exist." << std::endl;
 		}
 		else {
+			id = 0;
 			int index = plate.ids.x;
+			double maxValue = marks[index];
 			for (int i = 0; i < plate.digits; i++) {
 				index = plate.ids.x + i;
+				maxValue = marks[index];
 				for (int j = plate.ids.x; j < plate.ids.y; j += plate.digits) {
-					if (marks[j + i] > index) {
+					if (marks[j + i] > maxValue) {
 						index = j + i;
+						maxValue = marks[j + i];
 					}
 				}
-				id += (int)(index / plate.digits) * pow(10, i);
+				id += (int)((double)index / plate.digits) * pow(10, i);
 			}
 		}
 	}

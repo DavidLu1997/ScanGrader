@@ -21,13 +21,7 @@ public:
 	//Version
 	QLabel *version;
 
-	//Update version
-	void updateVersion(double ver);
-
 	public slots:
-
-	//Version
-	QLabel *version;
 
 	//Update version
 	void updateVersion(double ver);

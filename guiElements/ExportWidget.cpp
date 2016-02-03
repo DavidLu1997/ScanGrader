@@ -25,6 +25,7 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	fileLabel = new QLabel("File Name: ");
 	fileLayout->addWidget(fileLabel, 0, 0);
 	fileName = new QLineEdit();
+	fileName->setText("result");
 	fileLayout->addWidget(fileName, 0, 1);
 	fileTypeLabel = new QLabel("File Type: ");
 	fileLayout->addWidget(fileTypeLabel, 1, 0);

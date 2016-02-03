@@ -88,12 +88,15 @@ private:
 	QGridLayout *tableLayout;
 
 	//Title Labels
-	QLabel *summary;
 	QLabel *idTitle;
 	QLabel *correctTitle;
 	QLabel *wrongTitle;
 	QLabel *totalTitle;
 	QLabel *percentTitle;
+	QLabel *averageLabel;
+	QLabel *medianLabel;
+	QLabel *minLabel;
+	QLabel *maxLabel;
 
 	//Buttons
 	QBoxLayout *buttonLayout;
@@ -118,8 +121,8 @@ private:
 	std::vector<double> percentScore;
 	double average;
 	double median;
-	int min;
-	int max;
+	double min;
+	double max;
 
 	//Export name
 	std::string exportName;
