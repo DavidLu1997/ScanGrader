@@ -31,6 +31,12 @@ public slots:
 	//Update answer key comboboxes
 	void updateKeys();
 
+	//Update percent
+	void updatePercent(int value);
+
+	//Update threshold
+	void updateThreshold(int value);
+
 private:
 	Ui::ZopperScanAPIClass ui;
 

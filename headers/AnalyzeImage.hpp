@@ -15,7 +15,7 @@ class AnalyzeImage
 {
 public:
 	//Takes in an image name and a data file storing parameters for the scan
-	AnalyzeImage(std::string imageName, std::string configName, double percentage = 0.35);
+	AnalyzeImage(std::string imageName, std::string configName);
 
 	//Return raw results
 	std::vector<double> getRawResults();
@@ -28,6 +28,10 @@ public:
 
 	//Write results to file, custom name
 	bool writeAnswers(std::string name);
+
+	//Static
+	static double percentage;
+	static int threshold;
 
 private:
 	//Percentage

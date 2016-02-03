@@ -13,13 +13,10 @@ class ReadDot
 {
 public:
 	//Constructor, receives 2D vector of grayscale (0-255) pixels
-	ReadDot(ScanImage img, double percent);
+	ReadDot(ScanImage img, int thresh);
 
 	//Return percentage black of a rectangle
 	double black(Rectangle rect);
-
-	//Return if registered in rect
-	bool check(Rectangle rect);
 
 private:
 	//ScanImage
@@ -28,8 +25,8 @@ private:
 	//grayScale pixels
 	std::vector< std::vector<int> > grayPixels;
 
-	//Percentage black needed to register (0-1)
-	double percentage;
+	//Threshold needed to add to image
+	int threshold;
 };
 
 #endif

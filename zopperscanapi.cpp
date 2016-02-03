@@ -122,6 +122,16 @@ void ZopperScanAPI::updateKeys() {
 	}
 }
 
+//Update percent
+void ZopperScanAPI::updatePercent(int value) {
+	AnalyzeImage::percentage = value / 100.0;
+}
+
+//Update threshold
+void ZopperScanAPI::updateThreshold(int value) {
+	AnalyzeImage::threshold = value;
+}
+
 
 //**********Private Functions**********
 
@@ -204,7 +214,10 @@ void ZopperScanAPI::connectExport() {
 
 //Connect Options
 void ZopperScanAPI::connectOptions() {
-
+	connect(navbar->option->threshold, SIGNAL(valueChanged(int)), this, SLOT(updateThreshold(int)));
+	connect(navbar->option->percent, SIGNAL(valueChanged(int)), this, SLOT(updatePercent(int)));
+	connect(navbar->option->thresholdValue, SIGNAL(valueChanged(int)), this, SLOT(updateThreshold(int)));
+	connect(navbar->option->percentValue, SIGNAL(valueChanged(int)), this, SLOT(updatePercent(int)));
 }
 
 //Connect About

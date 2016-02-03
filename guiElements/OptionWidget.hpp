@@ -24,7 +24,9 @@ public:
 
 	//Sliders
 	QSlider *threshold;
+	QSpinBox *thresholdValue;
 	QSlider *percent;
+	QSpinBox *percentValue;
 
 	//Getters
 	double getPercent();
@@ -55,11 +57,9 @@ private:
 
 	//Threshold
 	QLabel *thresholdLabel;
-	QSpinBox *thresholdValue;
 
 	//Percentage
 	QLabel *percentLabel;
-	QSpinBox *percentValue;
 
 	//Defaults
 	QPushButton *defaultSettings;

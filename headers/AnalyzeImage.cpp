@@ -3,10 +3,14 @@
 #include <cmath>
 #include <algorithm>
 
+//Static
+double AnalyzeImage::percentage = 0.35;
+int AnalyzeImage::threshold = 100;
+
 //Standard constructor for AnalyzeImage
 //Beginning of program, call this with required variables
 //After initialization, call getAnswers and/or getID for data
-AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName, double percentage) {
+AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	//Get image
 	img = ScanImage(imageName);
 
@@ -49,7 +53,7 @@ bool AnalyzeImage::calculate() {
 	calibrate();
 
 	//Initialize ReadDot
-	ReadDot read(img, percent);
+	ReadDot read(img, threshold);
 	
 	//Go through rectangles
 	for (unsigned int i = 0; i < plate.getRects().size(); i++) {
@@ -121,7 +125,7 @@ bool AnalyzeImage::calibrate() {
 	std::vector<Rectangle> cali = plate.getCali();
 
 	//Create ReadDot
-	ReadDot read(img, percent);
+	ReadDot read(img, threshold);
 
 	//Check each rectangle
 	for (unsigned int i = 0; i < cali.size(); i++) {
