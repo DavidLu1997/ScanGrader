@@ -5,71 +5,72 @@
 //Constructor
 ResultWidget::ResultWidget(QWidget *parent) {
 	QWidget();
-
-	//Buttons
-	buttonWidget = new QWidget();
-	buttonLayout = new QBoxLayout(QBoxLayout::LeftToRight);
-	refreshButton = new QPushButton("Refresh");
-	connect(refreshButton, SIGNAL(released()), this, SLOT(refresh()));
-	buttonLayout->addWidget(refreshButton);
+	//Layout
+	layout = new QGridLayout();
+	
+	//Button
 	exportButton = new QPushButton("Export");
-	buttonLayout->addWidget(exportButton);
 	changeExportType(fileType::CSV);
-	buttonWidget->setLayout(buttonLayout);
 	connect(exportButton, SIGNAL(released()), this, SLOT(exportResults()));
 	exportButton->setEnabled(false);
-
-	//Layout
-	layout = new QBoxLayout(QBoxLayout::TopToBottom);
-	table = new QWidget();
-	layout->addWidget(table);
-	layout->addWidget(buttonWidget);
-	QWidget *empty1 = new QWidget();
-	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	layout->addWidget(empty1);
-	tableLayout = new QGridLayout();
+	layout->addWidget(exportButton, 1000, 0);
 
 	//Summary
 	averageLabel = new QLabel();
 	averageLabel->setTextFormat(Qt::RichText);
-	tableLayout->addWidget(averageLabel, 1, 0);
+	layout->addWidget(averageLabel, 1, 0);
 	medianLabel = new QLabel();
 	medianLabel->setTextFormat(Qt::RichText);
-	tableLayout->addWidget(medianLabel, 1, 1);
+	layout->addWidget(medianLabel, 1, 1);
 	maxLabel = new QLabel();
 	maxLabel->setTextFormat(Qt::RichText);
-	tableLayout->addWidget(maxLabel, 1, 2);
+	layout->addWidget(maxLabel, 1, 2);
 	minLabel = new QLabel();
 	minLabel->setTextFormat(Qt::RichText);
-	tableLayout->addWidget(minLabel, 1, 3);
+	layout->addWidget(minLabel, 1, 3);
 
 	//Title
 	idTitle = new QLabel("<h3>ID</h3>");
 	idTitle->setTextFormat(Qt::RichText);
 	idTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	tableLayout->addWidget(idTitle, 0, 0);
+	layout->addWidget(idTitle, 0, 0);
 
 	correctTitle = new QLabel("<h3>Correct Questions</h3>");
 	correctTitle->setTextFormat(Qt::RichText);
 	correctTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	tableLayout->addWidget(correctTitle, 0, 1);
+	layout->addWidget(correctTitle, 0, 1);
 
 	wrongTitle = new QLabel("<h3>Wrong Questions</h3>");
 	wrongTitle->setTextFormat(Qt::RichText);
 	wrongTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	tableLayout->addWidget(wrongTitle, 0, 2);
+	layout->addWidget(wrongTitle, 0, 2);
 
 	totalTitle = new QLabel("<h3>Total Questions</h3>");
 	totalTitle->setTextFormat(Qt::RichText);
 	totalTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	tableLayout->addWidget(totalTitle, 0, 3);
+	layout->addWidget(totalTitle, 0, 3);
 
 	percentTitle = new QLabel("<h3>Percentage Score</h3>");
 	percentTitle->setTextFormat(Qt::RichText);
 	percentTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	tableLayout->addWidget(percentTitle, 0, 4);
+	layout->addWidget(percentTitle, 0, 4);
 
-	table->setLayout(tableLayout);
+	//Empties
+	QWidget *empty1 = new QWidget();
+	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty1, 999, 0);
+	QWidget *empty2 = new QWidget();
+	empty2->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty2, 999, 1);
+	QWidget *empty3 = new QWidget();
+	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty3, 999, 2);
+	QWidget *empty4 = new QWidget();
+	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty4, 999, 3);
+	QWidget *empty5 = new QWidget();
+	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty5, 999, 4);
 
 	exportName = "Results";
 
@@ -79,7 +80,6 @@ ResultWidget::ResultWidget(QWidget *parent) {
 //Destructor
 ResultWidget::~ResultWidget() {
 	delete layout;
-	delete table;
 }
 
 //Add row
@@ -128,29 +128,21 @@ void ResultWidget::removeRow(std::string id) {
 
 //**********Public Slots**********
 
-//Refresh display
-void ResultWidget::refresh() {
-	clearDisplay();
-	calculate();
-	display();
-	update();
-}
-
 //Clear display
 void ResultWidget::clearDisplay() {
 	for (unsigned int i = 0; i < id.size(); i++) {
-		tableLayout->removeWidget(id[i]);
+		layout->removeWidget(id[i]);
 		delete id[i];
-		tableLayout->removeWidget(correct[i]);
+		layout->removeWidget(correct[i]);
 		delete correct[i];
-		tableLayout->removeWidget(wrong[i]);
+		layout->removeWidget(wrong[i]);
 		delete wrong[i];
-		tableLayout->removeWidget(total[i]);
+		layout->removeWidget(total[i]);
 		delete total[i];
-		tableLayout->removeWidget(percent[i]);
+		layout->removeWidget(percent[i]);
 		delete percent[i];
 	}
-	tableLayout->update();
+	layout->update();
 	id.clear();
 	correct.clear();
 	wrong.clear();
@@ -221,17 +213,17 @@ void ResultWidget::display() {
 
 	//Add labels to grid
 	for (unsigned int i = 0; i < id.size(); i++) {
-		tableLayout->addWidget(id[i], i + 2, 0);
-		tableLayout->addWidget(correct[i], i + 2, 1);
-		tableLayout->addWidget(wrong[i], i + 2, 2);
-		tableLayout->addWidget(total[i], i + 2, 3);
-		tableLayout->addWidget(percent[i], i + 2, 4);
+		layout->addWidget(id[i], i + 2, 0);
+		layout->addWidget(correct[i], i + 2, 1);
+		layout->addWidget(wrong[i], i + 2, 2);
+		layout->addWidget(total[i], i + 2, 3);
+		layout->addWidget(percent[i], i + 2, 4);
 	}
 
 	exportButton->setEnabled(true);
 
 	//New layout
-	table->setLayout(tableLayout);
+	setLayout(layout);
 
 	update();
 }

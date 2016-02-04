@@ -29,9 +29,6 @@ public:
 	enum fileType {CSV = 0, TXT = 1, SQL = 2};
 
 public slots: 
-	
-	//Refresh()
-	void refresh();
 
 	//Clear display
 	void clearDisplay();
@@ -78,14 +75,8 @@ public slots:
 private slots:
 	
 private:
-	//Main layout
-	QBoxLayout *layout;
-
-	//Table for results
-	QWidget *table;
-
-	//Grid layout for table
-	QGridLayout *tableLayout;
+	//Grid layout
+	QGridLayout *layout;
 
 	//Title Labels
 	QLabel *idTitle;
@@ -98,10 +89,7 @@ private:
 	QLabel *minLabel;
 	QLabel *maxLabel;
 
-	//Buttons
-	QBoxLayout *buttonLayout;
-	QWidget *buttonWidget;
-	QPushButton *refreshButton;
+	//Button
 	QPushButton *exportButton;
 
 	//Information labels, vector
