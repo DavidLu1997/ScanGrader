@@ -30,9 +30,9 @@ public:
 	bool deleted = false;
 
 public slots:
-
-private slots :
 	void setDeleted();
+private slots :
+	
 private:
 	
 	//Url

@@ -50,6 +50,15 @@ ConfigWidget::ConfigWidget(QWidget *parent) {
 	layout->addWidget(addConfig, 1000, 0);
 	connect(addConfig, SIGNAL(released()), this, SLOT(addFiles()));
 
+	//Create removeAll button
+	removeAll = new QPushButton("Remove All");
+	removeAll->setEnabled(false);
+	removeAll->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//Connect removeAll button
+	QPushButton::connect(removeAll, SIGNAL(released()), this, SLOT(removeAllEntries()));
+	//Add removeAll button to layout
+	layout->addWidget(removeAll, 1000, 1);
+
 	setLayout(layout);
 }
 
@@ -68,6 +77,17 @@ void ConfigWidget::addFiles() {
 		configFiles.push_back(new ConfigFileWidget(files.at(i), layout, configFiles.size() + 1));
 		connect(configFiles.at(configFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
 	}
+	removeAll->setEnabled(true);
+}
+
+void ConfigWidget::removeAllEntries() {
+	//Call delete function of each configFileWidget
+	for (int i = 0; i < configFiles.size(); i++) {
+		configFiles.at(i)->setDeleted();
+	}
+	//Clear vector and disable button
+	configFiles.clear();
+	removeAll->setEnabled(false);
 }
 
 void ConfigWidget::refresh() {

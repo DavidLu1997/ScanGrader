@@ -33,6 +33,9 @@ public:
 	//Push button
 	QPushButton *addConfig;
 
+	//RemoveAll Button
+	QPushButton *removeAll;
+
 public slots:
 	//Refresh
 	void refresh();
@@ -41,6 +44,9 @@ private slots :
 
 	//Add files
 	void addFiles();
+
+	//Remove All
+	void removeAllEntries();
 
 private:
 
