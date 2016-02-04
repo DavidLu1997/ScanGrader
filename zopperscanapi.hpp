@@ -12,7 +12,7 @@ class ZopperScanAPI : public QMainWindow
 	Q_OBJECT
 
 public:
-	const double version = 1.1;
+	const double version = 1.13;
 
 	ZopperScanAPI(QWidget *parent = 0);
 	~ZopperScanAPI();
