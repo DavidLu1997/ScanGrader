@@ -43,8 +43,10 @@ public:
 	//Refresh button
 	QPushButton *refreshButton;
 
-public slots:
+	//RemoveAll button
+	QPushButton *removeAll;
 
+public slots:
 	//Add answer key files
 	void addFiles();
 
@@ -52,6 +54,8 @@ public slots:
 	void refresh();
 
 private slots:
+	//Remove all the added files
+	void removeAllEntries();
 	
 private:
 

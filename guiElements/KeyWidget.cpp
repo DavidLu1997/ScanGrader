@@ -55,10 +55,20 @@ KeyWidget::KeyWidget(QWidget *parent) {
 	layout->addWidget(addKey, 1000, 0);
 	connect(addKey, SIGNAL(released()), this, SLOT(addFiles()));
 
+	//Initialize refresh button
 	refreshButton = new QPushButton("Refresh");
 	refreshButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(refreshButton, 1000, 1);
 	connect(refreshButton, SIGNAL(released()), this, SLOT(refresh()));
+
+	//Create removeAll button
+	removeAll = new QPushButton("Remove All");
+	removeAll->setEnabled(false);
+	removeAll->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//Connect removeAll button
+	QPushButton::connect(removeAll, SIGNAL(released()), this, SLOT(removeAllEntries()));
+	//Add removeAll button to layout
+	layout->addWidget(removeAll, 1000, 2);
 
 	setLayout(layout);
 }
@@ -79,6 +89,18 @@ void KeyWidget::addFiles() {
 		keyFiles.push_back(new KeyFileWidget(files.at(i), layout, keyFiles.size() + 1));
 		connect(keyFiles.at(keyFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
 	}
+	//When at least one file is added, removeAll button becomes enabled
+	removeAll->setEnabled(true);
+}
+
+void KeyWidget::removeAllEntries() {
+	//Calls delete function of each keyFile entry
+	for (int i = 0; i < keyFiles.size(); i++) {
+		keyFiles.at(i)->setDeleted();
+	}
+	//Disable removeAll button, clear vector
+	removeAll->setEnabled(false);
+	keyFiles.clear();
 }
 
 void KeyWidget::refresh() {

@@ -45,11 +45,11 @@ public:
 	QComboBox *answerKey;
 
 public slots:
-	
-private slots :
-
 	//Delete
 	void setDeleted();
+private slots :
+
+	
 private:
 	//Row
 	unsigned int row;

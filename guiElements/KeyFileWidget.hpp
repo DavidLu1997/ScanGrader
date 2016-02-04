@@ -38,10 +38,10 @@ public:
 	bool deleted = false;
 
 public slots:
-
-private slots :
 	//Deleted
 	void setDeleted();
+
+private slots :
 
 private:
 

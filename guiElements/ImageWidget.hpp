@@ -30,8 +30,11 @@ public:
 	//Calculate button
 	QPushButton *calculate;
 
-	//Update button
+	//Refresh button
 	QPushButton *refreshButton;
+
+	//Remove All button
+	QPushButton *removeAll;
 
 	//Status label
 	//QLabel *status;
@@ -53,6 +56,8 @@ public slots:
 private slots:
 	//Get single path from file dialog
 	void addFiles();
+	//Remove all the added files
+	void removeAllEntries();
 
 private:
 

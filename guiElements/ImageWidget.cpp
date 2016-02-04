@@ -19,26 +19,32 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//Create add button
 	add = new QPushButton("Add Scan Image(s)");
 	add->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-
 	//Connect add button
 	QPushButton::connect(add, SIGNAL(released()), this, SLOT(addFiles()));
-
 	//Add add button to layout
 	layout->addWidget(add, 1000, 0);
 
 	//Create calculate button
 	calculate = new QPushButton("Calculate Score(s)");
 	calculate->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-
 	//Add calculate button to layout
 	layout->addWidget(calculate, 1000, 1);
 
-	//Create update button
+	//Create refresh button
 	refreshButton = new QPushButton("Refresh");
 	refreshButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-	//Add calculate button to layout
+	//Add refresh button to layout
 	layout->addWidget(refreshButton, 1000, 2);
+
+	//Create removeAll button
+	removeAll = new QPushButton("Remove All");
+	removeAll->setEnabled(false);
+	removeAll->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//Connect removeAll button
+	QPushButton::connect(removeAll, SIGNAL(released()), this, SLOT(removeAllEntries()));
+	//Add removeAll button to layout
+	layout->addWidget(removeAll, 1000, 2);
+
 
 	//Connect calculate
 	//connect(calculate, SIGNAL(released()), parent, SLOT(calculate()));
@@ -94,6 +100,7 @@ ImageWidget::~ImageWidget() {
 	delete calculate;
 	delete refreshButton;
 	delete fileLabel;
+	delete removeAll;
 	scanFiles.clear();
 }
 
@@ -142,9 +149,11 @@ void ImageWidget::updateKeys(const QList<QUrl> &urls) {
 void ImageWidget::refresh() {
 	if (scanFiles.size() < 1) {
 		calculate->setEnabled(false);
+		removeAll->setEnabled(false);
 	}
 	else {
 		calculate->setEnabled(true);
+		removeAll->setEnabled(true);
 	}
 	layout->update();
 	update();
@@ -159,6 +168,18 @@ void ImageWidget::addFiles() {
 	for (unsigned int i = 0; i < directory.size(); i++) {
 		addScanFileWidget(directory.at(i));
 	}
+}
+
+//Remove all entries
+void ImageWidget::removeAllEntries() {
+	//Call delete function of each scanFileWidget
+	for (int i = 0; i < scanFiles.size(); i++) {
+		scanFiles.at(i)->setDeleted();
+	}
+	//Clear vector and update UI
+	scanFiles.clear();
+	update();
+	refresh();
 }
 
 //**********Private Functions**********
