@@ -10,6 +10,6 @@ In the future, we plan on deploying it to iOS, Windows UWP, and OS X.
 
 Current Releases:
 
-[Version 1.11 (BETA, Unstable)](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/1.11)
+[Version 1.12 (BETA, Unstable)](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/1.11)
 
 Known issues can be found in [readme.txt](https://github.com/DavidLu1997/ZopperScanAPI/blob/qtGui/readme.txt)
