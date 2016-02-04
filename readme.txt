@@ -16,3 +16,4 @@ How to use:
 
 Known issues:
 - Export to SQL has not been implemented
+- Crashes may occur on edge case behaviours
