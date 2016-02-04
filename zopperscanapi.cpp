@@ -26,7 +26,13 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 
 	//Set Size
 	QDesktopWidget dw;
-	setMinimumSize(dw.width() * 0.4, dw.height() * 0.4);
+	//If desktop width *0.4 is less than 800, set minimum width to 800 and height to 400
+	if (dw.width() * 0.4 < 800) {
+		setMinimumSize(800, 400);
+	}
+	else {
+		setMinimumSize(dw.width() * 0.4, dw.height() * 0.4);
+	}
 
 	//Hide toolbar
 	ui.mainToolBar->hide();
