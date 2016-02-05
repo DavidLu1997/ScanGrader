@@ -1,3 +1,4 @@
+//Files that need to be included
 #include "KeyWidget.hpp"
 #include <QtWidgets\QFileDialog>
 
@@ -49,16 +50,18 @@ KeyWidget::KeyWidget(QWidget *parent) {
 	layout->setColumnStretch(3, 0);
 	layout->setColumnStretch(4, 100);
 
-	//Initialize push button
+	//Initialize push button and add it to layout
 	addKey = new QPushButton("Add Answer Key");
 	addKey->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(addKey, 1000, 0);
+	//Connect add button
 	connect(addKey, SIGNAL(released()), this, SLOT(addFiles()));
 
-	//Initialize refresh button
+	//Initialize refresh button and add it to layout
 	refreshButton = new QPushButton("Refresh");
 	refreshButton->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(refreshButton, 1000, 1);
+	//Connect refresh button
 	connect(refreshButton, SIGNAL(released()), this, SLOT(refresh()));
 
 	//Create removeAll button
@@ -73,6 +76,7 @@ KeyWidget::KeyWidget(QWidget *parent) {
 	setLayout(layout);
 }
 
+//Destructor
 KeyWidget::~KeyWidget() {
 	delete layout;
 	delete name;
@@ -104,76 +108,91 @@ void KeyWidget::removeAllEntries() {
 }
 
 void KeyWidget::refresh() {
+	//Calls update method to refresh UI
 	update();
 }
 
 void KeyWidget::updateConfig(const QList<QUrl> &urls) {
+	//Loops through keyFiles
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		//If keyFile at i is null, erase it from the vector
 		if (keyFiles.at(i)->deleted) {
 			keyFiles.erase(keyFiles.begin() + i);
 			i--;
 			continue;
 		}
+		//Call update method 
 		keyFiles.at(i)->updateConfigFiles(urls);
 	}
 }
 
 std::vector<std::string> KeyWidget::getFileNames() {
 	std::vector<std::string> fileNames;
-
+	//Loops through keyFiles
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		//If keyFile at i is null, erase it from the vector
 		if (keyFiles.at(i)->deleted) {
 			keyFiles.erase(keyFiles.begin() + i);
 			i--;
 			continue;
 		}
+		//Gets its name and adds it to the fileName vector
 		fileNames.push_back(keyFiles.at(i)->getName().toStdString());
 	}
-
+	//Return vector of fileNames
 	return fileNames;
 }
 
 QList<QUrl> KeyWidget::getKeyUrls() {
 	QList<QUrl> urls;
-
+	//Loops though keyFiles
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		//If keyFile at i is null, erase it from the vector
 		if (keyFiles.at(i)->deleted) {
 			keyFiles.erase(keyFiles.begin() + i);
 			i--;
 			continue;
 		}
+		//Gets the URL from keyFiles and adds it to the QList vector
 		urls.push_back(keyFiles.at(i)->getUrl());
 	}
+	//Return Qlist of urls
 	return urls;
 }
 
 QList<QUrl> KeyWidget::getConfigUrls() {
 	QList<QUrl> urls;
-
+	//Loops through keyFiles
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		//If keyFile at i is null, erase it from the vector
 		if (keyFiles.at(i)->deleted) {
 			keyFiles.erase(keyFiles.begin() + i);
 			i--;
 			continue;
 		}
+		//Gets ConfigUrl from keyFiles and adds it to the QList vector
 		urls.push_back(keyFiles.at(i)->getConfigUrl());
 	}
+	//Return QList vector
 	return urls;
 }
 
 QUrl KeyWidget::getFileUrl(std::string name) {
 	//Simple search
 	//TODO: Optimize
+	//Loop through keyFiles
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
+		//If keyFile at i is null, erase it from the vector
 		if (keyFiles.at(i)->deleted) {
 			keyFiles.erase(keyFiles.begin() + i);
 			i--;
 			continue;
 		}
+		//If name of keyFiles at i matches search name, then return
 		if (keyFiles.at(i)->getName().toStdString() == name) {
 			return keyFiles.at(i)->getUrl();
 		}
 	}
-
+	//Return QUrl
 	return QUrl();
 }
