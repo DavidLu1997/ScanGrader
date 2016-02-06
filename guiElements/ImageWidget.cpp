@@ -175,7 +175,8 @@ void ImageWidget::addFiles() {
 void ImageWidget::removeAllEntries() {
 	//Call delete function of each scanFileWidget
 	for (int i = 0; i < scanFiles.size(); i++) {
-		scanFiles.at(i)->setDeleted();
+		scanFiles[i]->setDeleted();
+		delete scanFiles[i];
 	}
 	//Clear vector and update UI
 	scanFiles.clear();
