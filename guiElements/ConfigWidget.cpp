@@ -84,6 +84,7 @@ void ConfigWidget::removeAllEntries() {
 	//Call delete function of each configFileWidget
 	for (int i = 0; i < configFiles.size(); i++) {
 		configFiles.at(i)->setDeleted();
+		delete configFiles.at(i);
 	}
 	//Clear vector and disable button
 	configFiles.clear();

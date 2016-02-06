@@ -101,6 +101,7 @@ void KeyWidget::removeAllEntries() {
 	//Calls delete function of each keyFile entry
 	for (int i = 0; i < keyFiles.size(); i++) {
 		keyFiles.at(i)->setDeleted();
+		delete keyFiles.at(i);
 	}
 	//Disable removeAll button, clear vector
 	removeAll->setEnabled(false);

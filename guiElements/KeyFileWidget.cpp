@@ -20,11 +20,6 @@ KeyFileWidget::KeyFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QW
 
 //Destructor
 KeyFileWidget::~KeyFileWidget() {
-	delete url;
-	delete name;
-	delete path;
-	delete remove;
-	delete configFile;
 }
 
 //Get URL
@@ -44,6 +39,8 @@ QUrl KeyFileWidget::getConfigUrl() {
 
 //Deleted
 void KeyFileWidget::setDeleted() {
+	if (deleted)
+		return;
 	deleted = true;
 	delete url;
 	delete name;
