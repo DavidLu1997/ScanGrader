@@ -87,7 +87,8 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	layout->setColumnStretch(0, 10);
 	layout->setColumnStretch(1, 10);
 	layout->setColumnStretch(2, 0);
-	layout->setColumnStretch(3, 100);
+	layout->setColumnStretch(3, 10);
+	layout->setColumnStretch(4, 100);
 
 	//Refresh
 	refresh();
@@ -174,8 +175,7 @@ void ImageWidget::addFiles() {
 void ImageWidget::removeAllEntries() {
 	//Call delete function of each scanFileWidget
 	for (int i = 0; i < scanFiles.size(); i++) {
-		scanFiles[i]->setDeleted();
-		delete scanFiles[i];
+		scanFiles.at(i)->setDeleted();
 	}
 	//Clear vector and update UI
 	scanFiles.clear();

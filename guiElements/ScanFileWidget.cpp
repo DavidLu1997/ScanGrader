@@ -8,6 +8,10 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 
 	//Initialize answer key
 	answerKey = new QComboBox();
+
+	//Initialize view button
+	view = new QPushButton("View");
+	connect(view, SIGNAL(released()), this, SLOT(previewImage()));
 	
 	//Initialize remove
 	remove = new QPushButton("Remove");
@@ -19,7 +23,8 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	//Add widgets to header
 	layout->addWidget(file, row, 0);
 	layout->addWidget(answerKey, row, 1);
-	layout->addWidget(remove, row, 2);
+	layout->addWidget(view, row, 2);
+	layout->addWidget(remove, row, 3);
 }
 
 //Destructor
@@ -34,10 +39,17 @@ void ScanFileWidget::setDeleted() {
 	delete answerKey;
 	delete remove;
 	delete path;
+	delete view;
 	deleted = true;
 }
 
 //**********Public Functions**********
+
+//Preview image
+void ScanFileWidget::previewImage() {
+	//Create new window
+	//imagePreview = new ImagePreview(getPath());
+}
 
 //Update path
 void ScanFileWidget::updatePath(const QUrl &url) {

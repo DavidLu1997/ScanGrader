@@ -13,6 +13,9 @@
 #include <vector>
 #include <string>
 
+//#include "ImagePreview.hpp"
+
+
 class ScanFileWidget : public QWidget  {
 	Q_OBJECT
 
@@ -35,6 +38,9 @@ public:
 	//Get selected answer key
 	std::string getAnswerKey();
 
+	//View button
+	QPushButton *view;
+
 	//Remove
 	QPushButton *remove;
 
@@ -47,12 +53,18 @@ public:
 public slots:
 	//Delete
 	void setDeleted();
+
+	//Preview image
+	void previewImage();
 private slots :
 
 	
 private:
 	//Row
 	unsigned int row;
+
+	//Image preview window
+	//ImagePreview *imagePreview;
 
 	//File path
 	QUrl *path;
