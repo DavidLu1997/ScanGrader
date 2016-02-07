@@ -75,14 +75,17 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	empty3->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty3, 999, 2);
 	QWidget *empty4 = new QWidget();
-	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-	layout->addWidget(empty4, 0, 3);
+	empty4->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	layout->addWidget(empty4, 999, 3);
 	QWidget *empty5 = new QWidget();
 	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-	layout->addWidget(empty5, 1, 3);
+	layout->addWidget(empty5, 1, 4);
 	QWidget *empty6 = new QWidget();
 	empty6->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-	layout->addWidget(empty6, 2, 3);
+	layout->addWidget(empty6, 2, 4);
+	QWidget *empty7 = new QWidget();
+	empty7->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+	layout->addWidget(empty7, 3, 4);
 
 	layout->setColumnStretch(0, 10);
 	layout->setColumnStretch(1, 10);
