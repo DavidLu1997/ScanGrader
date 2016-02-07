@@ -15,5 +15,5 @@ How to use:
 - Export to CSV/TXT
 
 Known issues:
-- Export to SQL has not been implemented
-- Crashes may occur on edge case behaviours
+- Export to SQL disabled
+- Program is a tad slow
