@@ -3,19 +3,19 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QLayOut>
-#include "ui_zopperscanapi.h"
+#include "ui_scangrader.h"
 #include "ScanAPI\Headers.hpp"
 #include "guiElements\NavBar.hpp"
 
-class ZopperScanAPI : public QMainWindow
+class ScanGrader : public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	const double version = 1.13;
 
-	ZopperScanAPI(QWidget *parent = 0);
-	~ZopperScanAPI();
+	ScanGrader(QWidget *parent = 0);
+	~ScanGrader();
 
 public slots:
 

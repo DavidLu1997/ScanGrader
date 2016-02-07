@@ -1,10 +1,10 @@
-#include "zopperscanapi.hpp"
+#include "ScanGrader.hpp"
 #include <Algorithm>
 #include <QDesktopWidget>
 
 //TODO: Redo for ScanFileWidget
 
-ZopperScanAPI::ZopperScanAPI(QWidget *parent)
+ScanGrader::ScanGrader(QWidget *parent)
 	: QMainWindow(parent)
 {
 	//Set up UI
@@ -45,7 +45,7 @@ ZopperScanAPI::ZopperScanAPI(QWidget *parent)
 	adjustSize();
 }
 
-ZopperScanAPI::~ZopperScanAPI()
+ScanGrader::~ScanGrader()
 {
 	delete navbar;
 }
@@ -53,13 +53,13 @@ ZopperScanAPI::~ZopperScanAPI()
 //**********Public Slots************
 
 //Refresh UI
-void ZopperScanAPI::refresh() {
+void ScanGrader::refresh() {
 	adjustSize();
 	update();
 }
 
 //Calculate results based on current settings
-void ZopperScanAPI::calculate() {
+void ScanGrader::calculate() {
 	//Get data
 	clearVariables();
 	getImageData();
@@ -111,7 +111,7 @@ void ZopperScanAPI::calculate() {
 }
 
 //Update config file comboboxes
-void ZopperScanAPI::updateConfig() {
+void ScanGrader::updateConfig() {
 	QList<QUrl> urls = navbar->config->getFileUrls();
 
 	//Fill comboboxes
@@ -119,7 +119,7 @@ void ZopperScanAPI::updateConfig() {
 }
 
 //Update answer key comboboxes
-void ZopperScanAPI::updateKeys() {
+void ScanGrader::updateKeys() {
 	QList<QUrl> urls = navbar->key->getKeyUrls();
 
 	//Fill comboboxes
@@ -133,12 +133,12 @@ void ZopperScanAPI::updateKeys() {
 }
 
 //Update percent
-void ZopperScanAPI::updatePercent(int value) {
+void ScanGrader::updatePercent(int value) {
 	AnalyzeImage::percentage = value / 100.0;
 }
 
 //Update threshold
-void ZopperScanAPI::updateThreshold(int value) {
+void ScanGrader::updateThreshold(int value) {
 	AnalyzeImage::threshold = value;
 }
 
@@ -146,7 +146,7 @@ void ZopperScanAPI::updateThreshold(int value) {
 //**********Private Functions**********
 
 //Clear variables
-void ZopperScanAPI::clearVariables() {
+void ScanGrader::clearVariables() {
 	images.clear();
 	imagePaths.clear();
 	useKey.clear();
@@ -160,7 +160,7 @@ void ZopperScanAPI::clearVariables() {
 }
 
 //Get image data
-void ZopperScanAPI::getImageData() {
+void ScanGrader::getImageData() {
 	//Get Key files
 	QList<QUrl> keyFiles = navbar->key->getKeyUrls();
 	QList<QUrl> configFiles = navbar->key->getConfigUrls();
@@ -186,7 +186,7 @@ void ZopperScanAPI::getImageData() {
 }
 
 //Connect Image
-void ZopperScanAPI::connectImage() {
+void ScanGrader::connectImage() {
 	connect(navbar->image->add, SIGNAL(released()), this, SLOT(refresh()));
 	connect(navbar->image->add, SIGNAL(released()), this, SLOT(updateKeys()));
 	connect(navbar->image->add, SIGNAL(released()), this, SLOT(updateConfig()));
@@ -197,7 +197,7 @@ void ZopperScanAPI::connectImage() {
 }
 
 //Connect Keys
-void ZopperScanAPI::connectKeys() {
+void ScanGrader::connectKeys() {
 	connect(navbar->key->addKey, SIGNAL(released()), this, SLOT(updateKeys()));
 	connect(navbar->key->addKey, SIGNAL(released()), this, SLOT(updateConfig()));
 	connect(navbar->key->refreshButton, SIGNAL(released()), this, SLOT(updateKeys()));
@@ -206,17 +206,17 @@ void ZopperScanAPI::connectKeys() {
 }
 
 //Connect Config
-void ZopperScanAPI::connectConfig() {
+void ScanGrader::connectConfig() {
 	connect(navbar->config->addConfig, SIGNAL(released()), this, SLOT(updateConfig()));
 }
 
 //Connect Results
-void ZopperScanAPI::connectResults() {
+void ScanGrader::connectResults() {
 	
 }
 
 //Connect Export
-void ZopperScanAPI::connectExport() {
+void ScanGrader::connectExport() {
 	//Connect export lines
 	connect(navbar->exportW->fileName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeExportName(const QString)));
 	connect(navbar->exportW->fileType, SIGNAL(currentIndexChanged(int)), navbar->result, SLOT(changeExportType(int)));
@@ -229,7 +229,7 @@ void ZopperScanAPI::connectExport() {
 }
 
 //Connect Options
-void ZopperScanAPI::connectOptions() {
+void ScanGrader::connectOptions() {
 	connect(navbar->option->threshold, SIGNAL(valueChanged(int)), this, SLOT(updateThreshold(int)));
 	connect(navbar->option->percent, SIGNAL(valueChanged(int)), this, SLOT(updatePercent(int)));
 	connect(navbar->option->thresholdValue, SIGNAL(valueChanged(int)), this, SLOT(updateThreshold(int)));
@@ -237,12 +237,12 @@ void ZopperScanAPI::connectOptions() {
 }
 
 //Connect About
-void ZopperScanAPI::connectAbout() {
+void ScanGrader::connectAbout() {
 	navbar->about->updateVersion(version);
 }
 
 //Compare two int vectors, returns number of equalities
-int ZopperScanAPI::compare(std::vector<int> a, std::vector<int> b) {
+int ScanGrader::compare(std::vector<int> a, std::vector<int> b) {
 	//Size equality check
 	if (a.size() != b.size()) {
 		return -1;
