@@ -9,7 +9,8 @@ ExportWidget::ExportWidget(QWidget *parent) {
 
 	//Radio buttons
 	fileButton = new QRadioButton("Local File");
-	sqlButton = new QRadioButton("SQL Database");
+	sqlButton = new QRadioButton("SQL Database (DISABLED)");
+	sqlButton->setDisabled(true);
 	radioButtons->addButton(fileButton);
 	radioButtons->setId(fileButton, 1);
 	radioButtons->addButton(sqlButton);
