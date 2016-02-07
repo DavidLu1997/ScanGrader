@@ -13,7 +13,7 @@
 #include <vector>
 #include <string>
 
-//#include "ImagePreview.hpp"
+#include "ImagePreview.hpp"
 
 
 class ScanFileWidget : public QWidget  {
@@ -64,7 +64,7 @@ private:
 	unsigned int row;
 
 	//Image preview window
-	//ImagePreview *imagePreview;
+	ImagePreview *imagePreview;
 
 	//File path
 	QUrl *path;

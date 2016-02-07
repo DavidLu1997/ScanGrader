@@ -8,7 +8,39 @@ ImagePreview::ImagePreview(const QUrl imagePath) {
 	imageLabel->setBackgroundRole(QPalette::Base);
 	imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 	imageLabel->setScaledContents(true);
-	//Need to figure out how to set image of the label to the image path
+	
+	//Scroll Area
+	setBackgroundRole(QPalette::Dark);
+	setWidget(imageLabel);
 
-	resize(QGuiApplication::primaryScreen()->availableSize() * 3 / 5);
+	loadFile(imagePath.toLocalFile());
+
+	setWidgetResizable(true);
+
+	setAttribute(Qt::WA_DeleteOnClose);
+	show();
+}
+
+//Destructor
+ImagePreview::~ImagePreview() {
+	delete imageLabel;
+}
+
+//Load file
+void ImagePreview::loadFile(const QString &name) {
+	QImageReader reader(name);
+	reader.setAutoTransform(true);
+	const QImage image = reader.read();
+	if (image.isNull()) {
+		QMessageBox::information(this, QGuiApplication::applicationDisplayName(), tr("Cannot load %1.").arg(QDir::toNativeSeparators(name)));
+		setWindowFilePath(QString());
+		imageLabel->setPixmap(QPixmap());
+		imageLabel->adjustSize();
+		return;
+	}
+	imageLabel->setPixmap(QPixmap::fromImage(image));
+	imageLabel->resize(imageLabel->pixmap()->size());
+	resize(imageLabel->pixmap()->size());
+	setWindowFilePath(name);
+	return;
 }

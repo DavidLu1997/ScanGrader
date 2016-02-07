@@ -47,8 +47,7 @@ void ScanFileWidget::setDeleted() {
 
 //Preview image
 void ScanFileWidget::previewImage() {
-	//Create new window
-	//imagePreview = new ImagePreview(getPath());
+	imagePreview = new ImagePreview(getPath());
 }
 
 //Update path
