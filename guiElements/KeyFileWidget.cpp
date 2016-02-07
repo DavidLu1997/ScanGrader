@@ -54,6 +54,7 @@ void KeyFileWidget::setDeleted() {
 	delete name;
 	delete path;
 	delete remove;
+	delete view;
 	delete configFile;
 }
 

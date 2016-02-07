@@ -14,7 +14,9 @@
 #include "Pixel.hpp"
 #include "Point.hpp"
 #include <iostream>
-
+#include <QtGui\QImage>
+#include <QtGui\QImageReader>
+#include <QtGui\QRgb>
 #include <vector>
 
 class ScanImage
@@ -32,11 +34,8 @@ public:
 	//Obtain grayscale image
 	bool readGrayScale();
 
-	//Getter for pixels
-	std::vector< std::vector<Pixel> > getPixels();
-
 	//Get ID
-	int getID();
+	void calculate();
 
 	//Getter for grayScale
 	std::vector< std::vector<int> > getGrayScale();
@@ -44,10 +43,10 @@ public:
 	//Resolution
 	Point resolution;
 
-private:
-	//Pixels
-	std::vector< std::vector<Pixel> > pixels;
+	//QImage
+	QImage image;
 
+private:
 	//Grayscale
 	std::vector< std::vector<int> > grayScale;
 };
