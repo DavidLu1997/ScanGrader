@@ -7,6 +7,7 @@
 #include <QtWidgets\QComboBox>
 #include <QtWidgets\QPushButton>
 #include <QUrl>
+#include "ImagePreview.hpp"
 
 class KeyFileWidget : public QWidget {
 
@@ -31,6 +32,9 @@ public:
 	//Update config files
 	void updateConfigFiles(const QList<QUrl> &urls);
 
+	//View button
+	QPushButton *view;
+
 	//Remove button
 	QPushButton *remove;
 
@@ -40,6 +44,9 @@ public:
 public slots:
 	//Deleted
 	void setDeleted();
+
+	//Show Preview
+	void previewImage();
 
 private slots :
 
@@ -59,6 +66,9 @@ private:
 
 	//Config file
 	QComboBox *configFile;
+
+	//ImagePreview
+	ImagePreview *imagePreview;
 };
 
 #endif

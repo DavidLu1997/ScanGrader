@@ -11,9 +11,17 @@ KeyFileWidget::KeyFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QW
 	layout->addWidget(path, row, 1);
 	configFile = new QComboBox();
 	layout->addWidget(configFile, row, 2);
+
+	//Initialize view button
+	view = new QPushButton("View");
+	connect(view, SIGNAL(released()), this, SLOT(previewImage()));
+	layout->addWidget(view, row, 3);
+
 	//Remove button	
 	remove = new QPushButton("Remove");
-	layout->addWidget(remove, row, 3);
+	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));
+	layout->addWidget(remove, row, 4);
+	
 	//Connecting remove button
 	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));
 }
@@ -47,6 +55,11 @@ void KeyFileWidget::setDeleted() {
 	delete path;
 	delete remove;
 	delete configFile;
+}
+
+//Show preview
+void KeyFileWidget::previewImage() {
+	imagePreview = new ImagePreview(getUrl());
 }
 
 //Update config files
