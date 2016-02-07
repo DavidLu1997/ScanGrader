@@ -45,25 +45,6 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//Add removeAll button to layout
 	layout->addWidget(removeAll, 1000, 2);
 
-
-	//Connect calculate
-	//connect(calculate, SIGNAL(released()), parent, SLOT(calculate()));
-
-	//Create status label
-	//statusLabel = new QLabel("Status: ");
-	//statusLabel->setAlignment(Qt::AlignRight);
-	//statusLabel->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-	//Add status label to layout
-	//layout->addWidget(statusLabel, 1000, 2);
-
-	//Create status
-	//status = new QLabel("Idle");
-	////status->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-	//Add status to layout
-	//layout->addWidget(status, 1000, 2);
-
 	//Add empty widget to take up size
 	QWidget *empty1 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -107,6 +88,8 @@ ImageWidget::~ImageWidget() {
 	delete removeAll;
 	scanFiles.clear();
 }
+
+//**********Public Functions*********
 
 //Get image files
 QList<QUrl> ImageWidget::getImageUrls() {

@@ -30,6 +30,8 @@ KeyFileWidget::KeyFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QW
 KeyFileWidget::~KeyFileWidget() {
 }
 
+//**********Public Functions**********
+
 //Get URL
 QUrl KeyFileWidget::getUrl() {
 	return *url;
@@ -44,6 +46,18 @@ QString KeyFileWidget::getName() {
 QUrl KeyFileWidget::getConfigUrl() {
 	return configUrls.at(configFile->currentIndex());
 }
+
+//Update config files
+void KeyFileWidget::updateConfigFiles(const QList<QUrl> &urls) {
+	configUrls = urls;
+	configFile->clear();
+
+	for (unsigned int i = 0; i < configUrls.size(); i++) {
+		configFile->addItem(configUrls.at(i).fileName());
+	}
+}
+
+//**********Public Slots**********
 
 //Deleted
 void KeyFileWidget::setDeleted() {
@@ -61,14 +75,4 @@ void KeyFileWidget::setDeleted() {
 //Show preview
 void KeyFileWidget::previewImage() {
 	imagePreview = new ImagePreview(getUrl());
-}
-
-//Update config files
-void KeyFileWidget::updateConfigFiles(const QList<QUrl> &urls) {
-	configUrls = urls;
-	configFile->clear();
-
-	for (unsigned int i = 0; i < configUrls.size(); i++) {
-		configFile->addItem(configUrls.at(i).fileName());
-	}
 }

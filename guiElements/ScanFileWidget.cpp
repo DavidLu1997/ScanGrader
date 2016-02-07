@@ -32,6 +32,9 @@ ScanFileWidget::~ScanFileWidget() {
 
 }
 
+//**********Public Slots*********
+
+//Delete file
 void ScanFileWidget::setDeleted() {
 	if (deleted)
 		return;
@@ -43,12 +46,12 @@ void ScanFileWidget::setDeleted() {
 	deleted = true;
 }
 
-//**********Public Functions**********
-
 //Preview image
 void ScanFileWidget::previewImage() {
 	imagePreview = new ImagePreview(getPath());
 }
+
+//**********Public Functions**********
 
 //Update path
 void ScanFileWidget::updatePath(const QUrl &url) {

@@ -62,6 +62,7 @@ ConfigWidget::ConfigWidget(QWidget *parent) {
 	setLayout(layout);
 }
 
+//Destructor
 ConfigWidget::~ConfigWidget() {
 	delete layout;
 	delete name;
@@ -70,31 +71,9 @@ ConfigWidget::~ConfigWidget() {
 	configFiles.clear();
 }
 
-void ConfigWidget::addFiles() {
-	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Configuration File", QUrl("/"), "Configuration Files (*.ini)");
+//**********Public Functions**********
 
-	for (unsigned int i = 0; i < files.size(); i++) {
-		configFiles.push_back(new ConfigFileWidget(files.at(i), layout, configFiles.size() + 1));
-		connect(configFiles.at(configFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
-	}
-	removeAll->setEnabled(true);
-}
-
-void ConfigWidget::removeAllEntries() {
-	//Call delete function of each configFileWidget
-	for (int i = 0; i < configFiles.size(); i++) {
-		configFiles.at(i)->setDeleted();
-		delete configFiles.at(i);
-	}
-	//Clear vector and disable button
-	configFiles.clear();
-	removeAll->setEnabled(false);
-}
-
-void ConfigWidget::refresh() {
-	update();
-}
-
+//Get all file names
 std::vector<std::string> ConfigWidget::getFileNames() {
 	std::vector<std::string> fileNames;
 
@@ -105,6 +84,7 @@ std::vector<std::string> ConfigWidget::getFileNames() {
 	return fileNames;
 }
 
+//Get all file URLs
 QList<QUrl> ConfigWidget::getFileUrls() {
 	QList<QUrl> urls;
 
@@ -119,6 +99,7 @@ QList<QUrl> ConfigWidget::getFileUrls() {
 	return urls;
 }
 
+//Get file url from name
 QUrl ConfigWidget::getFileUrl(std::string name) {
 	//Simple search
 	//TODO: Optimize
@@ -134,4 +115,35 @@ QUrl ConfigWidget::getFileUrl(std::string name) {
 	}
 
 	return QUrl();
+}
+
+//**********Public Slots**********
+
+//Update display
+void ConfigWidget::refresh() {
+	update();
+}
+
+//**********Private Slots**********
+//Add files
+void ConfigWidget::addFiles() {
+	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Configuration File", QUrl("/"), "Configuration Files (*.ini)");
+
+	for (unsigned int i = 0; i < files.size(); i++) {
+		configFiles.push_back(new ConfigFileWidget(files.at(i), layout, configFiles.size() + 1));
+		connect(configFiles.at(configFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
+	}
+	removeAll->setEnabled(true);
+}
+
+//Remove all entries
+void ConfigWidget::removeAllEntries() {
+	//Call delete function of each configFileWidget
+	for (int i = 0; i < configFiles.size(); i++) {
+		configFiles.at(i)->setDeleted();
+		delete configFiles.at(i);
+	}
+	//Clear vector and disable button
+	configFiles.clear();
+	removeAll->setEnabled(false);
 }

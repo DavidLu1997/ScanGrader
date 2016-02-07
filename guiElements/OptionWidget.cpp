@@ -105,6 +105,8 @@ OptionWidget::~OptionWidget() {
 	delete layout;
 }
 
+//**********Public Functions**********
+
 //Get percent
 double OptionWidget::getPercent() {
 	return percent->value() / 100.0;
@@ -114,6 +116,8 @@ double OptionWidget::getPercent() {
 int OptionWidget::getThreshold() {
 	return threshold->value();
 }
+
+//**********Public Slots**********
 
 //Percent changed
 void OptionWidget::percentChanged(int value) {

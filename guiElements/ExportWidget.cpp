@@ -112,27 +112,10 @@ ExportWidget::ExportWidget(QWidget *parent) {
 
 //Destructor
 ExportWidget::~ExportWidget() {
-	delete radioButtons;
-	delete fileName;
-	delete fileLabel;
-	delete fileType;
-	delete fileTypeLabel;
-	delete hostName;
-	delete hostLabel;
-	delete databaseName;
-	delete databaseLabel;
-	delete port;
-	delete portLabel;
-	delete user;
-	delete userLabel;
-	delete password;
-	delete passwordLabel;
-	delete fileButton;
-	delete sqlButton;
-	delete fileWidget;
-	delete sqlWidget;
 	delete layout;
 }
+
+//**********Public Slots***********
 
 //Change selection
 void ExportWidget::selectionChanged(int id) {

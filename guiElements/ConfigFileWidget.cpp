@@ -16,15 +16,7 @@ ConfigFileWidget::ConfigFileWidget(QUrl URL, QGridLayout *layout, unsigned int r
 ConfigFileWidget::~ConfigFileWidget() {
 }
 
-void ConfigFileWidget::setDeleted() {
-	if (deleted) {
-		return;
-	}
-	delete name;
-	delete path;
-	delete remove;
-	deleted = true;
-}
+//**********Public Functions**********
 
 //Get URL
 QUrl ConfigFileWidget::getUrl() {
@@ -34,4 +26,15 @@ QUrl ConfigFileWidget::getUrl() {
 //Get name
 QString ConfigFileWidget::getName() {
 	return url.fileName();
+}
+
+//**********Public Slots**********
+void ConfigFileWidget::setDeleted() {
+	if (deleted) {
+		return;
+	}
+	delete name;
+	delete path;
+	delete remove;
+	deleted = true;
 }

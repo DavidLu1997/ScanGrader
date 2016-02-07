@@ -82,6 +82,8 @@ ResultWidget::~ResultWidget() {
 	delete layout;
 }
 
+//**********Public Functions**********
+
 //Add row
 void ResultWidget::addRow(std::string id, const std::vector<int> &answers, const std::vector<int> &solutions) {
 	answersList.push_back(answers);

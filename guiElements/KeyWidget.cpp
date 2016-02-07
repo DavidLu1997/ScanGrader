@@ -2,6 +2,7 @@
 #include "KeyWidget.hpp"
 #include <QtWidgets\QFileDialog>
 
+//Constructor
 KeyWidget::KeyWidget(QWidget *parent) {
 	QWidget();
 
@@ -92,35 +93,9 @@ KeyWidget::~KeyWidget() {
 	delete addKey;
 	keyFiles.clear();
 }
+//**********Public Functions**********
 
-void KeyWidget::addFiles() {
-	//Opens file dialog for user to pick file
-	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Answer Key", QUrl("/"), "Image Files (*.bmp; *.jpg; *.png; *.pbm; *.pgm; *.ppm; *.xbm; *.xpm)");
-
-	for (unsigned int i = 0; i < files.size(); i++) {
-		keyFiles.push_back(new KeyFileWidget(files.at(i), layout, keyFiles.size() + 1));
-		connect(keyFiles.at(keyFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
-	}
-	//When at least one file is added, removeAll button becomes enabled
-	removeAll->setEnabled(true);
-}
-
-void KeyWidget::removeAllEntries() {
-	//Calls delete function of each keyFile entry
-	for (int i = 0; i < keyFiles.size(); i++) {
-		keyFiles.at(i)->setDeleted();
-		delete keyFiles.at(i);
-	}
-	//Disable removeAll button, clear vector
-	removeAll->setEnabled(false);
-	keyFiles.clear();
-}
-
-void KeyWidget::refresh() {
-	//Calls update method to refresh UI
-	update();
-}
-
+//Update config file comboboxes
 void KeyWidget::updateConfig(const QList<QUrl> &urls) {
 	//Loops through keyFiles
 	for (unsigned int i = 0; i < keyFiles.size(); i++) {
@@ -135,6 +110,7 @@ void KeyWidget::updateConfig(const QList<QUrl> &urls) {
 	}
 }
 
+//Get all file names
 std::vector<std::string> KeyWidget::getFileNames() {
 	std::vector<std::string> fileNames;
 	//Loops through keyFiles
@@ -152,6 +128,7 @@ std::vector<std::string> KeyWidget::getFileNames() {
 	return fileNames;
 }
 
+//Get all urls
 QList<QUrl> KeyWidget::getKeyUrls() {
 	QList<QUrl> urls;
 	//Loops though keyFiles
@@ -169,6 +146,7 @@ QList<QUrl> KeyWidget::getKeyUrls() {
 	return urls;
 }
 
+//Get all urls of config files
 QList<QUrl> KeyWidget::getConfigUrls() {
 	QList<QUrl> urls;
 	//Loops through keyFiles
@@ -186,6 +164,7 @@ QList<QUrl> KeyWidget::getConfigUrls() {
 	return urls;
 }
 
+//Get url of file from name
 QUrl KeyWidget::getFileUrl(std::string name) {
 	//Simple search
 	//TODO: Optimize
@@ -204,4 +183,39 @@ QUrl KeyWidget::getFileUrl(std::string name) {
 	}
 	//Return QUrl
 	return QUrl();
+}
+
+//**********Public Slots**********
+
+//Add answerkey files
+void KeyWidget::addFiles() {
+	//Opens file dialog for user to pick file
+	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Answer Key", QUrl("/"), "Image Files (*.bmp; *.jpg; *.png; *.pbm; *.pgm; *.ppm; *.xbm; *.xpm)");
+
+	for (unsigned int i = 0; i < files.size(); i++) {
+		keyFiles.push_back(new KeyFileWidget(files.at(i), layout, keyFiles.size() + 1));
+		connect(keyFiles.at(keyFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
+	}
+	//When at least one file is added, removeAll button becomes enabled
+	removeAll->setEnabled(true);
+}
+
+//Refresh UI
+void KeyWidget::refresh() {
+	//Calls update method to refresh UI
+	update();
+}
+
+//**********Private Slots**********
+
+//Remove all
+void KeyWidget::removeAllEntries() {
+	//Calls delete function of each keyFile entry
+	for (int i = 0; i < keyFiles.size(); i++) {
+		keyFiles.at(i)->setDeleted();
+		delete keyFiles.at(i);
+	}
+	//Disable removeAll button, clear vector
+	removeAll->setEnabled(false);
+	keyFiles.clear();
 }
