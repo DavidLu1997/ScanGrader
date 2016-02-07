@@ -95,7 +95,7 @@ KeyWidget::~KeyWidget() {
 
 void KeyWidget::addFiles() {
 	//Opens file dialog for user to pick file
-	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Answer Key", QUrl("/"), "Image Files (*.bmp)");
+	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Answer Key", QUrl("/"), "Image Files (*.bmp; *.jpg; *.png; *.pbm; *.pgm; *.ppm; *.xbm; *.xpm)");
 
 	for (unsigned int i = 0; i < files.size(); i++) {
 		keyFiles.push_back(new KeyFileWidget(files.at(i), layout, keyFiles.size() + 1));
