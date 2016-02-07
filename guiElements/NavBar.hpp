@@ -7,7 +7,7 @@
 #include <QtWidgets\QTabWidget>
 #include <QtWidgets\QWidget>
 #include <QtWidgets\QScrollArea>
-#include "ZopperScanGuiIncludes.hpp"
+#include "ScanGuiIncludes.hpp"
 
 class NavBar : public QTabWidget
 {
