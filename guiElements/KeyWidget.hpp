@@ -8,7 +8,7 @@
 #include <QtWidgets\QGridLayout>
 #include <QtWidgets\QLabel>
 #include <QtWidgets\QPushButton>
-#include "headers\ImageTemplate.hpp"
+#include "ScanAPI\ImageTemplate.hpp"
 #include "KeyFileWidget.hpp"
 
 class KeyWidget : public QWidget

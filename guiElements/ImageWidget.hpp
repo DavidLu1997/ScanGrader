@@ -11,7 +11,7 @@
 #include <QtWidgets\QLayout>
 #include <QtWidgets\QFileDialog>
 #include <vector>
-#include "headers\AnalyzeImage.hpp"
+#include "ScanAPI\AnalyzeImage.hpp"
 #include "ScanFileWidget.hpp"
 
 class ImageWidget : public QWidget {

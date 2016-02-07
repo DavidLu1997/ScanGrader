@@ -7,7 +7,7 @@
 #include <QtWidgets\QWidget>
 #include <QtWidgets\QGridLayout>
 #include <QtWidgets\QLabel>
-#include "headers\ImageTemplate.hpp"
+#include "ScanAPI\ImageTemplate.hpp"
 #include "ConfigFileWidget.hpp"
 
 class ConfigWidget : public QWidget
