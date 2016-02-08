@@ -17,7 +17,7 @@ Current Releases:
 [Nightly Build (Very Unstable)](https://github.com/DavidLu1997/ScanGrader/blob/qtGui/ScanGraderSetup.msi)
 
 ## Changelog:
-###1.21
+### 1.21
 - Added installer 
 ###1.20
 - Added support for JPEG, PNG, and others
