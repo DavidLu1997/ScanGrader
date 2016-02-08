@@ -43,6 +43,7 @@ Resources*/
 *.csv
 *.zip
 ScanGraderSetup*/
+*.exe
 
 # Project specific files
 *.jpg
