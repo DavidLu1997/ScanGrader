@@ -19,7 +19,7 @@ Current Releases:
 ## Changelog:
 ### 1.21
 - Added installer 
-###1.20
+### 1.20
 - Added support for JPEG, PNG, and others
 - Changed over to QImageReader
 - Accuracy improved
