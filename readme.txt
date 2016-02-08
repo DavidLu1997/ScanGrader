@@ -1,4 +1,3 @@
-No installation required, unzip and run.
 Only one config file available at the moment, config.ini
 Only one template available at the moment, ScanGrader50.pdf
 
