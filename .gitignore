@@ -42,6 +42,7 @@ x64*/
 Resources*/
 *.csv
 *.zip
+ScanGraderSetup*/
 
 # Project specific files
 *.jpg
@@ -55,7 +56,6 @@ $RECYCLE.BIN/
 
 # Windows Installer files
 *.cab
-*.msi
 *.msm
 *.msp
 
