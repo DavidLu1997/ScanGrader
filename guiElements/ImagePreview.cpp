@@ -1,3 +1,4 @@
+//Imports
 #include <string>
 #include "ImagePreview.hpp"
 
@@ -13,11 +14,13 @@ ImagePreview::ImagePreview(const QUrl imagePath) {
 	setBackgroundRole(QPalette::Dark);
 	setWidget(imageLabel);
 
+	//Call loadFile function, passes file path to function
 	loadFile(imagePath.toLocalFile());
-
+	//Allow window to be resizable
 	setWidgetResizable(true);
 
 	setAttribute(Qt::WA_DeleteOnClose);
+	//Display
 	show();
 }
 
@@ -31,6 +34,7 @@ void ImagePreview::loadFile(const QString &name) {
 	QImageReader reader(name);
 	reader.setAutoTransform(true);
 	const QImage image = reader.read();
+	//Displays notification if image can't be loaded
 	if (image.isNull()) {
 		QMessageBox::information(this, QGuiApplication::applicationDisplayName(), tr("Cannot load %1.").arg(QDir::toNativeSeparators(name)));
 		setWindowFilePath(QString());
@@ -38,6 +42,7 @@ void ImagePreview::loadFile(const QString &name) {
 		imageLabel->adjustSize();
 		return;
 	}
+	//Display image on label
 	imageLabel->setPixmap(QPixmap::fromImage(image));
 	imageLabel->resize(imageLabel->pixmap()->size());
 	resize(imageLabel->pixmap()->size());

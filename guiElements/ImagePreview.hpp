@@ -2,6 +2,7 @@
 #ifndef IMAGEPREVIEW_H
 #define IMAGEPREVIEW_H
 
+//Imports needed
 #include <QtWidgets\QWidget>
 #include <QtWidgets\QComboBox>
 #include <QtWidgets\QLabel>
