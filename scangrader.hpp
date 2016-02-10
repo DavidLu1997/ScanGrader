@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QLayOut>
+#include <QtWidgets/QProgressBar>
 #include "ui_scangrader.h"
 #include "ScanAPI\Headers.hpp"
 #include "guiElements\NavBar.hpp"
@@ -42,6 +43,9 @@ private:
 
 	//Main NavBar
 	NavBar *navbar;
+
+	//Progress bar
+	QProgressBar *progress;
 
 	//Clear variables
 	void clearVariables();

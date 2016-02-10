@@ -35,6 +35,12 @@ ScanGrader::ScanGrader(QWidget *parent)
 	//Hide toolbar
 	ui.mainToolBar->hide();
 
+	//Progress bar
+	progress = new QProgressBar();
+	progress->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	progress->setFormat("%p%");
+	statusBar()->addWidget(progress);
+
 	//Hide status bar
 	statusBar()->hide();
 
@@ -66,27 +72,47 @@ void ScanGrader::calculate() {
 		return;
 	}
 
+	//Calculate number of images needed
+	unsigned int numImage = keys.size() + images.size();
+	//Calculate number of other actions needed
+	unsigned int others = keys.size() + images.size() * 3;
+	progress->setMaximum(numImage * 5 + others);
+	progress->setMinimum(0);
+	progress->setValue(0);
+
+	//Show status bar
+	statusBar()->show();
+
+
 	//Calculate keys
 	for (unsigned int i = 0; i < keyPaths.size(); i++) {
 		keys.push_back(AnalyzeImage(keyPaths.at(i), useFile.at(i)));
+		progress->setValue(progress->value() + 5);
+		statusBar()->update();
 	}
 
 	//Get solutions
 	solutions.clear();
 	for (unsigned int i = 0; i < keys.size(); i++) {
 		solutions.push_back(keys.at(i).getAnswers());
+		progress->setValue(progress->value() + 1);
+		statusBar()->update();
 	}
 
 
 	//Calculate images
 	for (unsigned int i = 0; i < imagePaths.size(); i++) {
 		images.push_back(AnalyzeImage(imagePaths.at(i), useFile.at(useKey.at(i))));
+		progress->setValue(progress->value() + 5);
+		statusBar()->update();
 	}
 
 	//Get answers
 	answers.clear();
 	for (unsigned int i = 0; i < imagePaths.size(); i++) {
 		answers.push_back(images.at(i).getAnswers());
+		progress->setValue(progress->value() + 1);
+		statusBar()->update();
 	}
 
 	//Get score and percentage score
@@ -95,6 +121,8 @@ void ScanGrader::calculate() {
 	for (unsigned int i = 0; i < answers.size(); i++) {
 		score.push_back(compare(answers[i], solutions[useKey.at(i)]));
 		percentScore.push_back((double)score[i] / answers[i].size());
+		progress->setValue(progress->value() + 1);
+		statusBar()->update();
 	}
 
 	//Push out to result
@@ -102,10 +130,14 @@ void ScanGrader::calculate() {
 	navbar->result->clearData();
 	for (unsigned int i = 0; i < answers.size(); i++) {
 		navbar->result->addRow(tr("%1").arg(images.at(i).getID()).toStdString(), answers.at(i), solutions.at(useKey.at(i)));
+		progress->setValue(progress->value() + 1);
+		statusBar()->update();
 	}
 	navbar->result->calculate();
 	navbar->result->display();
 	navbar->result->update();
+	progress->reset();
+	statusBar()->hide();
 }
 
 //Update config file comboboxes
