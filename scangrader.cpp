@@ -2,8 +2,6 @@
 #include <Algorithm>
 #include <QDesktopWidget>
 
-//TODO: Redo for ScanFileWidget
-
 ScanGrader::ScanGrader(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -242,12 +240,13 @@ void ScanGrader::connectAbout() {
 }
 
 //Compare two int vectors, returns number of equalities
-int ScanGrader::compare(std::vector<int> a, std::vector<int> b) {
+template <typename T>
+unsigned int ScanGrader::compare(std::vector<T> a, std::vector<T> b) {
 	//Size equality check
 	if (a.size() != b.size()) {
 		return -1;
 	}
-	int result = 0;
+	unsigned int result = 0;
 	for (unsigned int i = 0; i < a.size(); i++) {
 		if (a[i] == b[i]) {
 			result++;

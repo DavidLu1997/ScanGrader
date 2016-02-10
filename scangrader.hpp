@@ -59,8 +59,8 @@ private:
 	void connectAbout();
 
 	//Compare two int vectors, returns number of equalities
-	//TODO Rewrite as template
-	int compare(std::vector<int> a, std::vector<int> b);
+	template <typename T>
+	unsigned int compare(std::vector<T> a, std::vector<T> b);
 
 	//Images to analyze
 	std::vector<AnalyzeImage> images;
