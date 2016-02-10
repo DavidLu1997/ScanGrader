@@ -12,11 +12,16 @@ Known issues can be found in [readme.txt](https://github.com/DavidLu1997/ZopperS
 
 Current Releases:
 
-[Version 1.21 Alpha](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/1.21)
+[Version 1.22 Alpha](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/1.22)
 
 [Nightly Build (Very Unstable)](https://github.com/DavidLu1997/ScanGrader/blob/qtGui/ScanGraderSetup.msi)
 
 ## Changelog:
+
+### 1.22
+- Added progress bar
+- Renamed author to Blank Space Limited
+
 ### 1.21
 - Added installer 
 
