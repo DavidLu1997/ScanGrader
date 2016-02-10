@@ -13,7 +13,7 @@ class ScanGrader : public QMainWindow
 	Q_OBJECT
 
 public:
-	const double version = 1.21;
+	const double version = 1.22;
 
 	ScanGrader(QWidget *parent = 0);
 	~ScanGrader();
