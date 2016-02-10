@@ -47,6 +47,9 @@ private:
 	//Progress bar
 	QProgressBar *progress;
 
+	//Status label
+	QLabel *status;
+
 	//Clear variables
 	void clearVariables();
 

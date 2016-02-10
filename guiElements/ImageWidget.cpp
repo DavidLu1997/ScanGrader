@@ -48,7 +48,7 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//Create progress
 	progress = new QProgressBar();
 	progress->setVisible(false);
-	progress->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	//progress->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	layout->addWidget(progress, 1001, 0);
 
 	//Add empty widget to take up size

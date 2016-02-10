@@ -35,12 +35,18 @@ ScanGrader::ScanGrader(QWidget *parent)
 	//Hide toolbar
 	ui.mainToolBar->hide();
 
+	//Status
+	status = new QLabel("Idle");
+	statusBar()->addWidget(status);
+
 	//Progress bar
 	progress = navbar->image->progress;
+	progress->setAlignment(Qt::AlignRight);
+	statusBar()->addWidget(progress);
 	//progress->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-	//Hide status bar
-	statusBar()->hide();
+	//Ensure dragger displayed
+	statusBar()->setSizeGripEnabled(true);
 
 	//Set Title
 	setWindowTitle("ScanGrader");
@@ -63,6 +69,7 @@ void ScanGrader::refresh() {
 //Calculate results based on current settings
 void ScanGrader::calculate() {
 	//Initialize progress
+	status->setText("Calculating: ");
 	progress->setMinimum(0);
 	progress->setValue(0);
 	progress->setVisible(true);
@@ -131,6 +138,7 @@ void ScanGrader::calculate() {
 	navbar->result->update();
 	progress->reset();
 	progress->setVisible(false);
+	status->setText("Idle");
 }
 
 //Update config file comboboxes
@@ -244,11 +252,11 @@ void ScanGrader::connectExport() {
 	connect(navbar->exportW->fileName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeExportName(const QString)));
 	connect(navbar->exportW->fileType, SIGNAL(currentIndexChanged(int)), navbar->result, SLOT(changeExportType(int)));
 	connect(navbar->exportW->radioButtons, SIGNAL(buttonReleased(int)), navbar->result, SLOT(changeExportType(int)));
-	connect(navbar->exportW->hostName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeHostName(const QString)));
-	connect(navbar->exportW->databaseName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeDatabaseName(const QString)));
-	connect(navbar->exportW->port, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changePort(const QString)));
-	connect(navbar->exportW->user, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeUserName(const QString)));
-	connect(navbar->exportW->password, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changePassword(const QString)));
+	//connect(navbar->exportW->hostName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeHostName(const QString)));
+	//connect(navbar->exportW->databaseName, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeDatabaseName(const QString)));
+	//connect(navbar->exportW->port, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changePort(const QString)));
+	//connect(navbar->exportW->user, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changeUserName(const QString)));
+	//connect(navbar->exportW->password, SIGNAL(textChanged(const QString)), navbar->result, SLOT(changePassword(const QString)));
 }
 
 //Connect Options

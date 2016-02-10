@@ -13,8 +13,9 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	sqlButton->setDisabled(true);
 	radioButtons->addButton(fileButton);
 	radioButtons->setId(fileButton, 1);
-	radioButtons->addButton(sqlButton);
-	radioButtons->setId(sqlButton, 2);
+	fileButton->setChecked(true);
+	//radioButtons->addButton(sqlButton);
+	//radioButtons->setId(sqlButton, 2);
 
 	//Widgets
 	fileWidget = new QWidget();
@@ -44,6 +45,7 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	fileWidget->setLayout(fileLayout);
 
 	//SQL
+	/*
 	hostLabel = new QLabel("Host Name: ");
 	sqlLayout->addWidget(hostLabel, 0, 0);
 	hostName = new QLineEdit();
@@ -78,6 +80,7 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	sqlLayout->addWidget(empty4, 999, 1);
 
 	sqlWidget->setLayout(sqlLayout);
+	*/
 
 	//Main widget
 	layout = new QGridLayout();
@@ -86,9 +89,9 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	intro->setTextFormat(Qt::RichText); 
 	layout->addWidget(intro, 0, 0);
 	layout->addWidget(fileButton, 1, 0);
-	layout->addWidget(sqlButton, 1, 1);
+	//layout->addWidget(sqlButton, 1, 1);
 	layout->addWidget(fileWidget, 2, 0);
-	layout->addWidget(sqlWidget, 2, 1);
+	//layout->addWidget(sqlWidget, 2, 1);
 	QWidget *empty5 = new QWidget();
 	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	layout->addWidget(empty5, 999, 0);
@@ -99,13 +102,13 @@ ExportWidget::ExportWidget(QWidget *parent) {
 
 	//Connect
 	connect(radioButtons, SIGNAL(buttonReleased(int)), this, SLOT(selectionChanged(int)));
-	connect(test, SIGNAL(released()), this, SLOT(testConnection()));
-	connect(hostName, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
-	connect(databaseName, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
-	connect(port, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
-	connect(user, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
-	connect(password, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
-	fileButton->setChecked(true);
+	//connect(test, SIGNAL(released()), this, SLOT(testConnection()));
+	//connect(hostName, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	//connect(databaseName, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	//connect(port, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	//connect(user, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	//connect(password, SIGNAL(textChanged(const QString)), this, SLOT(statusReset(const QString)));
+	//fileButton->setChecked(true);
 	selectionChanged(1);
 	
 }
