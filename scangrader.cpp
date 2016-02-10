@@ -36,10 +36,8 @@ ScanGrader::ScanGrader(QWidget *parent)
 	ui.mainToolBar->hide();
 
 	//Progress bar
-	progress = new QProgressBar();
-	progress->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	progress->setFormat("%p%");
-	statusBar()->addWidget(progress);
+	progress = navbar->image->progress;
+	//progress->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
 	//Hide status bar
 	statusBar()->hide();
@@ -64,80 +62,75 @@ void ScanGrader::refresh() {
 
 //Calculate results based on current settings
 void ScanGrader::calculate() {
+	//Initialize progress
+	progress->setMinimum(0);
+	progress->setValue(0);
+	progress->setVisible(true);
+
 	//Get data
 	clearVariables();
 	getImageData();
 
 	if (keyPaths.empty() || imagePaths.empty() || useFile.empty() || useKey.empty()) {
+		progress->reset();
+		progress->setVisible(false);
 		return;
 	}
 
 	//Calculate number of images needed
-	unsigned int numImage = keys.size() + images.size();
+	unsigned int numImage = keyPaths.size() + imagePaths.size();
 	//Calculate number of other actions needed
-	unsigned int others = keys.size() + images.size() * 3;
+	unsigned int others = keyPaths.size() + imagePaths.size() * 3;
 	progress->setMaximum(numImage * 5 + others);
-	progress->setMinimum(0);
-	progress->setValue(0);
-
-	//Show status bar
-	statusBar()->show();
-
 
 	//Calculate keys
 	for (unsigned int i = 0; i < keyPaths.size(); i++) {
-		keys.push_back(AnalyzeImage(keyPaths.at(i), useFile.at(i)));
 		progress->setValue(progress->value() + 5);
-		statusBar()->update();
+		keys.push_back(AnalyzeImage(keyPaths.at(i), useFile.at(i)));
 	}
 
 	//Get solutions
 	solutions.clear();
 	for (unsigned int i = 0; i < keys.size(); i++) {
-		solutions.push_back(keys.at(i).getAnswers());
 		progress->setValue(progress->value() + 1);
-		statusBar()->update();
+		solutions.push_back(keys.at(i).getAnswers());
 	}
 
 
 	//Calculate images
 	for (unsigned int i = 0; i < imagePaths.size(); i++) {
-		images.push_back(AnalyzeImage(imagePaths.at(i), useFile.at(useKey.at(i))));
 		progress->setValue(progress->value() + 5);
-		statusBar()->update();
+		images.push_back(AnalyzeImage(imagePaths.at(i), useFile.at(useKey.at(i))));
 	}
 
 	//Get answers
 	answers.clear();
 	for (unsigned int i = 0; i < imagePaths.size(); i++) {
-		answers.push_back(images.at(i).getAnswers());
 		progress->setValue(progress->value() + 1);
-		statusBar()->update();
+		answers.push_back(images.at(i).getAnswers());
 	}
 
 	//Get score and percentage score
 	score.clear();
 	percentScore.clear();
 	for (unsigned int i = 0; i < answers.size(); i++) {
+		progress->setValue(progress->value() + 2);
 		score.push_back(compare(answers[i], solutions[useKey.at(i)]));
 		percentScore.push_back((double)score[i] / answers[i].size());
-		progress->setValue(progress->value() + 1);
-		statusBar()->update();
 	}
 
 	//Push out to result
 	navbar->result->clearDisplay();
 	navbar->result->clearData();
 	for (unsigned int i = 0; i < answers.size(); i++) {
-		navbar->result->addRow(tr("%1").arg(images.at(i).getID()).toStdString(), answers.at(i), solutions.at(useKey.at(i)));
 		progress->setValue(progress->value() + 1);
-		statusBar()->update();
+		navbar->result->addRow(tr("%1").arg(images.at(i).getID()).toStdString(), answers.at(i), solutions.at(useKey.at(i)));
 	}
 	navbar->result->calculate();
 	navbar->result->display();
 	navbar->result->update();
 	progress->reset();
-	statusBar()->hide();
+	progress->setVisible(false);
 }
 
 //Update config file comboboxes

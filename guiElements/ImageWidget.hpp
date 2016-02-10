@@ -10,6 +10,7 @@
 #include <QtWidgets\QSizePolicy>
 #include <QtWidgets\QLayout>
 #include <QtWidgets\QFileDialog>
+#include <QtWidgets\QProgressBar>
 #include <vector>
 #include "ScanAPI\AnalyzeImage.hpp"
 #include "ScanFileWidget.hpp"
@@ -35,6 +36,9 @@ public:
 
 	//Remove All button
 	QPushButton *removeAll;
+
+	//Progress bar
+	QProgressBar *progress;
 
 	//Status label
 	//QLabel *status;

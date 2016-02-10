@@ -45,6 +45,12 @@ ImageWidget::ImageWidget(QWidget *parent) {
 	//Add removeAll button to layout
 	layout->addWidget(removeAll, 1000, 2);
 
+	//Create progress
+	progress = new QProgressBar();
+	progress->setVisible(false);
+	progress->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	layout->addWidget(progress, 1001, 0);
+
 	//Add empty widget to take up size
 	QWidget *empty1 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
