@@ -32,7 +32,7 @@ void ScanImage::calculate() {
 	for (int i = 0; i < resolution.y; i++) {
 		grayScale.push_back(std::vector<int>());
 		for (int j = 0; j < resolution.x; j++) {
-			grayScale[i].push_back(qGray(image.pixel(j, i)));
+			grayScale[i].push_back(qGray(image.pixel(i, j)));
 		}
 	}
 }
