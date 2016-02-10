@@ -16,3 +16,4 @@ How to use:
 Known issues:
 - Export to SQL disabled
 - Program is a tad slow
+- Image recognition, specifically ID recognition, is very inaccurate
