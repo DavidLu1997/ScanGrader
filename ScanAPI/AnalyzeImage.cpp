@@ -2,6 +2,7 @@
 #include "AnalyzeImage.hpp"
 #include <cmath>
 #include <algorithm>
+#include <queue>
 
 //Static
 double AnalyzeImage::percentage = 0.35;
@@ -76,53 +77,82 @@ bool AnalyzeImage::calculate() {
 }
 
 //Scans for individual calibration squares
+//TODO Optimize
 Rectangle AnalyzeImage::individual(ReadDot read, Rectangle cali) {
 	//If black enough
 	if (read.black(cali) > percent) {
 		return cali;
 	}
-	
-	//Check around rectangle by increment
 
-	//Get center of original
-	Point center = Point(abs(cali.lower.x + cali.upper.x) / 2, abs(cali.lower.y + cali.upper.y) / 2);
-	
-	//Get initial radius
-	int radius = abs(cali.lower.x - cali.upper.x) / 10;
+	//Radius 1 pixel to start off
+	int radius = 1;
 
-	//Get x side length
+	//Lengths
 	int xLen = abs(cali.lower.x - cali.upper.x);
-
-	//Get y side length
 	int yLen = abs(cali.lower.y - cali.upper.y);
 
-	//TODO: increment in GUI
-	//10% of x length of rectangle
-	int incre = (int)(xLen * 0.1);
+	//Maximum radius to check for
+	//If hit, stop
+	int maxRadius = 10 * xLen;
 
-	//Angle to rotate in radians
-	double angle = 0;
+	//Check grid pattern using BFS
+	std::queue<Rectangle> que;
+	que.push(cali);
 
-	//Current rectangle
-	Rectangle cur = cali;
+	//While not found
+	Rectangle temp;
+	while (!que.empty() && read.black(que.front()) <= percent) {
+		cali = que.front();
+		que.pop();
 
-	//Run through radii and angle
-	for (; read.black(cur) <= percent; radius += incre) {
-		for (; angle <= 2*M_PI; angle += M_PI / 6) {
-			cur.upper.x = (int)(center.x + radius * cos(angle));
-			cur.upper.y = (int)(center.y + radius * sin(angle));
-			cur.lower.x = cur.upper.x + xLen;
-			cur.lower.y = cur.upper.y + yLen;
+		//All possibilities
+		//Search in a square
+		temp = cali;
+		temp.upper.x += radius;
+		temp.lower.x += radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.y += radius;
+		temp.lower.y += radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.x -= radius;
+		temp.lower.x -= radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.y -= radius;
+		temp.lower.y -= radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.x += radius;
+		temp.lower.x += radius;
+		temp.upper.y += radius;
+		temp.lower.y += radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.x -= radius;
+		temp.lower.x -= radius;
+		temp.upper.y -= radius;
+		temp.lower.y -= radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.x -= radius;
+		temp.lower.x -= radius;
+		temp.upper.y += radius;
+		temp.lower.y += radius;
+		que.push(temp);
+		temp = cali;
+		temp.upper.x += radius;
+		temp.lower.x += radius;
+		temp.upper.y -= radius;
+		temp.lower.y -= radius;
+		que.push(temp);
 
-			if (read.black(cur) > percent) {
-				return cur;
-			}
-		}
-		angle = 0;
+		//Increment radius
+		radius += 1;
 	}
 
-	//No better alternative found
-	return cali;
+	return que.empty() ? cali : que.front();
 }
 
 //Calibration squares are all black
@@ -199,7 +229,7 @@ int AnalyzeImage::getID() {
 			for (int i = 0; i < plate.digits; i++) {
 				maxVal = marks[plate.ids.x + i];
 				idx = plate.ids.x + i;
-				for (int j = plate.ids.x; j < plate.ids.y; j += plate.digits) {
+				for (int j = plate.ids.x; j <= plate.ids.y; j += plate.digits) {
 					if (marks[j + i] > maxVal) {
 						maxVal = marks[j + i];
 						idx = j + i;

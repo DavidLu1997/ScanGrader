@@ -68,21 +68,22 @@ void ScanGrader::refresh() {
 
 //Calculate results based on current settings
 void ScanGrader::calculate() {
-	//Initialize progress
-	status->setText("Calculating: ");
-	progress->setMinimum(0);
-	progress->setValue(0);
-	progress->setVisible(true);
-
 	//Get data
 	clearVariables();
 	getImageData();
 
+	//Check
 	if (keyPaths.empty() || imagePaths.empty() || useFile.empty() || useKey.empty()) {
 		progress->reset();
 		progress->setVisible(false);
 		return;
 	}
+
+	//Initialize progress
+	status->setText("Calculating: ");
+	progress->setMinimum(0);
+	progress->setValue(0);
+	progress->setVisible(true);
 
 	//Calculate number of images needed
 	unsigned int numImage = keyPaths.size() + imagePaths.size();

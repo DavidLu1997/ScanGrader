@@ -16,3 +16,4 @@ How to use:
 Known issues:
 - Export to SQL disabled
 - Calibration is off
+- Calculating with no config file crashes

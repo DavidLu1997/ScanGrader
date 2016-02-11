@@ -144,6 +144,9 @@ bool ImageTemplate::scale(double xScale, double yScale) {
 		rects[i].lower.y = (int)((double)rects[i].lower.y * yScale);
 	}
 
+	resolution.x *= xScale;
+	resolution.y *= yScale;
+
 	return true;
 }
 
