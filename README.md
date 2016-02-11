@@ -12,11 +12,20 @@ Known issues can be found in [readme.txt](https://github.com/DavidLu1997/ZopperS
 
 Current Releases:
 
-[Version 1.22 Alpha](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/1.22)
+[Version 1.30 Alpha](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/v1.30)
 
 [Nightly Build (Very Unstable)](https://github.com/DavidLu1997/ScanGrader/blob/qtGui/ScanGraderSetup.msi)
 
 ## Changelog:
+
+### 1.30
+- Refactored
+- Working on Linux release
+
+### 1.23
+- Fixed calibration
+- Fixed ID
+- Fixed speed
 
 ### 1.22
 - Added progress bar
