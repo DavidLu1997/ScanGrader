@@ -55,11 +55,24 @@ public:
 	int options;
 	
 private:
+	//Scaling
+	void scaleRects(double xScale, double yScale);
+	void scaleCali(double xScale, double yScale);
+
 	//Rectangles
 	std::vector<Rectangle> rects;
 
+	//Original rectangles
+	std::vector<Rectangle> origRects;
+
+	//Scale
+	double xS, yS;
+
 	//Calibration rectangles
 	std::vector<Rectangle> cali;
+
+	//Original cali
+	std::vector<Rectangle> origCali;
 };
 
 #endif

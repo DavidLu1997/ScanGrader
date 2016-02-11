@@ -11,6 +11,8 @@ ImageTemplate::ImageTemplate() {
 //Standard constructor with name of template
 ImageTemplate::ImageTemplate(std::string name) {
 	loadTemplate(name);
+	xS = 1.0;
+	yS = 1.0;
 }
 
 //Loads template from file
@@ -72,6 +74,8 @@ bool ImageTemplate::loadTemplate(std::string name) {
 	in >> options;
 
 	//calculateRectangles();
+
+	origRects = rects;
 	
 	in.close();
 	return true;
@@ -86,6 +90,8 @@ void ImageTemplate::setCalibrate(std::vector<Rectangle> newCali) {
 //Calculates rectangles
 bool ImageTemplate::calculateRectangles() {
 	//Calibrate each rectangle
+	rects = origRects;
+	scaleRects(xS, yS);
 	for (unsigned int i = 0; i < rects.size(); i++) {
 		//Bounds check
 		if (rects[i].id < 0 || (unsigned int)rects[i].id >= cali.size()) {
@@ -119,17 +125,13 @@ bool ImageTemplate::calculateRectangles() {
 
 //Scales rectangles
 bool ImageTemplate::scale(double xScale, double yScale) {
-	//Bounds check
-	if (xScale <= 0 || yScale <= 0) {
-		std::cerr << "Non-positive scale: " << xScale << ", " << yScale << std::endl;
-		return false;
-	}
+	scaleCali(xScale, yScale);
+	scaleRects(xScale, yScale);
+	return true;
+}
 
-	//Consistency check
-	if (xScale >= 2.0 || yScale >= 2.0) {
-		std::cout << "Large scale, may not be intentional: " << xScale << ", " << yScale << std::endl;
-	}
-
+//Scaling
+void ImageTemplate::scaleCali(double xScale, double yScale) {
 	//Scale everything by scale, truncating rounding
 	for (unsigned int i = 0; i < cali.size(); i++) {
 		cali[i].upper.x = (int)((double)cali[i].upper.x * xScale);
@@ -137,17 +139,19 @@ bool ImageTemplate::scale(double xScale, double yScale) {
 		cali[i].lower.x = (int)((double)cali[i].lower.x * xScale);
 		cali[i].lower.y = (int)((double)cali[i].lower.y * yScale);
 	}
+	resolution.x *= xScale;
+	resolution.y *= yScale;
+}
+void ImageTemplate::scaleRects(double xScale, double yScale) {
+	//Scale everything by scale, truncating rounding
 	for (unsigned int i = 0; i < rects.size(); i++) {
 		rects[i].upper.x = (int)((double)rects[i].upper.x * xScale);
 		rects[i].upper.y = (int)((double)rects[i].upper.y * yScale);
 		rects[i].lower.x = (int)((double)rects[i].lower.x * xScale);
 		rects[i].lower.y = (int)((double)rects[i].lower.y * yScale);
 	}
-
-	resolution.x *= xScale;
-	resolution.y *= yScale;
-
-	return true;
+	xS = xScale;
+	yS = yScale;
 }
 
 //Get standard rectangles

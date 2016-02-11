@@ -56,7 +56,7 @@ bool AnalyzeImage::calculate() {
 		return false;
 	}
 
-	//calibrate();
+	calibrate();
 
 	//Initialize ReadDot
 	ReadDot read(img, threshold);
