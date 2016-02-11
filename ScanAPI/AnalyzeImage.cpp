@@ -55,7 +55,7 @@ bool AnalyzeImage::calculate() {
 		return false;
 	}
 
-	calibrate();
+	//calibrate();
 
 	//Initialize ReadDot
 	ReadDot read(img, threshold);
@@ -193,19 +193,25 @@ int AnalyzeImage::getID() {
 		}
 		else {
 			id = 0;
-			int index = plate.ids.x;
-			double maxValue = marks[index];
+			double maxVal;
+			int idx;
+			std::string idTemp;
 			for (int i = 0; i < plate.digits; i++) {
-				index = plate.ids.x + i;
-				maxValue = marks[index];
+				maxVal = marks[plate.ids.x + i];
+				idx = plate.ids.x + i;
 				for (int j = plate.ids.x; j < plate.ids.y; j += plate.digits) {
-					if (marks[j + i] > maxValue) {
-						index = j + i;
-						maxValue = marks[j + i];
+					if (marks[j + i] > maxVal) {
+						maxVal = marks[j + i];
+						idx = j + i;
 					}
 				}
-				id += (int)((double)index / plate.digits) * pow(10, i);
+				idx = (idx / plate.digits) + 1;
+				if (idx == 10) {
+					idx = 0;
+				}
+				idTemp += ('0' +idx);
 			}
+			id = stoi(idTemp);
 		}
 	}
 	return id;
