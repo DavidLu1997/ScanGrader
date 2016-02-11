@@ -4,7 +4,7 @@ Only one template available at the moment, ScanGrader50.pdf
 How to use:
 - Print ScanGrader50.pdf
 - Use with multiple choice test
-- Scan using scanner and convert to BMP files
+- Scan using scanner and convert to an image file if needed (JPG, PNG, BMP, etc. supported)
 - Create answer key(s)
 - Add config file to program
 - Add answer key(s) to program
@@ -15,5 +15,4 @@ How to use:
 
 Known issues:
 - Export to SQL disabled
-- Program is a tad slow
-- Image recognition, specifically ID recognition, is very inaccurate
+- Calibration is off
