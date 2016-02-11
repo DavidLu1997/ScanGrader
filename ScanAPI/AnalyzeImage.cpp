@@ -35,7 +35,9 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	std::cout << "Scaling needed (x, y): ("<< xScale << ", " << yScale << ")" << std::endl;
 
 	//Scale config file to image
-	img.image = img.image.scaled(plate.resolution.x, plate.resolution.y);
+	//img.image = img.image.scaled(plate.resolution.x, plate.resolution.y);
+	plate.scale(xScale, yScale);
+	plate.calculateRectangles();
 	
 	img.calculate();
 
@@ -144,7 +146,7 @@ bool AnalyzeImage::calibrate() {
 
 //Gets answers by finding maximum blackness
 std::vector<int> AnalyzeImage::getAnswers() {
-	double temp;
+	unsigned int temp;
 	if (!calculated) {
 		answers.clear();
 		//Check answers every option
@@ -153,12 +155,12 @@ std::vector<int> AnalyzeImage::getAnswers() {
 		}
 		else {
 			for (int i = plate.questions.x; i < plate.questions.y; i += plate.options) {
-				temp = (maxVal(marks, i, i + plate.options) % plate.options) + 1;
-				if (temp < percent) {
+				temp = maxVal(marks, i, i + plate.options);
+				if (marks[temp] < percent) {
 					answers.push_back(-1);
 				}
 				else {
-					answers.push_back(temp);
+					answers.push_back(temp % plate.options + 1);
 				}
 			}
 		}

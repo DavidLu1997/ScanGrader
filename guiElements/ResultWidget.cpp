@@ -18,42 +18,42 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	//Summary
 	averageLabel = new QLabel();
 	averageLabel->setTextFormat(Qt::RichText);
-	layout->addWidget(averageLabel, 1, 0);
+	layout->addWidget(averageLabel, 0, 0);
 	medianLabel = new QLabel();
 	medianLabel->setTextFormat(Qt::RichText);
-	layout->addWidget(medianLabel, 1, 1);
+	layout->addWidget(medianLabel, 0, 1);
 	maxLabel = new QLabel();
 	maxLabel->setTextFormat(Qt::RichText);
-	layout->addWidget(maxLabel, 1, 2);
+	layout->addWidget(maxLabel, 0, 2);
 	minLabel = new QLabel();
 	minLabel->setTextFormat(Qt::RichText);
-	layout->addWidget(minLabel, 1, 3);
+	layout->addWidget(minLabel, 0, 3);
 
 	//Title
 	idTitle = new QLabel("<h3>ID</h3>");
 	idTitle->setTextFormat(Qt::RichText);
 	idTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	layout->addWidget(idTitle, 0, 0);
+	layout->addWidget(idTitle, 1, 0);
 
 	correctTitle = new QLabel("<h3>Correct Questions</h3>");
 	correctTitle->setTextFormat(Qt::RichText);
 	correctTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	layout->addWidget(correctTitle, 0, 1);
+	layout->addWidget(correctTitle, 1, 1);
 
 	wrongTitle = new QLabel("<h3>Wrong Questions</h3>");
 	wrongTitle->setTextFormat(Qt::RichText);
 	wrongTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	layout->addWidget(wrongTitle, 0, 2);
+	layout->addWidget(wrongTitle, 1, 2);
 
 	totalTitle = new QLabel("<h3>Total Questions</h3>");
 	totalTitle->setTextFormat(Qt::RichText);
 	totalTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	layout->addWidget(totalTitle, 0, 3);
+	layout->addWidget(totalTitle, 1, 3);
 
 	percentTitle = new QLabel("<h3>Percentage Score</h3>");
 	percentTitle->setTextFormat(Qt::RichText);
 	percentTitle->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-	layout->addWidget(percentTitle, 0, 4);
+	layout->addWidget(percentTitle, 1, 4);
 
 	//Empties
 	QWidget *empty1 = new QWidget();

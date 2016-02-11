@@ -29,9 +29,9 @@ bool ScanImage::readRawData(std::string name) {
 //Converts image to grayScale by averaging
 void ScanImage::calculate() {
 	grayScale.clear();
-	for (int i = 0; i < resolution.y; i++) {
+	for (int i = 0; i < resolution.x; i++) {
 		grayScale.push_back(std::vector<int>());
-		for (int j = 0; j < resolution.x; j++) {
+		for (int j = 0; j < resolution.y; j++) {
 			grayScale[i].push_back(qGray(image.pixel(i, j)));
 		}
 	}
