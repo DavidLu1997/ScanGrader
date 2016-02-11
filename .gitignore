@@ -42,7 +42,6 @@ x64*/
 Resources*/
 *.csv
 *.zip
-ScanGraderSetup*/
 *.exe
 
 # Project specific files
