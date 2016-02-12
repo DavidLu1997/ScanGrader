@@ -26,9 +26,6 @@ public:
 	//Return question answers
 	std::vector<int> getAnswers();
 
-	//Write results to file, custom name
-	bool writeAnswers(std::string name);
-
 	//Static
 	static double percentage;
 	static int threshold;
