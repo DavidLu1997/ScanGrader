@@ -20,10 +20,6 @@ public:
 	//Loads template from file
 	bool loadTemplate(std::string name);
 
-	//Saves current template to file
-	//Currently unused
-	//bool savesTemplate(std::string name);
-
 	//Sets calibration locations based on image analysis
 	void setCalibrate(std::vector<Rectangle> newCali);
 

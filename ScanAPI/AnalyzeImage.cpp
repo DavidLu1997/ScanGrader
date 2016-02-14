@@ -203,16 +203,6 @@ std::vector<double> AnalyzeImage::getRawResults() {
 	return marks;
 }
 
-//Writes answers to a file, custom name
-bool AnalyzeImage::writeAnswers(std::string name) {
-	std::ofstream out(name.c_str(), std::ios::out);
-	for (unsigned int i = 0; i < answers.size(); i++) {
-		out << answers[i] << std::endl;
-	}
-	out.close();
-	return true;
-}
-
 //Calculates ID entered based on maximum blackness
 int AnalyzeImage::getID() {
 	if (!calculated) {

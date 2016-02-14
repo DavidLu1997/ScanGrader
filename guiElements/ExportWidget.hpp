@@ -27,42 +27,13 @@ public:
 	//Destructor
 	~ExportWidget();
 
-	//ButtonGroup
-	QButtonGroup *radioButtons;
-
 	//Textboxes
 	QLineEdit *fileName;
 	QLabel *fileLabel;
 	QComboBox *fileType;
 	QLabel *fileTypeLabel;
 
-	//Server info
-	QLineEdit *hostName;
-	QLabel *hostLabel;
-	QLineEdit *databaseName;
-	QLabel *databaseLabel;
-	QLineEdit *port;
-	QLabel *portLabel;
-	QLineEdit *user;
-	QLabel *userLabel;
-	QLineEdit *password;
-	QLabel *passwordLabel;
-
-	//Test
-	QPushButton *test;
-
-	//Connection good
-	bool connectionGood = false;
-
 public slots:
-	//Change selection
-	void selectionChanged(int id);
-
-	//Test connection
-	void testConnection();
-
-	//Status reset
-	void statusReset(const QString &text);
 
 private slots:
 	
@@ -76,13 +47,10 @@ private:
 	
 	//Radio buttons
 	QRadioButton *fileButton;
-	QRadioButton *sqlButton;
 
 	//Widgets
 	QWidget *fileWidget;
 	QGridLayout *fileLayout;
-	QWidget *sqlWidget;
-	QGridLayout *sqlLayout;
 
 	//Connection status
 	QLabel *connectStatus;
