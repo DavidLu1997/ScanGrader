@@ -1,8 +1,6 @@
 //Export widget
 //Exports results for ZopperScan onto:
-//CSV
-//SQL Server
-//Etc.
+//CSV, TXT
 
 #ifndef EXPORTWIDGET_H
 #define EXPORTWIDGET_H

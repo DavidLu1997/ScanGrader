@@ -20,6 +20,8 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	fileType->addItem(".CSV");
 	fileType->addItem(".TXT");
 	fileLayout->addWidget(fileType, 1, 1);
+
+	//Empties
 	QWidget *empty1 = new QWidget();
 	empty1->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	fileLayout->addWidget(empty1, 999, 0);
@@ -46,5 +48,3 @@ ExportWidget::ExportWidget(QWidget *parent) {
 ExportWidget::~ExportWidget() {
 	delete layout;
 }
-
-//**********Public Slots***********

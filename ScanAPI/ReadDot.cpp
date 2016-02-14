@@ -9,8 +9,6 @@ ReadDot::ReadDot(ScanImage img, int thresh) {
 }
 
 //Adds up all pixels within given rectangle
-//TODO: Make more efficient
-//Memory is less valuable than time
 double ReadDot::black(Rectangle rect) {
 	//Sum of all pixels
 	int sum = 0;

@@ -5,6 +5,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include <cmath>
 #include "Point.hpp"
 
 class Rectangle {
@@ -32,7 +33,7 @@ public:
 
 	//Get size of rectangle
 	int size() {
-		return (lower.x - upper.x) * (lower.y - upper.y);
+		return abs(lower.x - upper.x) * abs(lower.y - upper.y);
 	}
 };
 

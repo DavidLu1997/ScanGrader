@@ -27,9 +27,6 @@ public:
 	//Get file URLs
 	QList<QUrl> getFileUrls();
 
-	//Get file URL from file name
-	QUrl getFileUrl(std::string name);
-
 	//Push button
 	QPushButton *addConfig;
 

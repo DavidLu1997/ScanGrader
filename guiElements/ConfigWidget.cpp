@@ -99,24 +99,6 @@ QList<QUrl> ConfigWidget::getFileUrls() {
 	return urls;
 }
 
-//Get file url from name
-QUrl ConfigWidget::getFileUrl(std::string name) {
-	//Simple search
-	//TODO: Optimize
-	for (unsigned int i = 0; i < configFiles.size(); i++) {
-		if (configFiles.at(i)->deleted) {
-			configFiles.erase(configFiles.begin() + i);
-			i--;
-			continue;
-		}
-		if (configFiles.at(i)->getName().toStdString() == name) {
-			return configFiles.at(i)->getUrl();
-		}
-	}
-
-	return QUrl();
-}
-
 //**********Public Slots**********
 
 //Update display
@@ -127,12 +109,16 @@ void ConfigWidget::refresh() {
 //**********Private Slots**********
 //Add files
 void ConfigWidget::addFiles() {
+	//New file dialog, taking ini files
 	QList<QUrl> files = QFileDialog::getOpenFileUrls(this, "Open Configuration File", QUrl("/"), "Configuration Files (*.ini)");
 
+	//Add to configFiles
 	for (unsigned int i = 0; i < files.size(); i++) {
 		configFiles.push_back(new ConfigFileWidget(files.at(i), layout, configFiles.size() + 1));
 		connect(configFiles.at(configFiles.size() - 1)->remove, SIGNAL(released()), this, SLOT(refresh()));
 	}
+
+	//Enable removing
 	removeAll->setEnabled(true);
 }
 
