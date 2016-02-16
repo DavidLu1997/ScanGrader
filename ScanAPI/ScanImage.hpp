@@ -32,9 +32,6 @@ public:
 	//Obtain raw image data into pixels
 	bool readRawData(std::string name);
 
-	//Obtain grayscale image
-	bool readGrayScale();
-
 	//Get ID
 	void calculate();
 
