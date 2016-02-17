@@ -5,13 +5,6 @@
 #ifndef SCANIMAGE_H
 #define SCANIMAGE_H
 
-//Visual Studio warning suppression
-//TODO Remove for Unix
-#if defined(_MSC_VER) && _MSC_VER >= 1400 
-#pragma warning(push) 
-#pragma warning(disable:4996) 
-#endif 
-
 #include "Pixel.hpp"
 #include "Point.hpp"
 #include <iostream>
@@ -48,10 +41,5 @@ private:
 	//Grayscale
 	std::vector< std::vector<int> > grayScale;
 };
-
-//Visual Studio warning suppression
-#if defined(_MSC_VER) && _MSC_VER >= 1400 
-#pragma warning(pop) 
-#endif 
 
 #endif
