@@ -38,7 +38,7 @@ void ScanImage::calculate() {
 }
 
 //Getter for grayScale
-std::vector< std::vector<int> > ScanImage::getGrayScale()
+const std::vector< std::vector<int> >& ScanImage::getGrayScale()
 {
 	return grayScale;
 }
