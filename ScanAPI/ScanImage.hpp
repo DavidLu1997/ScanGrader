@@ -29,7 +29,7 @@ public:
 	void calculate();
 
 	//Getter for grayScale
-	const std::vector< std::vector<int> >& getGrayScale();
+	std::vector< std::vector<int> > getGrayScale();
 
 	//Resolution
 	Point resolution;
