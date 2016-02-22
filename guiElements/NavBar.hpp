@@ -1,6 +1,4 @@
 //NavBar Class, builds the main navbar
-//Is a QTabWidget, stores a list of QWidgets
-
 #ifndef NAVBAR_H
 #define NAVBAR_H
 
@@ -42,7 +40,6 @@ public:
 	AboutWidget *about;
 
 private:
-	
 	//ScrollAreas
 	QScrollArea *imageScroll;
 	QScrollArea *keyScroll;

@@ -58,5 +58,11 @@ NavBar::NavBar(QWidget *parent) {
 
 //Destructor for NavBar
 NavBar::~NavBar() {
-
+	delete imageScroll;
+	delete keyScroll;
+	delete configScroll;
+	delete resultScroll;
+	delete optionScroll;
+	delete exportWScroll;
+	delete aboutScroll;
 }
