@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{938b57b6-3d61-4048-a0d1-66301692c30b}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{88f50953-9c94-423d-b04d-c9ba34dee3ec}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="GUI Elements">
+      <UniqueIdentifier>{694f6dd4-f1a3-4ba6-8972-b6fa3b8087d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scanAPI">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ConfigWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ExportWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ImageWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\KeyWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\NavBar.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\OptionWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ResultWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ScanFileWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\AboutWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ConfigFileWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\KeyFileWidget.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="guiElements\ImagePreview.cpp">
+      <Filter>GUI Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanAPI\AnalyzeImage.cpp">
+      <Filter>scanAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanAPI\ImageTemplate.cpp">
+      <Filter>scanAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanAPI\ReadDot.cpp">
+      <Filter>scanAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanAPI\ScanImage.cpp">
+      <Filter>scanAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="scangrader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_scangrader.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_scangrader.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ConfigWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ConfigWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ExportWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ExportWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ImageWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ImageWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_KeyWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_KeyWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_NavBar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_NavBar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_OptionWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_OptionWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ResultWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ResultWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ScanFileWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ScanFileWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AboutWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AboutWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ConfigFileWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ConfigFileWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_KeyFileWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_KeyFileWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ImagePreview.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ImagePreview.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_scangrader.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="guiElements\ConfigWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\ExportWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\ImageWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\KeyWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\NavBar.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\OptionWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\ResultWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\ScanFileWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\AboutWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\ConfigFileWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\KeyFileWidget.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="guiElements\ImagePreview.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="scangrader.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="scangrader.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="scangrader.hpp">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GuiElements\ScanGuiIncludes.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ZopperScanGuiIncludes.hpp">
+      <Filter>GUI Elements</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\AnalyzeImage.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\Headers.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\ImageTemplate.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\Pixel.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\Point.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\ReadDot.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\Rectangle.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ScanAPI\ScanImage.hpp">
+      <Filter>scanAPI</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="scangrader.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_scangrader.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

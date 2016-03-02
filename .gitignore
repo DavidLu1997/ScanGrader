@@ -3,8 +3,6 @@ Thumbs.db
 ehthumbs.db
 
 # Visual Studio files
-*.vcxproj
-*.vcxproj.filters
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
@@ -18,7 +16,6 @@ ehthumbs.db
 *_i.c
 *_p.c
 *.ncb
-*.suo
 *.tlb
 *.tlh
 *.bak
@@ -31,7 +28,6 @@ ehthumbs.db
 ipch/
 obj/
 *.opensdf
-*.sln
 Win32*/
 x64*/
 Resources*/
