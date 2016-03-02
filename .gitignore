@@ -30,7 +30,6 @@ ehthumbs.db
 *.sdf
 ipch/
 obj/
-*.qrc
 *.opensdf
 *.sln
 GeneratedFiles*/
