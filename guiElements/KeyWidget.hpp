@@ -4,11 +4,11 @@
 #ifndef KEYWIDGET_H
 #define KEYWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QLabel>
-#include <QtWidgets\QPushButton>
-#include "ScanAPI\ImageTemplate.hpp"
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
+#include "ScanAPI/ImageTemplate.hpp"
 #include "KeyFileWidget.hpp"
 
 class KeyWidget : public QWidget

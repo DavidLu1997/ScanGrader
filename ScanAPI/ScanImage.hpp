@@ -8,9 +8,9 @@
 #include "Pixel.hpp"
 #include "Point.hpp"
 #include <iostream>
-#include <QtGui\QImage>
-#include <QtGui\QImageReader>
-#include <QtGui\QRgb>
+#include <QtGui/QImage>
+#include <QtGui/QImageReader>
+#include <QtGui/QRgb>
 #include <vector>
 
 class ScanImage

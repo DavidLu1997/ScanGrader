@@ -1,11 +1,11 @@
 #ifndef KEYFILEWIDGET_H
 #define KEYFILEWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QLabel>
-#include <QtWidgets\QComboBox>
-#include <QtWidgets\QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QPushButton>
 #include <QUrl>
 #include "ImagePreview.hpp"
 

@@ -2,11 +2,11 @@
 #define ZOPPERSCANAPI_H
 
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QLayOut>
+#include <QtWidgets/QLayout>
 #include <QtWidgets/QProgressBar>
 #include "ui_scangrader.h"
-#include "ScanAPI\Headers.hpp"
-#include "guiElements\NavBar.hpp"
+#include "ScanAPI/Headers.hpp"
+#include "guiElements/NavBar.hpp"
 
 class ScanGrader : public QMainWindow
 {
@@ -89,10 +89,10 @@ private:
 	std::vector<std::string> useFile;
 
 	//Answers of images
-	std::vector<std::vector<int>> answers;
+	std::vector<std::vector<int> > answers;
 
 	//Answers of solutions
-	std::vector<std::vector<int>> solutions;
+	std::vector<std::vector<int> > solutions;
 
 	//Score out of total of analyzed images
 	std::vector<int> score;

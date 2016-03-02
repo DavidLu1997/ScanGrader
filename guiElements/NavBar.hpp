@@ -2,9 +2,9 @@
 #ifndef NAVBAR_H
 #define NAVBAR_H
 
-#include <QtWidgets\QTabWidget>
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QScrollArea>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QScrollArea>
 #include "ScanGuiIncludes.hpp"
 
 class NavBar : public QTabWidget

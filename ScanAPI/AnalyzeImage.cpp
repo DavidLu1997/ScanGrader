@@ -1,5 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "AnalyzeImage.hpp"
+#include <cstdlib>
+#include <string>
 #include <cmath>
 #include <algorithm>
 #include <queue>
@@ -231,7 +233,7 @@ int AnalyzeImage::getID() {
 				}
 				idTemp += ('0' +idx);
 			}
-			id = stoi(idTemp);
+			id = atoi(idTemp.c_str());
 		}
 	}
 	return id;

@@ -1,10 +1,10 @@
 #ifndef CONFIGFILEWIDGET_H
 #define CONFIGFILEWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QLabel>
-#include <QtWidgets\QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QUrl>
 
 class ConfigFileWidget : public QWidget {

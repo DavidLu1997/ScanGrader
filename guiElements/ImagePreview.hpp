@@ -3,17 +3,17 @@
 #define IMAGEPREVIEW_H
 
 //Imports needed
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QComboBox>
-#include <QtWidgets\QLabel>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QPushButton>
-#include <QtGui\QImageReader>
-#include <QtWidgets\QMessageBox>
-#include <QtWidgets\QScrollArea>
-#include <QtGui\QGuiApplication>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QPushButton>
+#include <QtGui/QImageReader>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QScrollArea>
+#include <QtGui/QGuiApplication>
 #include <QDir>
-#include <QPixMap>
+#include <QtGui>
 #include <QUrl>
 #include <vector>
 #include <string>

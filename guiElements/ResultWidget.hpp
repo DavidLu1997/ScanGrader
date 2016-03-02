@@ -4,10 +4,10 @@
 #ifndef RESULTWIDGET_H
 #define RESULTWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QLabel>
-#include <QtWidgets\QPushButton>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 
 class ResultWidget : public QWidget
 {

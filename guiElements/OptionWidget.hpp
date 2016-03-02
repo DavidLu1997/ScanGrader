@@ -4,12 +4,12 @@
 #ifndef OPTIONWIDGET_H
 #define OPTIONWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QLabel>
-#include <QtWidgets\QSlider>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QPushButton>
-#include <QtWidgets\QSpinBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QSlider>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 
 class OptionWidget : public QWidget 
 {

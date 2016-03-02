@@ -5,14 +5,14 @@
 #ifndef EXPORTWIDGET_H
 #define EXPORTWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QRadioButton>
-#include <QtWidgets\QButtonGroup>
-#include <QtWidgets\QComboBox>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QPushButton>
-#include <QtWidgets\QLineEdit>
-#include <QtWidgets\QLabel>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QLabel>
 
 class ExportWidget : public QWidget
 {

@@ -1,5 +1,5 @@
 #include "ConfigWidget.hpp"
-#include <QtWidgets\QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 ConfigWidget::ConfigWidget(QWidget *parent) {
 	QWidget();

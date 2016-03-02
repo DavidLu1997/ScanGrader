@@ -10,7 +10,7 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	
 	//Button
 	exportButton = new QPushButton("Export");
-	changeExportType(fileType::CSV);
+	changeExportType(0);
 	connect(exportButton, SIGNAL(released()), this, SLOT(exportResults()));
 	exportButton->setEnabled(false);
 	layout->addWidget(exportButton, 1000, 0);
@@ -253,17 +253,17 @@ void ResultWidget::exportToFile() {
 	char delimiter = ' ';
 
 	switch (exportType) {
-	case fileType::CSV:
+	case 0:
 		delimiter = ',';
 		fileName = exportName + ".csv";
 		break;
-	case fileType::TXT:
+	case 1:
 		delimiter = ' ';
 		fileName = exportName + ".txt";
 		break;
 	}
 
-	std::ofstream out(fileName, std::ios::out);
+	std::ofstream out(fileName.c_str(), std::ios::out);
 
 	//Print out summary
 	out << "Average:" << delimiter << average << delimiter << "Median:" << delimiter << median << delimiter << "Minimum:" << delimiter << min << delimiter << "Maximum:" << delimiter << max << std::endl;

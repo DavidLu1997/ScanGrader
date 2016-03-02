@@ -4,15 +4,15 @@
 #ifndef IMAGEWIDGET_H
 #define IMAGEWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QButtonGroup>
-#include <QtWidgets\QPushButton>
-#include <QtWidgets\QSizePolicy>
-#include <QtWidgets\QLayout>
-#include <QtWidgets\QFileDialog>
-#include <QtWidgets\QProgressBar>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSizePolicy>
+#include <QtWidgets/QLayout>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QProgressBar>
 #include <vector>
-#include "ScanAPI\AnalyzeImage.hpp"
+#include "ScanAPI/AnalyzeImage.hpp"
 #include "ScanFileWidget.hpp"
 
 class ImageWidget : public QWidget {

@@ -14,7 +14,7 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	//Threshold
 	thresholdLabel = new QLabel("Darkness Threshold (0-255): ");
 	layout->addWidget(thresholdLabel, 1, 0);
-	threshold = new QSlider(Qt::Orientation::Horizontal);
+	threshold = new QSlider(Qt::Horizontal);
 	threshold->setTickInterval(16);
 	threshold->setSingleStep(4);
 	threshold->setMinimum(0);
@@ -33,7 +33,7 @@ OptionWidget::OptionWidget(QWidget *parent) {
 	//Percent
 	percentLabel = new QLabel("Darkness Percentage (0-100%): ");
 	layout->addWidget(percentLabel, 2, 0);
-	percent = new QSlider(Qt::Orientation::Horizontal);
+	percent = new QSlider(Qt::Horizontal);
 	percent->setTickInterval(10);
 	percent->setSingleStep(1);
 	percent->setMinimum(0);

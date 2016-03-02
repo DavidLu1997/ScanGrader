@@ -4,9 +4,9 @@
 #ifndef ABOUTWIDGET_H
 #define ABOUTWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QBoxLayout>
-#include <QtWidgets\QLabel>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QBoxLayout>
+#include <QtWidgets/QLabel>
 
 class AboutWidget : public QWidget {
 	Q_OBJECT

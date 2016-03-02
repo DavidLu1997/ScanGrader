@@ -5,6 +5,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
+#include <cstdlib>
 #include <cmath>
 #include "Point.hpp"
 

@@ -4,10 +4,10 @@
 #ifndef CONFIGWIDGET_H
 #define CONFIGWIDGET_H
 
-#include <QtWidgets\QWidget>
-#include <QtWidgets\QGridLayout>
-#include <QtWidgets\QLabel>
-#include "ScanAPI\ImageTemplate.hpp"
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include "ScanAPI/ImageTemplate.hpp"
 #include "ConfigFileWidget.hpp"
 
 class ConfigWidget : public QWidget
