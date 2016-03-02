@@ -7,17 +7,7 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./ScanAPI/ReadDot.hpp \
-    ./ScanAPI/ScanImage.hpp \
-    ./ScanAPI/bitmap_image.hpp \
-    ./ScanAPI/Point.hpp \
-    ./ScanAPI/Pixel.hpp \
-    ./ScanAPI/ImageTemplate.hpp \
-    ./ScanAPI/Rectangle.hpp \
-    ./ScanAPI/Headers.hpp \
-    ./ScanAPI/AnalyzeImage.hpp \
-    ./zopperscanapi.hpp \
-    ./ZopperScanGuiIncludes.hpp \
+HEADERS += ./scangrader.hpp \
     ./guiElements/ConfigWidget.hpp \
     ./guiElements/ExportWidget.hpp \
     ./guiElements/ImageWidget.hpp \
@@ -29,13 +19,19 @@ HEADERS += ./ScanAPI/ReadDot.hpp \
     ./guiElements/AboutWidget.hpp \
     ./guiElements/ConfigFileWidget.hpp \
     ./guiElements/KeyFileWidget.hpp \
-    ./guiElements/ImagePreview.hpp
-SOURCES += ./ScanAPI/ImageTemplate.cpp \
-    ./main.cpp \
-    ./zopperscanapi.cpp \
-    ./ScanAPI/ReadDot.cpp \
-    ./ScanAPI/ScanImage.cpp \
-    ./ScanAPI/AnalyzeImage.cpp \
+    ./guiElements/ImagePreview.hpp \
+    ./GuiElements/ScanGuiIncludes.hpp \
+    ./ZopperScanGuiIncludes.hpp \
+    ./ScanAPI/AnalyzeImage.hpp \
+    ./ScanAPI/Headers.hpp \
+    ./ScanAPI/ImageTemplate.hpp \
+    ./ScanAPI/Pixel.hpp \
+    ./ScanAPI/Point.hpp \
+    ./ScanAPI/ReadDot.hpp \
+    ./ScanAPI/Rectangle.hpp \
+    ./ScanAPI/ScanImage.hpp
+SOURCES += ./main.cpp \
+    ./scangrader.cpp \
     ./guiElements/AboutWidget.cpp \
     ./guiElements/ConfigFileWidget.cpp \
     ./guiElements/ConfigWidget.cpp \
@@ -47,6 +43,10 @@ SOURCES += ./ScanAPI/ImageTemplate.cpp \
     ./guiElements/NavBar.cpp \
     ./guiElements/OptionWidget.cpp \
     ./guiElements/ResultWidget.cpp \
-    ./guiElements/ScanFileWidget.cpp
-FORMS += ./zopperscanapi.ui
-RESOURCES += zopperscanapi.qrc
+    ./guiElements/ScanFileWidget.cpp \
+    ./ScanAPI/AnalyzeImage.cpp \
+    ./ScanAPI/ImageTemplate.cpp \
+    ./ScanAPI/ReadDot.cpp \
+    ./ScanAPI/ScanImage.cpp
+FORMS += ./scangrader.ui
+RESOURCES += scangrader.qrc
