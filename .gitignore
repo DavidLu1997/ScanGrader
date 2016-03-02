@@ -32,7 +32,6 @@ ipch/
 obj/
 *.opensdf
 *.sln
-GeneratedFiles*/
 Win32*/
 x64*/
 Resources*/
