@@ -32,6 +32,8 @@ Open `ScanGrader.sln` with Visual Studio
 
 Build and run with `ctrl-F5`, or build with `ctrl-shift-b`
 
+Adjust paths as necessary.
+
 ### Windows (Qt Creator)
 
 Make sure Qt Creator is installed, it comes packaged with Qt.
@@ -39,6 +41,8 @@ Make sure Qt Creator is installed, it comes packaged with Qt.
 Open `ScanGrader.pro` with Qt Creator.
 
 Build and run.
+
+Adjust paths as necessary.
 
 ## Current Releases
 
