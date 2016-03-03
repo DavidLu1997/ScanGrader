@@ -5,16 +5,17 @@ ScanGrader is intended to simplify test/quiz marking for schools, being an open-
 
 Accuracy on a standard 50 question scan sheet approaches 100% for scanner-based deployments, and 80% using a mobile camera. Extensive calibrations are being conducted to ensure accuracy.
 
-This is currently being developed for Windows x86 and Unix.
+This is currently being developed for Windows x86 and Unix using C++ and Qt 5.5.
+
+Future releases may involve C# and CUDA.
 
 Sample files can be found in Images.
 
-Known issues can be found in [readme.txt](https://github.com/DavidLu1997/ZopperScanAPI/blob/qtGui/readme.txt)
-
 ## Compiling Instructions
 
+For all platforms, please ensure that [Qt 5.5](http://www.qt.io/qt5-5/) is installed with at least QtCore and QtWidgets.
+
 ### Unix
-Make sure Qt is installed, consult your local package manager for details. (QtCore, QtWidgets)
 
 Run in project root:
 ```bash
@@ -23,16 +24,21 @@ make
 ./ScanGrader
 ```
 
-### Windows
-Make sure Qt (VS 2013 32bit) and Visual Studio 2013 (any edition but Express) is installed, configure Visual studio with the VS 2013 Qt Addin.
+### Windows (Visual Studio)
+
+Make sure Visual Studio 2013 (any edition but Express) is installed, configure Visual studio with the ]VS Qt Addin](http://download.qt.io/official_releases/vsaddin/qt-vs-addin-1.2.5.exe).
 
 Open `ScanGrader.sln` with Visual Studio
 
 Build and run with `ctrl-F5`, or build with `ctrl-shift-b`
 
-^Yes, it is that simple
+### Windows (Qt Creator)
 
-Or you can install one of the releases below :)
+Make sure Qt Creator is installed, it comes packaged with Qt.
+
+Open `ScanGrader.pro` with Qt Creator.
+
+Build and run.
 
 ## Current Releases
 
