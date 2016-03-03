@@ -26,7 +26,7 @@ make
 
 ### Windows (Visual Studio)
 
-Make sure Visual Studio 2013 (any edition but Express) is installed, configure Visual studio with the ]VS Qt Addin](http://download.qt.io/official_releases/vsaddin/qt-vs-addin-1.2.5.exe).
+Make sure Visual Studio 2013 (any edition but Express) is installed, configure Visual studio with the [VS Qt Addin](http://download.qt.io/official_releases/vsaddin/qt-vs-addin-1.2.5.exe).
 
 Open `ScanGrader.sln` with Visual Studio
 
