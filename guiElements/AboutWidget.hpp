@@ -24,7 +24,7 @@ public:
 	public slots:
 
 	//Update version
-	void updateVersion(double ver);
+	void updateVersion(std::string);
 
 public slots:
 

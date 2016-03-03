@@ -1,5 +1,5 @@
 #include "scangrader.hpp"
-#include <QtWidgets>
+#include <QtWidgets/QtWidgets>
 #include <algorithm>
 
 ScanGrader::ScanGrader(QWidget *parent)

@@ -9,7 +9,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QPushButton>
-#include <QUrl>
+#include <QtCore/QUrl>
 #include <vector>
 #include <string>
 

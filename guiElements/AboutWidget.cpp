@@ -30,7 +30,7 @@ AboutWidget::~AboutWidget() {
 }
 
 //Update version
-void AboutWidget::updateVersion(double ver) {
-	version->setText(tr("<i>Version %1</i>").arg(ver));
+void AboutWidget::updateVersion(std::string ver) {
+	version->setText(QString(ver.c_str()));
 	update();
 }

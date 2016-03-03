@@ -12,9 +12,8 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QScrollArea>
 #include <QtGui/QGuiApplication>
-#include <QDir>
-#include <QtGui>
-#include <QUrl>
+#include <QtCore/QDir>
+#include <QtCore/QUrl>
 #include <vector>
 #include <string>
 

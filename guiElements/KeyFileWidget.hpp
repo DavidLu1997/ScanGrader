@@ -6,7 +6,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QPushButton>
-#include <QUrl>
+#include <QtCore/QUrl>
 #include "ImagePreview.hpp"
 
 class KeyFileWidget : public QWidget {

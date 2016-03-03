@@ -5,7 +5,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include <QUrl>
+#include <QtCore/QUrl>
 
 class ConfigFileWidget : public QWidget {
 

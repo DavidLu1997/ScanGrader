@@ -80,7 +80,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;C:\Qt\Qt5.5.1\5.5\msvc2013\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtCore;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtGui;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtNetwork;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtSql;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;D:\Programs\Qt-32\5.5\msvc2013\include;.\GeneratedFiles\$(ConfigurationName);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -91,9 +91,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\ScanGrader.exe</OutputFile>
-      <AdditionalLibraryDirectories>C:\Qt\Qt5.5.1\5.5\msvc2013\lib;D:\Programs\Qt-32\5.5\msvc2013_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Programs\Qt-32\5.5\msvc2013\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Qt\Qt5.5.1\5.5\msvc2013\lib\qtmaind.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Cored.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Guid.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Networkd.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Sqld.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Programs\Qt-32\5.5\msvc2013\lib\qtmaind.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5cored.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5guid.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,7 +118,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_NETWORK_LIB;QT_SQL_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;C:\Qt\Qt5.5.1\5.5\msvc2013\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtCore;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtGui;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtNetwork;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtSql;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;D:\Programs\Qt-32\5.5\msvc2013\include;.\GeneratedFiles\$(ConfigurationName);C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtCore;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtGui;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtNetwork;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtSql;C:\Qt\Qt5.5.1\5.5\msvc2013\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -130,7 +130,7 @@
       <OutputFile>$(OutDir)\ScanGrader.exe</OutputFile>
       <AdditionalLibraryDirectories>C:\Qt\Qt5.5.1\5.5\msvc2013\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>C:\Qt\Qt5.5.1\5.5\msvc2013\lib\qtmain.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Core.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Gui.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Network.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Sql.lib;C:\Qt\Qt5.5.1\5.5\msvc2013\lib\Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>D:\Programs\Qt-32\5.5\msvc2013\lib\qtmain.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5core.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5gui.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
