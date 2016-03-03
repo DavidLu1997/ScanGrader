@@ -46,11 +46,18 @@ Adjust paths as necessary.
 
 ## Current Releases
 
+[Version 1.0.0](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/v1.0.0)
+
 [Version 1.30 Alpha](https://github.com/DavidLu1997/ZopperScanAPI/releases/tag/v1.30)
 
 [Nightly Build (Very Unstable)](https://github.com/DavidLu1997/ScanGrader/blob/qtGui/ScanGraderSetup.msi)
 
 ## Changelog:
+
+### v1.0.0
+- Changed versioning system
+- Added multi-platform compilation support
+- Revamped GUI slightly
 
 ### 1.30
 - Refactored
