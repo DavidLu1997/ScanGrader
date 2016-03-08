@@ -10,6 +10,8 @@ ehthumbs.db
 *.[Oo]bj
 *.user
 *.aps
+ScanGrader.vcxproj
+ScanGrader.v12.suo
 *.pch
 *.vspscc
 *.vssscc
@@ -34,8 +36,6 @@ Resources*/
 *.csv
 *.zip
 *.exe
-*.vcxproj
-*.suo
 
 # Project specific files
 
