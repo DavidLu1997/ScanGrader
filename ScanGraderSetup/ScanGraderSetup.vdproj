@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2EA48D586DBC400296BB160618EE1263"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_375C540907584003BC74FF2D01D3F1C6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,6 +63,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5890AD7338064344A982C29C5DB0A67A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6AF6415978F74C49924D15ABCBBB21EA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,12 +88,6 @@
         "Entry"
         {
         "MsmKey" = "8:_9FA89D4BC5FC4D10B0A39CA66EEFAFB6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B003FC2C9C4442C9A1FCD138411B1ABE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -250,6 +256,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2EA48D586DBC400296BB160618EE1263"
+            {
+            "SourcePath" = "8:..\\config.ini"
+            "TargetName" = "8:config.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_BDA945DF69DE4B5BB0F886D19FE67B7C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_375C540907584003BC74FF2D01D3F1C6"
             {
             "SourcePath" = "8:..\\images\\blank.jpg"
@@ -330,6 +356,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5890AD7338064344A982C29C5DB0A67A"
+            {
+            "SourcePath" = "8:..\\Win32\\Release\\imageformats\\qjpeg.dll"
+            "TargetName" = "8:qjpeg.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_B8D6530F98FF4058B51125F81E17274E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_760EA012EA304EEB8751B0EF6141AF4F"
             {
             "SourcePath" = "8:..\\images\\test.jpg"
@@ -376,26 +422,6 @@
             "TargetName" = "8:pattern.jpg"
             "Tag" = "8:"
             "Folder" = "8:_C9E737DA21FE4971B08FE7BEA790FD20"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B003FC2C9C4442C9A1FCD138411B1ABE"
-            {
-            "SourcePath" = "8:..\\Win32\\Release\\config.ini"
-            "TargetName" = "8:config.ini"
-            "Tag" = "8:"
-            "Folder" = "8:_BDA945DF69DE4B5BB0F886D19FE67B7C"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -488,11 +514,22 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_B4F5AD7120D64869AF85A3D180488C93"
                     {
-                    "Name" = "8:platform"
+                    "Name" = "8:platforms"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_1475DDB46F2C421F8067B5AE05FC2D1C"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B8D6530F98FF4058B51125F81E17274E"
+                    {
+                    "Name" = "8:imageformats"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_5BCAE307993F4E64976958CE3DE81682"
                         "Folders"
                         {
                         }
@@ -560,7 +597,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScanGrader"
         "ProductCode" = "8:{91975F85-0716-49AE-82D3-D74678343CB5}"
-        "PackageCode" = "8:{734ECD96-501A-42BD-B6C8-E111FB497217}"
+        "PackageCode" = "8:{EB6C8AA7-DAED-4A0C-B388-5BB906BD29F5}"
         "UpgradeCode" = "8:{BB5350A0-1026-4BF1-90CF-FCA8B8111E73}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
