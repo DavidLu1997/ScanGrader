@@ -35,6 +35,7 @@ Resources*/
 *.zip
 *.exe
 *.vcxproj
+*.suo
 
 # Project specific files
 
