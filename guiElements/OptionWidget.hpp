@@ -46,8 +46,6 @@ public slots:
 	//Set default
 	void setDefault();
 	
-private slots:
-	
 private:
 	//Title
 	QLabel *title;

@@ -48,8 +48,6 @@ public slots:
 	//Show Preview
 	void previewImage();
 
-private slots :
-
 private:
 
 	//Url

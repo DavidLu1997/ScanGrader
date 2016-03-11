@@ -30,10 +30,6 @@ public:
 	QLabel *fileLabel;
 	QComboBox *fileType;
 	QLabel *fileTypeLabel;
-
-public slots:
-
-private slots:
 	
 private:
 

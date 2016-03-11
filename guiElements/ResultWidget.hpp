@@ -48,31 +48,11 @@ public slots:
 	//Export results to file
 	void exportToFile();
 
-	//Export results to server
-	void exportToServer();
-
 	//Change export name
 	void changeExportName(const QString &name);
 
 	//Change export type
 	void changeExportType(int type);
-
-	//Change host name
-	void changeHostName(const QString &name);
-
-	//Change databaseName
-	void changeDatabaseName(const QString &name);
-
-	//Change port
-	void changePort(const QString &name);
-
-	//Change userName
-	void changeUserName(const QString &name);
-
-	//Change password
-	void changePassword(const QString &name);
-
-private slots:
 	
 private:
 	//Grid layout
@@ -117,13 +97,6 @@ private:
 
 	//Export type
 	int exportType;
-
-	//Server information
-	QString serverHostName;
-	QString serverDatabaseName;
-	int port;
-	QString serverUserName;
-	QString serverPassword;
 };
 
 #endif

@@ -30,8 +30,8 @@ public:
 	bool deleted = false;
 
 public slots:
+	//Zombie deletion
 	void setDeleted();
-private slots :
 	
 private:
 	

@@ -26,10 +26,6 @@ public:
 	//Update version
 	void updateVersion(std::string);
 
-public slots:
-
-private slots:
-
 private:
 	//Main layout
 	QBoxLayout *layout;

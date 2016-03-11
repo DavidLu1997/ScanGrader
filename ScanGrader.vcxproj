@@ -93,7 +93,7 @@
       <OutputFile>$(OutDir)\ScanGrader.exe</OutputFile>
       <AdditionalLibraryDirectories>D:\Programs\Qt-32\5.5\msvc2013\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>D:\Programs\Qt-32\5.5\msvc2013\lib\qtmaind.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5cored.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5guid.lib;D:\Programs\Qt-32\5.5\msvc2013\lib\qt5widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%QTDIR%\lib\qtmaind.lib;%QTDIR%\lib\qt5cored.lib;%QTDIR%\lib\qt5guid.lib;%QTDIR%\lib\qt5widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
