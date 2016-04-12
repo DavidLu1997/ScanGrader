@@ -20,7 +20,7 @@ bool ImageTemplate::loadTemplate(std::string name) {
 	std::ifstream in(name.c_str(), std::ios::in);
 
 	if (!in.is_open()) {
-		std::cerr << name << " not found." << std::endl;
+		//std::cerr << name << " not found." << std::endl;
 		return false;
 	}
 
@@ -28,8 +28,6 @@ bool ImageTemplate::loadTemplate(std::string name) {
 	rects.clear();
 	cali.clear();
 	resolution = Point();
-
-	//TODO: Incorporate config file library with comments
 
 	//First pair, resolution of image
 	in >> resolution.x >> resolution.y;
@@ -95,7 +93,7 @@ bool ImageTemplate::calculateRectangles() {
 	for (unsigned int i = 0; i < rects.size(); i++) {
 		//Bounds check
 		if (rects[i].id < 0 || (unsigned int)rects[i].id >= cali.size()) {
-			std::cerr << "Invalid id " << rects[i].id << " at " << i << std::endl;
+			//std::cerr << "Invalid id " << rects[i].id << " at " << i << std::endl;
 			return false;
 		}
 
@@ -107,15 +105,15 @@ bool ImageTemplate::calculateRectangles() {
 
 		//Testing for bounds
 		if (rects[i].upper >= resolution || rects[i].lower >= resolution) {
-			std::cerr << "Out of resolution bounds at " << i << std::endl;
+			//std::cerr << "Out of resolution bounds at " << i << std::endl;
 			return false;
 		}
 		if (rects[i].upper.x < 0 || rects[i].upper.y < 0 || rects[i].lower.x < 0 || rects[i].lower.y < 0) {
-			std::cerr << "Negative locations at " << i << std::endl;
+			//std::cerr << "Negative locations at " << i << std::endl;
 			return false;
 		}
 		if (rects[i].size() <= 0) {
-			std::cerr << "Non-positive rectangle size at " << i << std::endl;
+			//std::cerr << "Non-positive rectangle size at " << i << std::endl;
 			return false;
 		}
 	}
