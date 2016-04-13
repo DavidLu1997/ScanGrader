@@ -54,7 +54,7 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 bool AnalyzeImage::calculate() {
 	//Validity check
 	if (percent <= 0) {
-		std::cerr << "Invalid black percentage " << percent << std::endl;
+		//std::cerr << "Invalid black percentage " << percent << std::endl;
 		return false;
 	}
 
@@ -183,7 +183,7 @@ std::vector<int> AnalyzeImage::getAnswers() {
 		answers.clear();
 		//Check answers every option
 		if (plate.questions.x < 0 || plate.questions.x >= marks.size() || plate.questions.y < 0 || plate.questions.y >= marks.size()) {
-			std::cerr << "Invalid bounds for answers or answers section does not exist." << std::endl;
+			//std::cerr << "Invalid bounds for answers or answers section does not exist." << std::endl;
 		}
 		else {
 			for (int i = plate.questions.x; i < plate.questions.y; i += plate.options) {
@@ -211,7 +211,7 @@ int AnalyzeImage::getID() {
 		id = -1;
 		//Check answers every option
 		if (plate.ids.x < 0 || plate.ids.x >= marks.size() || plate.ids.y < 0 || plate.ids.y >= marks.size()) {
-			std::cerr << "Invalid bounds for ids or ID section does not exist." << std::endl;
+			//std::cerr << "Invalid bounds for ids or ID section does not exist." << std::endl;
 		}
 		else {
 			id = 0;
