@@ -1,6 +1,6 @@
 #include "scangrader.hpp"
 #include <algorithm>
-#include <QtWidgets\qdesktopwidget.h>
+#include <QtWidgets/qdesktopwidget.h>
 
 ScanGrader::ScanGrader(QWidget *parent)
 	: QMainWindow(parent)
