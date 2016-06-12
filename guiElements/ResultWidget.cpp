@@ -7,7 +7,7 @@ ResultWidget::ResultWidget(QWidget *parent) {
 	QWidget();
 	//Layout
 	layout = new QGridLayout();
-	
+
 	//Button
 	exportButton = new QPushButton("Export");
 	changeExportType(0);

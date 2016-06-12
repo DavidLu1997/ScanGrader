@@ -1,6 +1,6 @@
 #include "scangrader.hpp"
 #include <algorithm>
-#include <QtWidgets\qdesktopwidget.h>
+#include <QtWidgets/qdesktopwidget.h>
 
 ScanGrader::ScanGrader(QWidget *parent)
 	: QMainWindow(parent)
@@ -214,7 +214,7 @@ void ScanGrader::getImageData() {
 		imagePaths.push_back(imageFiles.at(i).toLocalFile().toStdString());
 		useKey.push_back(keyIndexes.at(i));
 	}
-	
+
 }
 
 //Connect Image
@@ -244,7 +244,7 @@ void ScanGrader::connectConfig() {
 
 //Connect Results
 void ScanGrader::connectResults() {
-	
+
 }
 
 //Connect Export

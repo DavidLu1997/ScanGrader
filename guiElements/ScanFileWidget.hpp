@@ -58,7 +58,7 @@ public slots:
 	void previewImage();
 private slots :
 
-	
+
 private:
 	//Row
 	unsigned int row;

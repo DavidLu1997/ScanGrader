@@ -30,7 +30,7 @@ public:
 	QLabel *fileLabel;
 	QComboBox *fileType;
 	QLabel *fileTypeLabel;
-	
+
 private:
 
 	//Introduction label
@@ -38,7 +38,7 @@ private:
 
 	//Layout
 	QGridLayout *layout;
-	
+
 	//Radio buttons
 	QRadioButton *fileButton;
 

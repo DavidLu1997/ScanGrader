@@ -1,5 +1,5 @@
 //Include header file for function definitions
-#include "KeyFileWidget.hpp"	 
+#include "KeyFileWidget.hpp"
 
 //Constructor
 KeyFileWidget::KeyFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QWidget *parent) {
@@ -17,11 +17,11 @@ KeyFileWidget::KeyFileWidget(QUrl URL, QGridLayout *layout, unsigned int row, QW
 	connect(view, SIGNAL(released()), this, SLOT(previewImage()));
 	layout->addWidget(view, row, 3);
 
-	//Remove button	
+	//Remove button
 	remove = new QPushButton("Remove");
 	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));
 	layout->addWidget(remove, row, 4);
-	
+
 	//Connecting remove button
 	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));
 }

@@ -105,7 +105,7 @@ void KeyWidget::updateConfig(const QList<QUrl> &urls) {
 			i--;
 			continue;
 		}
-		//Call update method 
+		//Call update method
 		keyFiles.at(i)->updateConfigFiles(urls);
 	}
 }

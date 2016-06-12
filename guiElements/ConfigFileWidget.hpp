@@ -32,9 +32,9 @@ public:
 public slots:
 	//Zombie deletion
 	void setDeleted();
-	
+
 private:
-	
+
 	//Url
 	QUrl url;
 

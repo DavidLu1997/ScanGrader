@@ -29,7 +29,7 @@ ExportWidget::ExportWidget(QWidget *parent) {
 	layout->addWidget(empty2, 999, 1);
 
 	intro = new QLabel("<h3>Export type:</h3>");
-	intro->setTextFormat(Qt::RichText); 
+	intro->setTextFormat(Qt::RichText);
 	layout->addWidget(intro, 0, 0);
 	QWidget *empty5 = new QWidget();
 	empty5->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

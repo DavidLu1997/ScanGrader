@@ -9,7 +9,7 @@ ImagePreview::ImagePreview(const QUrl imagePath) {
 	imageLabel->setBackgroundRole(QPalette::Base);
 	imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 	imageLabel->setScaledContents(true);
-	
+
 	//Scroll Area
 	setBackgroundRole(QPalette::Dark);
 	setWidget(imageLabel);
