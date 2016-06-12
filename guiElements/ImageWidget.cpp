@@ -157,7 +157,7 @@ void ImageWidget::refresh() {
 //Add File Dialog
 void ImageWidget::addFiles() {
 	directory = QFileDialog::getOpenFileUrls(this, "Open Image File", QUrl("/"), "Image Files (*.bmp *.jpg *.png *.pbm *.pgm *.ppm *.xbm *.xpm)");
-	
+
 	for (unsigned int i = 0; i < directory.size(); i++) {
 		addScanFileWidget(directory.at(i));
 	}

@@ -56,7 +56,7 @@ public slots:
 private slots:
 	//Remove all the added files
 	void removeAllEntries();
-	
+
 private:
 
 	//Main Layout

@@ -74,7 +74,7 @@ bool ImageTemplate::loadTemplate(std::string name) {
 	//calculateRectangles();
 
 	origRects = rects;
-	
+
 	in.close();
 	return true;
 }

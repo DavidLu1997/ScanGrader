@@ -28,7 +28,7 @@ public:
 
 	enum fileType {CSV = 0, TXT = 1, SQL = 2};
 
-public slots: 
+public slots:
 
 	//Clear display
 	void clearDisplay();
@@ -53,7 +53,7 @@ public slots:
 
 	//Change export type
 	void changeExportType(int type);
-	
+
 private:
 	//Grid layout
 	QGridLayout *layout;

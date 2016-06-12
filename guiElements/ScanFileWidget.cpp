@@ -12,7 +12,7 @@ ScanFileWidget::ScanFileWidget(QGridLayout *layout, unsigned int r, QWidget *par
 	//Initialize view button
 	view = new QPushButton("View");
 	connect(view, SIGNAL(released()), this, SLOT(previewImage()));
-	
+
 	//Initialize remove
 	remove = new QPushButton("Remove");
 	connect(remove, SIGNAL(released()), this, SLOT(setDeleted()));

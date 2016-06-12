@@ -5,7 +5,7 @@ OptionWidget::OptionWidget(QWidget *parent) {
 
 	//Layout
 	layout = new QGridLayout();
-	
+
 	//Title
 	title = new QLabel("<h3>Options</h3>");
 	title->setTextFormat(Qt::RichText);

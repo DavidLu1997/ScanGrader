@@ -41,7 +41,7 @@ AnalyzeImage::AnalyzeImage(std::string imageName, std::string configName) {
 	//img.image = img.image.scaled(plate.resolution.x, plate.resolution.y);
 	plate.scale(xScale, yScale);
 	plate.calculateRectangles();
-	
+
 	img.calculate();
 
 	calculated = false;
@@ -62,7 +62,7 @@ bool AnalyzeImage::calculate() {
 
 	//Initialize ReadDot
 	ReadDot read(img, threshold);
-	
+
 	//Go through rectangles
 	for (unsigned int i = 0; i < plate.getRects().size(); i++) {
 		marks.push_back(read.black(plate.getRects().at(i)));

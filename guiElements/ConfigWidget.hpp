@@ -56,7 +56,7 @@ private:
 
 	//QWidgets for each file
 	std::vector<ConfigFileWidget *> configFiles;
-	
+
 };
 
 #endif

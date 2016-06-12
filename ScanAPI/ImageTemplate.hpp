@@ -16,7 +16,7 @@ public:
 
 	//Creates a template from a config file
 	ImageTemplate(std::string name);
-	    
+
 	//Loads template from file
 	bool loadTemplate(std::string name);
 
@@ -49,7 +49,7 @@ public:
 
 	//Options per question
 	int options;
-	
+
 private:
 	//Scaling
 	void scaleRects(double xScale, double yScale);

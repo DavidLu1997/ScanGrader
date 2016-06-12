@@ -11,7 +11,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpinBox>
 
-class OptionWidget : public QWidget 
+class OptionWidget : public QWidget
 {
 	Q_OBJECT
 
@@ -33,7 +33,7 @@ public:
 	int getThreshold();
 
 public slots:
-	
+
 	//Percent changed
 	void percentChanged(int value);
 
@@ -45,7 +45,7 @@ public slots:
 
 	//Set default
 	void setDefault();
-	
+
 private:
 	//Title
 	QLabel *title;
